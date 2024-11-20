@@ -8,8 +8,6 @@ import AboutUs from './components/AboutUs/AboutUs'
 import OurGallery from './components/OurGallery/OurGallery'
 import News from './components/News/News'
 import Pta from './components/P.T.A/Pta'
-import Cardbox from './components/CardList/CardList'
-
 
 function App() {
 
