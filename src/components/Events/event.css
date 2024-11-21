@@ -1,0 +1,23 @@
+.text-color{
+    color: blue;
+    
+}
+
+.text{
+    font-size: 50px;
+}
+
+.cont1{
+    display: flex;
+    gap: 20px;
+}
+
+.cont2{
+    justify-items: center;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+
+.caption{
+    padding-left: 15px;
+}
