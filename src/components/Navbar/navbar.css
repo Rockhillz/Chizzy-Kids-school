@@ -1,0 +1,15 @@
+.navbarBox {
+    position: fixed;
+    /* Keeps the navbar at the top of the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Spans the full width of the viewport */
+    background-color: rgb(8, 8, 8) !important;
+    /* Slight transparency */
+    color: darkblue !important;
+    padding: 10px 20px;
+    z-index: 1000;
+    /* Ensures it stays above other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
