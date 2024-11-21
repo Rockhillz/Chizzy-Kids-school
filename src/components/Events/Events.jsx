@@ -1,6 +1,6 @@
 import { Carousel } from "react-bootstrap";
 import "./event.css";
-import Cardbox from "../CardList/CardList";
+import Cardbox from "../CardList/Cardbox";
 import { Link } from "react-router-dom";
 
 const Events = () => {
