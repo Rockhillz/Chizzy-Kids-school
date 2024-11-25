@@ -1,0 +1,12 @@
+.cont{
+    justify-items: center;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+.btn:hover{
+    background-color: lightblue !important;
+    opacity: 0.8 !important;
+}
+.capt{
+    margin-top: 100px;
+}
