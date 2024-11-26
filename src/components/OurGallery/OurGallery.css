@@ -1,0 +1,18 @@
+.card {
+  width: 20rem;
+  margin: 1rem;
+}
+.gallery {
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 2rem;
+}
+img {
+  width: 10rem;
+  height: 20rem;
+}
+.OurgalleryList{
+  margin-top: 7rem;
+  justify-items: center;
+}
