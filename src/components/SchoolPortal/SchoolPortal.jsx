@@ -1,9 +1,11 @@
-import React from 'react'
+
 
 const SchoolPortal = () => {
   return (
-    <div>SchoolPortal</div>
+    <div>SchoolPortal
+    </div>
   )
 }
 
 export default SchoolPortal
+

@@ -1,8 +1,18 @@
-import React from 'react'
+import Card from 'react-bootstrap/Card';
+import './OurGallery.css';
 
-const OurGallery = () => {
+
+const OurGallery = ({imgurl, Title, Subtitle}) => {
   return (
-    <div>OurGallery</div>
+    <div >
+      <Card className='mb-5'>
+        <Card.Body>
+        <Card.Img variant="top" src={imgurl} />
+          <Card.Title>{Title}</Card.Title>
+          <Card.Subtitle className="">{Subtitle}</Card.Subtitle>
+        </Card.Body>
+      </Card>
+    </div>
   )
 }
 
