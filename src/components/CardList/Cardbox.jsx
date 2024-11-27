@@ -37,7 +37,7 @@ function Cardbox({ Image, Title, Cardtext, btntext, linkout }) {
         className='Imgpic'
       />
       <Card.Body>
-        <Card.Title style={styles.textTitle}>{Title || "Card Title"}</Card.Title>
+        <Card.Title style={styles.textTitle}>{Title ? `${Title.slice(0, 20)}...` : "Card Title"}</Card.Title>
         <Card.Text style={styles.textContent}>
           {Cardtext || "Some quick example text to build on the card title and make up the bulk of the cards content."}
         </Card.Text>

@@ -52,7 +52,9 @@ function Courosel() {
                 <Carousel.Caption style={styles.container}>
                     <h5 style={styles.textTitle}>Chizzy Kids Group of School</h5>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    <button className='mt-5' style={styles.btnButton}>School Portal</button>
+                    <a href="/school" className="mt-5 btn" style={styles.btnButton}>
+                        School Portal
+                    </a>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>

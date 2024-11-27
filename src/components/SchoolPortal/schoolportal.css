@@ -1,0 +1,33 @@
+/* .display{
+    display: flex;
+    flex-direction: row;
+    align-items: center; */
+    /* gap: 200px; */
+    /* justify-content: space-between; 
+} */
+
+/* #mainBox{
+    background-color: rgb(233, 235, 225) !important;
+    margin-top: -5px; */
+    /* margin-bottom: -10px; */
+/* } */
+
+.display {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically on smaller screens */
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .display {
+    flex-direction: row; /* Horizontal layout for medium screens and up */
+    justify-content: space-between;
+  }
+
+}
+
+#mainBox {
+  background-color: rgb(233, 235, 225) !important;
+  margin-top: -5px;
+}
