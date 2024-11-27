@@ -7,7 +7,7 @@ const Footer = () => {
     }
   }
   return (
-    <div className='mt-5'>
+    <div className=''>
       <section className="">
 
         <footer className="text-center text-white" style={styles.footer}>
