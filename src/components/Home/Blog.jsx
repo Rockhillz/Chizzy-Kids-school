@@ -4,7 +4,7 @@ const Blog = () => {
     return (
         <section className='container'  style={{marginTop:"100px"}}>
             <div className='row' >
-                <div className='col-12 col-sm-8' style={{width:"600px"}}>
+                <div className='col-12 col-sm-8' style={{width:"700px"}}>
                     <h2 className='mt-5'style={{width:"300px", fontWeight:'700', color:'darkblue'}}>A Welcome Address
                     From the Principal</h2>
 
@@ -18,7 +18,7 @@ const Blog = () => {
                 </div>
 
                 <div className='col-12 col-sm-4 ms-4 mt-3'>
-                    <img src="https://res.cloudinary.com/myskoolp/image/upload/w_500/v1/school_website/misc/kingscollegelagos/principal-566.jpg" alt="principal photo" className='img-fluid' />
+                    <img src="https://res.cloudinary.com/myskoolp/image/upload/w_500/v1/school_website/misc/kingscollegelagos/principal-566.jpg" alt="principal photo" className='img-fluid' style={{width:"300px", height:"400px", marginLeft:"65px"}} />
                 </div>
             </div>
         </section>
