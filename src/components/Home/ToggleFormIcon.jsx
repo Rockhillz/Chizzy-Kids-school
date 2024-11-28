@@ -50,24 +50,24 @@ const ToggleFormImage = ({linkup}) => {
                         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                     }}
                 >
-                    <Form>
+                    <Form style={{height:'550px'}}>
                         <Form.Group controlId="formName">
                             <Form.Label>Name</Form.Label>
                             <Form.Control type="text" placeholder="Enter your name" />
                         </Form.Group>
 
-                        <Form.Group controlId="formEmail" className="mt-3">
+                        <Form.Group controlId="formEmail" className="mt-2">
                             <Form.Label>Email Address</Form.Label>
                             <Form.Control type="email" placeholder="Enter your email" />
                         </Form.Group>
 
-                        <Form.Group controlId="phone" className="mt-3">
+                        <Form.Group controlId="phone" className="mt-2">
                             <Form.Label>Phone Number</Form.Label>
                             <Form.Control type="text" placeholder="Enter your phone number" />
                         </Form.Group>
 
                         {/* Radio Buttons */}
-                        <Form.Group className="mt-3">
+                        <Form.Group className="mt-2">
                             <Form.Label>* <b>let us know u better...</b></Form.Label>
                             <Form.Check
                                 type="radio"
@@ -93,7 +93,7 @@ const ToggleFormImage = ({linkup}) => {
                         </Form.Group>
 
                         {/* Textarea */}
-                        <Form.Group controlId="textarea" className="mt-3">
+                        <Form.Group controlId="textarea" className="mt-2">
                             <Form.Label>Your Message</Form.Label>
                             <Form.Control
                                 as="textarea"
@@ -102,7 +102,7 @@ const ToggleFormImage = ({linkup}) => {
                             />
                         </Form.Group>
 
-                        <Button variant="success" type="submit" className="mt-3">
+                        <Button variant="success" type="submit" className='mt-2'>
                             Submit
                         </Button>
                     </Form>
