@@ -1,4 +1,3 @@
-import React from 'react'
 
 const Footer = () => {
   const styles = {
@@ -7,7 +6,7 @@ const Footer = () => {
     }
   }
   return (
-    <div className=''>
+  
       <section className="">
 
         <footer className="text-center text-white" style={styles.footer}>
@@ -33,7 +32,6 @@ const Footer = () => {
         </footer>
 
       </section>
-    </div>
   )
 }
 
