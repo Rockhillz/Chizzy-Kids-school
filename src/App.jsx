@@ -8,6 +8,7 @@ import AboutUs from './components/AboutUs/AboutUs'
 import News from './components/News/News'
 import Pta from './components/P.T.A/Pta'
 import OurGalleryList from './components/OurGallery/OurGalleryList'
+import ToggleFormImage from './components/Home/ToggleFormIcon'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path='/pta' element={<Pta />} />
 
       </Routes>
+      <ToggleFormImage/>
     <Footer />
     </>
   )
