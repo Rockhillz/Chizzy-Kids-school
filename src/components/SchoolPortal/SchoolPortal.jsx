@@ -148,7 +148,7 @@ const SchoolPortal = () => {
                 <Form.Group className="mb-3">
                   <Form.Check
                     type="radio"
-                    label="Login as a Teacher"
+                    label="Teacher"
                     name="role"
                     value="teacher"
                     checked={role === "teacher"}
@@ -156,7 +156,7 @@ const SchoolPortal = () => {
                   />
                   <Form.Check
                     type="radio"
-                    label="Login as a Student"
+                    label="Student"
                     name="role"
                     value="student"
                     checked={role === "student"}
