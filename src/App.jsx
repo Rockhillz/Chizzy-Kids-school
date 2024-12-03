@@ -11,12 +11,13 @@ import OurGalleryList from './components/OurGallery/OurGalleryList'
 import ToggleFormImage from './components/Home/ToggleFormIcon'
 
 
+
+
 function App() {
 
   return (
     <>
     <NavigationBar />
-
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/school' element={<SchoolPortal />} />
@@ -28,7 +29,7 @@ function App() {
 
       </Routes>
       <ToggleFormImage/>
-    <Footer />
+    <Footer /> 
     </>
   )
 }
