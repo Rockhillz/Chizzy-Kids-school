@@ -1,28 +1,28 @@
-import { Carousel } from "react-bootstrap";
+// import { Carousel } from "react-bootstrap";
 import "./event.css";
 import Cardbox from "../CardList/Cardbox";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import HrElement from "../Home/HrElement";
 
 const Events = () => {
-  const style = {
-    carousel: {
-      height: "550px",
-      width: "100%",
-      margin: "auto",
-      overflow: "hidden",
-      position: "relative",
-      background: "#f1f1f1",
-    },
+  // const style = {
+  //   carousel: {
+  //     height: "550px",
+  //     width: "100%",
+  //     margin: "auto",
+  //     overflow: "hidden",
+  //     position: "relative",
+  //     background: "#f1f1f1",
+  //   },
 
-    img: {
-      height: "500px",
-      width: "100%",
-    },
-  };
+  //   img: {
+  //     height: "500px",
+  //     width: "100%",
+  //   },
+  // };
   return (
-    <div>
-      <header>
+    <div style={{marginTop:"100px"}}>
+      {/* <header>
         <Carousel indicators={false} controls={false} style={style.carousel}>
           <Carousel.Item>
             <img
@@ -48,7 +48,7 @@ const Events = () => {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-      </header>
+      </header> */}
 
       <main className="container">
         <div className="cont2">

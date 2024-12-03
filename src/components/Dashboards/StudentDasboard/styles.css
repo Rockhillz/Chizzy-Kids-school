@@ -1,0 +1,23 @@
+.card{
+    width: 100%;
+}
+
+.cont1{
+    display: flex !important;
+    align-items: center !important;
+    padding-left: 10px !important;
+    padding-top: 10px !important;
+}
+
+/* .box2{
+    padding-top: 20px;
+    padding-left: 15px;
+} */
+
+.image{
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    
+}
