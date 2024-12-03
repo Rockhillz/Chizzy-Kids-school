@@ -1,0 +1,9 @@
+.wildcard-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 100vh; /* Full viewport height */
+    text-align: center;
+    margin: 0; /* Remove default margins */
+}
