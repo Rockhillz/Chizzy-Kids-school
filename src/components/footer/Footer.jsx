@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 const Footer = () => {
   const styles = {
@@ -6,32 +7,15 @@ const Footer = () => {
     }
   }
   return (
-  
-      <section className="">
 
-        <footer className="text-center text-white" style={styles.footer}>
+        <footer className="text-center text-white" >
 
-          <div className="container p-4 pb-0">
-
-            <section className="">
-              <p className="d-flex justify-content-center align-items-center">
-                <span className="me-3">Register for free</span>
-                <button data-mdb-ripple-init type="button" className="btn btn-outline-light btn-rounded">
-                  Sign up!
-                </button>
-              </p>
-            </section>
-
-          </div>
-
-          <div className="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);" style={styles.footer}>
-            © 2020 Copyright:
-            <a className="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+          <div className="text-center p-3" style={styles.footer}>
+            <p>©2024 Chizzy Kids. All Rights Reserved.</p>
           </div>
 
         </footer>
 
-      </section>
   )
 }
 

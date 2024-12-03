@@ -1,0 +1,11 @@
+/* Ensure the entire app wrapper fills the viewport */
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* Let the content area grow as needed */
+.content {
+    flex: 1; /* Pushes the footer to the bottom */
+}
