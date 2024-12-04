@@ -6,8 +6,8 @@ import "./schoolportal.css";
 const SchoolPortal = () => {
   const [role, setRole] = useState("");
   const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
+    email: "",
+    password: ""
   });
 
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const SchoolPortal = () => {
       return;
     }
 
-    if (!credentials.username || !credentials.password) {
+    if (!credentials.email || !credentials.password) {
       alert("Please fill in all fields.");
       return;
     }
@@ -37,8 +37,8 @@ const SchoolPortal = () => {
     try {
       const apiUrl = 
       role === "teacher"
-      ? "https://chizzykids-server.onrender.com/api/getAllTeachers"
-      : "https://api.example.com/studentlogin";
+      ? "https://chizzykids-server.onrender.com/api/loginTeacher"
+      : "https://chizzykids-server.onrender.com/api/student/login";
 
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -86,14 +86,14 @@ const SchoolPortal = () => {
           <Col xs={12} md={6}>
             <div className="p-4 mb-5 mt-5 border rounded shadow mx-auto" style={{ maxWidth: "400px" }}>
               <h3 className="text-center mb-4">Sign In</h3>
-              <Form>
-                <Form.Group controlId="formUsername" className="mb-3">
-                  <Form.Label>Username</Form.Label>
+              <Form onSubmit={handleLogin}>
+                <Form.Group controlId="email" className="mb-3">
+                  <Form.Label>Email</Form.Label>
                   <Form.Control
                     type="text"
-                    name="username"
-                    placeholder="Enter username"
-                    value={credentials.username}
+                    name="email"
+                    placeholder="Enter Email"
+                    value={credentials.email}
                     onChange={handleInputChange}
                     required
                   />

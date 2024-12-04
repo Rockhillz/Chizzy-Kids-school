@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Nav, Card, Table, Image } from "react-bootstrap";
 import "./styles.css";
 
@@ -8,7 +8,7 @@ const StudentDash = () => {
   const [activeTab, setActiveTab] = useState("profile");
 
   return (
-    <div className="min-vh-100 bg-light">
+    <div className="min-vh-100 bg-light mt-5">
       {/* Header */}
       <header className="bg-primary text-white py-3">
         <Container>

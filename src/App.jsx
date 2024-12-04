@@ -10,7 +10,7 @@ import AboutUs from './components/AboutUs/AboutUs';
 import OurGalleryList from './components/OurGallery/OurGalleryList';
 import ToggleFormImage from './components/Home/ToggleFormIcon';
 import TeacherDash from './components/Dashboards/TeachersDashBoard/TeacherDash'
-// import StudentDash from './components/Dashboards/StudentDasboard/StudentDash'
+import StudentDash from './components/Dashboards/StudentDasboard/StudentDash'
 import Wildcard from './components/404Page/Wildcard';
 import './App.css';
 
@@ -31,7 +31,7 @@ function App() {
             <Route path='/events' element={<Events />} />
             <Route path='/ourGallery' element={<OurGalleryList />} />
             <Route path='/teacher-dashboard' element={<TeacherDash />} />
-            {/* <Route path='/student-dashboard' element={<StudentDash />} /> */}
+            <Route path='/student-dashboard' element={<StudentDash />} />
             {/* <Route path='/news' element={<News />} />
             <Route path='/pta' element={<Pta />} /> */}
             <Route path="*" element={<Wildcard />} />
