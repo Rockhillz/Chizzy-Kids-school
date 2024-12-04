@@ -8,7 +8,7 @@ function NavigationBar() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary navbarBox">
       <Container>
-        <Navbar.Brand className='text-light' href="/">Chizzy Kids</Navbar.Brand>
+        <Navbar.Brand className='text-light' href="/">Chizzy Kids School</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto ">
