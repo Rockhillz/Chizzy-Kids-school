@@ -40,6 +40,11 @@ const SchoolPortal = () => {
     setLoading(true);
 
     try {
+
+      // Normalize email before sending to the server
+      const normalizedEmail = credentials.email.trim().toLowerCase();
+
+
       const apiUrl =
         role === "teacher"
           ? "https://chizzykids-server.onrender.com/api/loginTeacher"
@@ -50,7 +55,10 @@ const SchoolPortal = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(credentials),
+        body: JSON.stringify({
+          email: normalizedEmail,
+          password: credentials.password,
+        }),
       });
 
       const data = await response.json();
