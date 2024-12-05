@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Container, Button } from "react-bootstrap";
+import { FaSignOutAlt } from "react-icons/fa"
 import "./styles.css"
 
 const StudentHeader = ({ studentName }) => {
@@ -22,7 +23,7 @@ const StudentHeader = ({ studentName }) => {
           <span className="text-dark">Welcome, {studentName || "Student"}!</span>
         </Navbar.Brand>
         <Button style={styles.footer} size="sm" onClick={handleLogout}>
-          Logout
+          Logout <FaSignOutAlt />
         </Button>
       </Container>
     </Navbar>
