@@ -75,7 +75,7 @@ const StudentDashboard = () => {
       <StudentHeader studentName={studentData?.fullname} />
       <Container fluid>
         <Row>
-          <Col md={3}>
+          <Col md={3} className="p-0">
             <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
           </Col>
           <Col md={9}>
