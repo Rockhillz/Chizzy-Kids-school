@@ -1,0 +1,26 @@
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+h4 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+img {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.badge {
+  font-size: 0.9rem;
+}
+
+.siz {
+    width: 970px;
+    /* height: 400px; */
+}
+
+@media (max-width: 767px) {
+    
+}

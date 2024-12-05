@@ -1,21 +1,21 @@
 .sidebar {
-    display: flex !important;
-    flex-direction: column !important; /* Default to column */
+  display: flex !important;
+  flex-direction: column !important; /* Default to column */
+}
+
+@media (max-width: 767px) {
+  /* Small screens */
+  .sidebar {
+    flex-direction: row !important; /* Switch to row on small screens */
   }
-  
-  @media (max-width: 767px) { /* Small screens */
-    .sidebar {
-      flex-direction: row !important; /* Switch to row on small screens */
-    }
-  
-    .sidebar .nav-link {
-      margin-bottom: 0 !important; /* Remove vertical spacing for row layout */
-      flex: 1 !important; /* Make each nav item take equal space */
-      justify-content: center !important; /* Center the icons */
-    }
-  
-    .sidebar .label {
-      display: none !important; /* Hide labels on small screens */
-    }
+
+  .sidebar .nav-link {
+    margin-bottom: 0 !important; /* Remove vertical spacing for row layout */
+    flex: 1 !important; /* Make each nav item take equal space */
+    justify-content: center !important; /* Center the icons */
   }
-  
+
+  .sidebar .label {
+    display: none !important; /* Hide labels on small screens */
+  }
+}
