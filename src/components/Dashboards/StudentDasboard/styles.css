@@ -1,6 +1,6 @@
-.card{
+/* .card{
     width: 100%;
-}
+} */
 
 .cont1{
     display: flex !important;
@@ -20,4 +20,8 @@
     border-radius: 50% !important;
     object-fit: cover !important;
     
+}
+
+.head {
+    margin-top: 60px;
 }
