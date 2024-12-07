@@ -67,6 +67,8 @@ const SchoolPortal = () => {
         // save token or user info to localStorage if needed
         // localStorage.setItem("userData", JSON.stringify(data));
         localStorage.setItem("token", data.token);
+        // get user role
+        localStorage.setItem("userRole", data.teacher.role);
 
         //Redirect to the appropriate dashboard
         if (role === "teacher") {

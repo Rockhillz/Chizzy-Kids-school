@@ -1,7 +1,5 @@
-
-
 import React from "react";
-import { Card, Row, Col, Badge } from "react-bootstrap";
+import { Badge } from "react-bootstrap";
 import "./Profile.css";
 
 const Profile = ({ profile }) => {
@@ -14,9 +12,9 @@ const Profile = ({ profile }) => {
   }
 
   return (
-    <div className=" siz">
+    <div className="siz">
       <div>
-
+        {/* Header Section */}
         <div className="d-flex mt-3">
           <img
             src={profile.image}
@@ -31,10 +29,13 @@ const Profile = ({ profile }) => {
               <strong>Email:</strong> {profile.email}
             </p>
             <p>
-              <strong>Student ID:</strong> {profile.studentID}
+              <strong>Employee ID:</strong> {profile.employeeID}
             </p>
             <p>
-              <strong>Gender:</strong> <Badge bg="info">{profile.gender}</Badge>
+              <strong>Role:</strong> <Badge bg="info">{profile.role}</Badge>
+            </p>
+            <p>
+              <strong>Gender:</strong> {profile.gender}
             </p>
             <p>
               <strong>Address:</strong> {profile.address || "Not available"}
@@ -44,23 +45,33 @@ const Profile = ({ profile }) => {
               {new Date(profile.dateOfBirth).toLocaleDateString() || "N/A"}
             </p>
             <p>
-              <strong>Parent's Name:</strong> {profile.parents_name}
+              <strong>Phone:</strong> {profile.phone}
             </p>
             <p>
-              <strong>Parent's Contact:</strong> {profile.parent_no}
+              <strong>Department:</strong> {profile.department || "Not assigned"}
             </p>
             <p>
               <strong>Year Enrolled:</strong> {profile.yearEnrolled || "N/A"}
             </p>
             <p>
-              <strong>Classroom:</strong>{" "}
-              {profile.classroom ? profile.classroom.name : "Not assigned"}
+              <strong>Previous School:</strong>{" "}
+              {profile.previous_school || "Not available"}
             </p>
           </div>
         </div>
       </div>
 
-      
+      {/* Qualifications Section */}
+      {profile.qualification && profile.qualification.length > 0 && (
+        <div className="mt-4">
+          <h5>Qualifications</h5>
+          <ul>
+            {profile.qualification.map((qual, index) => (
+              <li key={index}>{qual}</li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* Subjects Section */}
       {profile.subjects && profile.subjects.length > 0 && (
@@ -68,25 +79,23 @@ const Profile = ({ profile }) => {
           <h5>Subjects</h5>
           <ul>
             {profile.subjects.map((subject, index) => (
-              <li key={index}>{subject.name}</li>
+              <li key={index}>{subject.name || subject}</li>
             ))}
           </ul>
         </div>
       )}
 
-      {/* Grades Section */}
-      {profile.grades && profile.grades.length > 0 && (
-        <div className="mt-4">
-          <h5>Grades</h5>
-          <ul>
-            {profile.grades.map((grade, index) => (
-              <li key={index}>
-                {grade.subject}: {grade.score}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {/* Footer Section */}
+      <div className="text-muted mt-4">
+        <p>
+          <strong>Account Created On:</strong>{" "}
+          {new Date(profile.createdAt).toLocaleDateString()}
+        </p>
+        <p>
+          <strong>Last Updated On:</strong>{" "}
+          {new Date(profile.updatedAt).toLocaleDateString()}
+        </p>
+      </div>
     </div>
   );
 };
