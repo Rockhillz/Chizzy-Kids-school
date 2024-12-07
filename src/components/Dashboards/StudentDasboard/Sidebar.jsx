@@ -23,7 +23,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           key={item.tab}
           onClick={() => setActiveTab(item.tab)}
           className={`d-flex align-items-center justify-content-center ${
-            activeTab === item.tab ? "bg-primary text-white rounded" : "text-dark"
+            activeTab === item.tab ? "bg-t text-white rounded" : "text-dark"
           }`}
           style={{
             marginBottom: "10px",

@@ -17,6 +17,9 @@ import StudentDashboard from './components/Dashboards/StudentDasboard/StudentDas
 import TeachDashboard from './components/Dashboards/TeachersDashBoard/TeachDashboard';
 import Teachers from './components/Dashboards/TeachersDashBoard/Teachers/Teachers';
 import Students from './components/Dashboards/TeachersDashBoard/Students/Students';
+import AddStudent from './components/Dashboards/TeachersDashBoard/Add/AddStudent';
+import StudentDetails from './components/Dashboards/TeachersDashBoard/Add/StudentDetails';
+import AddTeacher from './components/Dashboards/TeachersDashBoard/Add/AddTeacher';
 // import StudentDash from './components/Dashboards/StudentDasboard/StudentDash';
 
 
@@ -44,6 +47,9 @@ function App() {
             <Route path="*" element={<Wildcard />} />
             <Route path="/teachers" element={<Teachers />} />
             <Route path="/students" element={<Students />} />
+            <Route path="/add-student" element={<AddStudent />} />
+            <Route path="/add-teacher" element={<AddTeacher />} />
+            <Route path="/student-details" element={<StudentDetails />} />
 
           </Routes>
           <ToggleFormImage />

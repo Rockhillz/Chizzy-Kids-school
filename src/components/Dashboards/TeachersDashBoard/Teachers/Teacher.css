@@ -3,3 +3,8 @@
     transition: background-color 0.3s ease;
   }
   
+.bg-t {
+    background-color: #0a4275;
+    transition: background-color 0.3s ease;
+  
+}

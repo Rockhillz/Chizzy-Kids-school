@@ -19,6 +19,10 @@
   justify-content: center;
 }
 
+.bg-t {
+  background-color: #0a4275;
+}
+
 @media (min-width: 768px) {
   .display {
     flex-direction: row; /* Horizontal layout for medium screens and up */

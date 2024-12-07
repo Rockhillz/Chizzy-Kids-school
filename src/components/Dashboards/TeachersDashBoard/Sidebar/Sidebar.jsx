@@ -14,7 +14,7 @@ const Sidebar = ({ activeTab, setActiveTab, role }) => {
     { label: "Schedule", icon: <FaCalendarAlt />, tab: "schedule", roles: ["teacher", "admin"] },
     { label: "Messages", icon: <FaEnvelope />, tab: "messages", roles: ["teacher", "admin"] },
     { label: "Settings", icon: <FaCog />, tab: "settings", roles: ["teacher", "admin"] },
-    { label: "Logout", icon: <FaSignOutAlt />, tab: "logout" },
+    { label: "Logout", icon: <FaSignOutAlt />, tab: "Logout", roles: ["teacher", "admin"] },
   ];
 
   return (
@@ -27,7 +27,7 @@ const Sidebar = ({ activeTab, setActiveTab, role }) => {
           key={item.tab}
           onClick={() => setActiveTab(item.tab)}
           className={`d-flex align-items-center justify-content-center ${
-            activeTab === item.tab ? "bg-primary text-white rounded" : "text-dark"
+            activeTab === item.tab ? "bg-t text-white rounded" : "text-dark"
           }`}
           style={{
             marginBottom: "10px",

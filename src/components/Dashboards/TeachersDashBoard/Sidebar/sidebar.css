@@ -3,6 +3,10 @@
   flex-direction: column !important; /* Default to column */
 }
 
+.bg-t {
+    background-color: #0a4275
+}
+
 @media (max-width: 767px) {
   /* Small screens */
   .sidebar {

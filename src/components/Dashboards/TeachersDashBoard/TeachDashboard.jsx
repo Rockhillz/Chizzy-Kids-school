@@ -49,6 +49,11 @@ const TeachDashboard = () => {
     fetchProfile();
   }, []);
 
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.href = "/school";
+  };
+
   const renderTabContent = () => {
     switch (activeTab) {
       case "profile":
@@ -73,8 +78,9 @@ const TeachDashboard = () => {
      //   return <Settings />;
      // case "help":
      //   return <Help />;
-    //  case "logout":
-    //    return <Logout />;
+     case "Logout":
+        handleLogout();
+       return null;
       default:
         return <p>Feature coming soon!</p>;
     }

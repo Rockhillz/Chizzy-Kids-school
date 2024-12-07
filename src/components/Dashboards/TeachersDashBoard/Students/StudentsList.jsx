@@ -1,10 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { Card, Row, Col, Badge, Container, Table } from "react-bootstrap";
+import React, { useEffect, useState, } from "react";
+import {
+  Card,
+  Row,
+  Col,
+  Badge,
+  Container,
+  Table,
+  Button,
+} from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "./Students.css";
 
 const StudentsList = ({ setSelectedStudent }) => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -24,11 +34,23 @@ const StudentsList = ({ setSelectedStudent }) => {
     fetchStudents();
   }, []);
 
+  const addStudent = () => {
+    navigate("/add-student");
+  }
+
   if (loading) return <p>Loading Students...</p>;
 
   return (
     <div className="table-responsive">
-      <h3 className="text-center mb-4">Students List</h3>
+      <div style={{ width: "900px"}} className="mb-3">
+        <div className="d-flex justify-content-between">
+          <h3 className="">Students List</h3>
+          <Button
+          className="bg-t"
+          onClick={() => addStudent()}
+          >Add Student</Button>
+        </div>
+      </div>
       <Table bordered hover className="align-middle">
         <thead className="table-dark">
           <tr>

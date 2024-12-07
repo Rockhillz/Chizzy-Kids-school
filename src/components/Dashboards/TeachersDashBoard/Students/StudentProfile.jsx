@@ -8,7 +8,7 @@ const StudentProfile = ({ studentId, onBack }) => {
     const fetchStudent = async () => {
       try {
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/single-student/${studentId}`
+          `http://localhost:8080/api/single-student/${studentId}`
         );
         const data = await response.json();
         setStudent(data.student);
