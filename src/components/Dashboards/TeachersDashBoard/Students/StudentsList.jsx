@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Card, Row, Col, Badge, Container, Table } from "react-bootstrap";
-import "./Teacher.css";
+import "./Students.css";
 
-const TeachersList = ({ setSelectedTeacher }) => {
-  const [teachers, setTeachers] = useState([]);
+const StudentsList = ({ setSelectedStudent }) => {
+  const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchTeachers = async () => {
+    const fetchStudents = async () => {
       try {
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/getAllTeachers`
+          `https://chizzykids-server.onrender.com/api/students`
         );
         const data = await response.json();
-        setTeachers(data.teachers || data);
+        setStudents(data.students || data);
       } catch (err) {
         console.error("Error fetching teachers:", err);
       } finally {
@@ -21,35 +21,35 @@ const TeachersList = ({ setSelectedTeacher }) => {
       }
     };
 
-    fetchTeachers();
+    fetchStudents();
   }, []);
 
-  if (loading) return <p>Loading teachers...</p>;
+  if (loading) return <p>Loading Students...</p>;
 
   return (
     <div className="table-responsive">
-      <h3 className="text-center mb-4">Teachers List</h3>
+      <h3 className="text-center mb-4">Students List</h3>
       <Table bordered hover className="align-middle">
         <thead className="table-dark">
           <tr>
-            <th>Teacher ID</th>
+            <th>Student ID</th>
             <th>Full Name</th>
             <th>Classroom</th>
             <th>Gender</th>
           </tr>
         </thead>
         <tbody>
-          {teachers.map((teacher, index) => (
+          {students.map((student, index) => (
             <tr
               key={index}
               className="h-100 shadow-sm"
-              onClick={() => setSelectedTeacher(teacher._id)}
+              onClick={() => setSelectedStudent(student._id)}
               style={{ cursor: "pointer" }}
             >
-              <td>{teacher.employeeID}</td>
-              <td>{teacher.fullname}</td>
-              <td>{teacher.classroom ? teacher.classroom.name : "N/A"}</td>
-              <td>{teacher.gender}</td>
+              <td>{student.studentID}</td>
+              <td>{student.fullname}</td>
+              <td>{student.classroom ? student.classroom.name : "N/A"}</td>
+              <td>{student.gender}</td>
             </tr>
           ))}
         </tbody>
@@ -58,4 +58,4 @@ const TeachersList = ({ setSelectedTeacher }) => {
   );
 };
 
-export default TeachersList;
+export default StudentsList;
