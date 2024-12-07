@@ -15,6 +15,7 @@ import Wildcard from './components/404Page/Wildcard';
 import './App.css';
 import StudentDashboard from './components/Dashboards/StudentDasboard/StudentDashboard';
 import TeachDashboard from './components/Dashboards/TeachersDashBoard/TeachDashboard';
+import Teachers from './components/Dashboards/TeachersDashBoard/Teachers/Teachers';
 // import StudentDash from './components/Dashboards/StudentDasboard/StudentDash';
 
 
@@ -40,6 +41,7 @@ function App() {
             {/* <Route path='/news' element={<News />} />
             <Route path='/pta' element={<Pta />} /> */}
             <Route path="*" element={<Wildcard />} />
+            <Route path="/teachers" element={<Teachers />} />
 
           </Routes>
           <ToggleFormImage />
