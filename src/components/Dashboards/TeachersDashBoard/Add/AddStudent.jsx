@@ -1,8 +1,23 @@
 import React, { useState } from "react";
-import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
-import { useNavigate } from "react-router-dom"; // For navigation
+import {
+  Form,
+  Button,
+  Container,
+  Row,
+  Col,
+  Alert,
+  Spinner,
+} from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-const AddStudent = () => {
+const AddStudent = ({ onBack }) => {
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
   const [studentData, setStudentData] = useState({
     fullname: "",
     password: "",
@@ -13,10 +28,6 @@ const AddStudent = () => {
     gender: "",
     dateOfBirth: "",
   });
-
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -30,22 +41,33 @@ const AddStudent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setLoading(true);
+
     try {
+      const token = localStorage.getItem("token");
+
       const formData = new FormData();
       Object.entries(studentData).forEach(([key, value]) => {
         formData.append(key, value);
       });
 
-      const response = await fetch("https://your-api-url.com/students", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        `https://chizzykids-server.onrender.com/api/student/register`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
 
       const data = await response.json();
 
       if (response.ok) {
         setSuccessMessage("Student created successfully!");
         setErrorMessage("");
+        setLoading(false);
 
         // Exclude password before navigating
         const { password, ...studentWithoutPassword } = studentData;
@@ -53,11 +75,17 @@ const AddStudent = () => {
         // Navigate to the new component with student data
         navigate("/student-details", { state: studentWithoutPassword });
       } else {
-        setErrorMessage(data.message || "An error occurred while creating the student.");
+        setErrorMessage(
+          data.message || "An error occurred while creating the student."
+        );
       }
     } catch (error) {
       console.error("Error creating student:", error);
-      setErrorMessage("An error occurred while creating the student. Please try again later.");
+      setErrorMessage(
+        "An error occurred while creating the student. Please try again later."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -65,7 +93,12 @@ const AddStudent = () => {
     <Container className="py-5">
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6}>
-          <h2 className="text-center my-4">Create Student</h2>
+          <div>
+            <Button variant="outline-primary" onClick={onBack} className="mb-3">
+              Back to Students List
+            </Button>
+            <h2 className="text-center my-4">Create Student</h2>
+          </div>
 
           {successMessage && <Alert variant="success">{successMessage}</Alert>}
           {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
@@ -85,14 +118,38 @@ const AddStudent = () => {
 
             <Form.Group controlId="password" className="mb-3">
               <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="password"
-                value={studentData.password}
-                onChange={handleInputChange}
-                placeholder="Enter password"
-                required
-              />
+              <div className="position-relative">
+                <Form.Control
+                  type={showPassword ? "text" : "password"} // Toggle between text and password
+                  name="password"
+                  value={studentData.password}
+                  onChange={handleInputChange}
+                  placeholder="Enter password"
+                  required
+                />
+                <Button
+                  variant="light"
+                  className="position-absolute top-50 end-0 me-2 translate-middle-y p-0"
+                  style={{
+                    border: "none",
+                    background: "none",
+                    boxShadow: "none", // Removes any box shadow
+                    color: "inherit", // Keeps the icon color
+                    outline: "none", // Removes the focus outline
+                    zIndex: "2",
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault(); // Prevent form submission
+                    setShowPassword((prev) => !prev); // Toggle showPassword state
+                  }}
+                >
+                  {showPassword ? (
+                    <FaEyeSlash size={20} /> // Icon for hiding the password
+                  ) : (
+                    <FaEye size={20} /> // Icon for showing the password
+                  )}
+                </Button>
+              </div>
             </Form.Group>
 
             <Form.Group controlId="image" className="mb-3">
@@ -151,9 +208,8 @@ const AddStudent = () => {
                 required
               >
                 <option value="">Select gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
               </Form.Select>
             </Form.Group>
 
@@ -168,8 +224,21 @@ const AddStudent = () => {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="w-100">
-              Submit
+            <Button
+              variant="primary"
+              type="submit"
+              className="w-100 bg-t"
+              disabled={loading} // Disable button while loading
+            >
+              {loading ? (
+                <Spinner
+                  animation="grow" // Growing spinner
+                  size="sm"
+                  className="me-2"
+                />
+              ) : (
+                "Submit"
+              )}
             </Button>
           </Form>
         </Col>

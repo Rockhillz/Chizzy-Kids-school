@@ -8,7 +8,7 @@ const StudentProfile = ({ studentId, onBack }) => {
     const fetchStudent = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/single-student/${studentId}`
+          `https://chizzykids-server.onrender.com/api/single-student/${studentId}`
         );
         const data = await response.json();
         setStudent(data.student);
@@ -68,7 +68,7 @@ const StudentProfile = ({ studentId, onBack }) => {
           </p>
           <p>
             <strong>Classroom:</strong>{" "}
-            {student.classroom ? student.classroom.name : "Not assigned"}
+            {student.classroom ? student.classroom.className : "Not assigned"}
           </p>
         </div>
       </div>

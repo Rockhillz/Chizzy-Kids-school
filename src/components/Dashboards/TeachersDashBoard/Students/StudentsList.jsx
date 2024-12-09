@@ -33,6 +33,7 @@ const StudentsList = ({ setSelectedStudent }) => {
 
     fetchStudents();
   }, []);
+  console.log(students)
 
   const addStudent = () => {
     navigate("/add-student");
@@ -70,7 +71,7 @@ const StudentsList = ({ setSelectedStudent }) => {
             >
               <td>{student.studentID}</td>
               <td>{student.fullname}</td>
-              <td>{student.classroom ? student.classroom.name : "N/A"}</td>
+              <td>{student.classroom ? student.classroom.className : "N/A"}</td>
               <td>{student.gender}</td>
             </tr>
           ))}
