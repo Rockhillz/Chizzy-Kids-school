@@ -60,19 +60,6 @@ const Profile = ({ profile }) => {
         </div>
       </div>
 
-      
-
-      {/* Subjects Section */}
-      {profile.subjects && profile.subjects.length > 0 && (
-        <div className="mt-4">
-          <h5>Subjects</h5>
-          <ul>
-            {profile.subjects.map((subject, index) => (
-              <li key={index}>{subject.name}</li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       {/* Grades Section */}
       {profile.grades && profile.grades.length > 0 && (

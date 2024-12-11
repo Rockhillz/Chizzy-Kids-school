@@ -20,6 +20,8 @@ import Students from './components/Dashboards/TeachersDashBoard/Students/Student
 import AddStudent from './components/Dashboards/TeachersDashBoard/Add/AddStudent';
 import StudentDetails from './components/Dashboards/TeachersDashBoard/Add/StudentDetails';
 import AddTeacher from './components/Dashboards/TeachersDashBoard/Add/AddTeacher';
+import ForgotPassword from './components/ForgotPassword/ForgotPassword';
+import ResetPassword from './components/ForgotPassword/ResetPassword';
 // import StudentDash from './components/Dashboards/StudentDasboard/StudentDash';
 
 
@@ -50,6 +52,8 @@ function App() {
             <Route path="/add-student" element={<AddStudent />} />
             <Route path="/add-teacher" element={<AddTeacher />} />
             <Route path="/student-details" element={<StudentDetails />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
 
           </Routes>
           <ToggleFormImage />

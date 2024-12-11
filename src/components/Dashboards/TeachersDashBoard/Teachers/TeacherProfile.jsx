@@ -74,6 +74,29 @@ const TeacherProfile = ({ teacherId, onBack }) => {
           </p>
         </div>
       </div>
+      <div className="d-flex justify-content-between">
+      <Button
+        variant="outline-primary"
+        
+        className=""
+      >
+        Assign To Class
+      </Button>
+      <Button
+        variant="outline-primary"
+        
+        className=""
+      >
+        Assign To Subject
+      </Button>
+      <Button
+        variant="outline-primary"
+        
+        className=""
+      >
+        Delete Teacher
+      </Button>
+      </div>
     </div>
   );
 };

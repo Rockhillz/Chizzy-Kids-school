@@ -62,6 +62,7 @@ const SchoolPortal = () => {
       });
 
       const data = await response.json();
+      console.log("noo",data);
 
       if (response.ok) {
         // save token or user info to localStorage if needed

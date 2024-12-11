@@ -5,6 +5,7 @@ import Profile from "./Profile";
 import StudentSubject from "./StudentSubject";
 import StudentHeader from "./StudentHeader";
 import { jwtDecode } from "jwt-decode";
+import SubjectList from "./Subject/SubjectsList";
 
 const StudentDashboard = () => {
   const [activeTab, setActiveTab] = useState("profile");
@@ -52,8 +53,8 @@ const StudentDashboard = () => {
     switch (activeTab) {
       case "profile":
         return <Profile profile={studentData} />;
-      case "courses":
-        return <StudentSubject />;
+      case "Subjects":
+        return <SubjectList studentId={studentData?._id} />;
      // case "schedule":
      //   return <Schedule />;
      // case "grades":
