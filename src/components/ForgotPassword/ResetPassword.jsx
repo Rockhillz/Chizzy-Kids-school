@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ResetPassword = () => {
   const [email, setEmail] = useState('');
+  const [role, setRole] = useState(''); // Role state
   const [token, setToken] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -11,13 +12,25 @@ const ResetPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!role) {
+      setMessage('Please select a role (Teacher or Student).');
+      return;
+    }
+
     if (password !== confirmPassword) {
       setMessage('Passwords do not match');
       return;
     }
 
     try {
-      const response = await fetch(`http://localhost:8080/api/reset-password`, {
+      // Set the API endpoint based on the selected role
+      const apiUrl =
+        role === 'teacher'
+          ? `https://chizzykids-server.onrender.com/api/teacher/reset-password`
+          : `https://chizzykids-server.onrender.com/api/reset-password`;
+
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, token, password }),
@@ -37,8 +50,8 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className='d-flex align-items-center justify-content-center min-vh-100 py-5'>
-      <div className='reset-password-container'>
+    <div className="d-flex align-items-center justify-content-center min-vh-100 py-5">
+      <div className="reset-password-container">
         <h2>Reset Password</h2>
         <form onSubmit={handleSubmit}>
           <input
@@ -47,15 +60,37 @@ const ResetPassword = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className='form-control mb-3'
+            className="form-control mb-3"
           />
+          <div className="mb-3">
+            <input
+              type="radio"
+              id="teacher"
+              name="role"
+              value="teacher"
+              checked={role === 'teacher'}
+              onChange={(e) => setRole(e.target.value)}
+              className="me-2"
+            />
+            <label htmlFor="teacher">Teacher</label>
+            <input
+              type="radio"
+              id="student"
+              name="role"
+              value="student"
+              checked={role === 'student'}
+              onChange={(e) => setRole(e.target.value)}
+              className="ms-3 me-2"
+            />
+            <label htmlFor="student">Student</label>
+          </div>
           <input
             type="text"
             placeholder="Enter your token"
             value={token}
             onChange={(e) => setToken(e.target.value)}
             required
-            className='form-control mb-3'
+            className="form-control mb-3"
           />
           <input
             type="password"
@@ -63,7 +98,7 @@ const ResetPassword = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className='form-control mb-3'
+            className="form-control mb-3"
           />
           <input
             type="password"
@@ -71,11 +106,13 @@ const ResetPassword = () => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
-            className='form-control mb-3'
+            className="form-control mb-3"
           />
-          <button type="submit" className='btn btn-primary w-100'>Reset Password</button>
+          <button type="submit" className="btn btn-primary w-100">
+            Reset Password
+          </button>
         </form>
-        {message && <p className='mt-3'>{message}</p>}
+        {message && <p className="mt-3">{message}</p>}
       </div>
     </div>
   );

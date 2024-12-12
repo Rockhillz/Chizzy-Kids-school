@@ -47,7 +47,7 @@ const SchoolPortal = () => {
 
       const apiUrl =
         role === "teacher"
-          ? "https://chizzykids-server.onrender.com/api/loginTeacher"
+          ? "https://chizzykids-server.onrender.com/api/loginteacher"
           : "https://chizzykids-server.onrender.com/api/student/login";
 
       const response = await fetch(apiUrl, {
@@ -62,7 +62,13 @@ const SchoolPortal = () => {
       });
 
       const data = await response.json();
-      console.log("noo",data);
+      console.log("API Response:", data);
+      console.log("noo", data);
+
+      if (!data || !data.token) {
+        alert("Invalid server response. Please contact support.");
+        return;
+      }
 
       if (response.ok) {
         // save token or user info to localStorage if needed
