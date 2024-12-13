@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Sidebar from "./Sidebar/Sidebar";
 import Profile from "./Profile/Profile";
-
 import { jwtDecode } from "jwt-decode";
 import TeacherHeader from "./TeachHeader/TeachHeader";
 import Teachers from "./Teachers/Teachers";
 import Students from "./Students/Students";
+import Classrooms from "./classroom/Classrooms";
 
 const TeachDashboard = () => {
   const [activeTab, setActiveTab] = useState("profile");
@@ -62,8 +62,8 @@ const TeachDashboard = () => {
         return <Students />;
      case "Teachers":
         return <Teachers />;
-     // case "classroom":
-     //   return <Schedule />;
+     case "Classrooms":
+       return <Classrooms />;
      // case "schedule":
      //   return <Schedule />;
      // case "grades":

@@ -7,10 +7,19 @@ const TeacherProfile = ({ teacherId, onBack }) => {
   useEffect(() => {
     const fetchTeacher = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/singleTeacher/${teacherId}`
+          `https://chizzykids-server.onrender.com/api/singleTeacher/${teacherId}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`, // Include token if required
+            },
+          }
         );
+
         const data = await response.json();
+        console.log(data);
         setTeacher(data.teacher);
         console.log("Fetching teacher with ID:", teacherId);
         console.log("API Response:", data);

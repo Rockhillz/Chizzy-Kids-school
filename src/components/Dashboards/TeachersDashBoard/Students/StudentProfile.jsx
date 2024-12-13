@@ -7,8 +7,15 @@ const StudentProfile = ({ studentId, onBack }) => {
   useEffect(() => {
     const fetchStudent = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/single-student/${studentId}`
+          `https://chizzykids-server.onrender.com/api/single-student/${studentId}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`, // Include token if required
+            },
+          }
         );
         const data = await response.json();
         setStudent(data.student);

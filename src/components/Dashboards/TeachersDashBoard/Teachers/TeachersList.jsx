@@ -11,9 +11,15 @@ const TeachersList = ({ setSelectedTeacher }) => {
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
-        const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/getAllTeachers`
-        );
+        const token = localStorage.getItem("token");
+        const response = await fetch(`https://chizzykids-server.onrender.com/api/getAllTeachers`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Include token in Authorization header
+          },
+        });
+
         const data = await response.json();
         setTeachers(data.teachers || data);
       } catch (err) {
@@ -36,7 +42,7 @@ const TeachersList = ({ setSelectedTeacher }) => {
     <div className="table-responsive">
         <div style={{ width: "900px"}} className="mb-3">
         <div className="d-flex justify-content-between">
-          <h3 className="">Students List</h3>
+          <h3 className="">Teachers List</h3>
           <Button
           className="bg-t"
           onClick={() => addTeacher()}
@@ -44,7 +50,6 @@ const TeachersList = ({ setSelectedTeacher }) => {
         </div>
       </div>
 
-      <h3 className="text-center mb-4">Teachers List</h3>
       <Table bordered hover className="align-middle">
         <thead className="table-dark">
           <tr>

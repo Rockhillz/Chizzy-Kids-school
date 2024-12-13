@@ -19,9 +19,16 @@ const StudentsList = ({ setSelectedStudent }) => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/students`
-        );
+          `https://chizzykids-server.onrender.com/api/students`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`, // Include token in Authorization header
+            },
+          });
+
         const data = await response.json();
         setStudents(data.students || data);
       } catch (err) {
@@ -52,6 +59,7 @@ const StudentsList = ({ setSelectedStudent }) => {
           >Add Student</Button>
         </div>
       </div>
+      
       <Table bordered hover className="align-middle">
         <thead className="table-dark">
           <tr>
