@@ -12,7 +12,7 @@ const TeachersList = ({ setSelectedTeacher }) => {
     const fetchTeachers = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`https://chizzykids-server.onrender.com/api/getAllTeachers`, {
+        const response = await fetch(`http://localhost:8080/api/getAllTeachers`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const TeachersList = ({ setSelectedTeacher }) => {
             >
               <td>{teacher.employeeID}</td>
               <td>{teacher.fullname}</td>
-              <td>{teacher.classroom ? teacher.classroom.name : "N/A"}</td>
+              <td>{teacher.classroom ? teacher.classroom.className : "N/A"}</td>
               <td>{teacher.gender}</td>
             </tr>
           ))}

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Button, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 const StudentProfile = ({ studentId, onBack }) => {
   const [student, setStudent] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchStudent = async () => {
@@ -29,18 +31,18 @@ const StudentProfile = ({ studentId, onBack }) => {
     fetchStudent();
   }, []);
 
+  
+  
+
   if (loading) return <p>Loading student profile...</p>;
   if (!student) return <p>Student not found</p>;
 
   return (
     <div className="p-4 shadow-lg">
-      <Button
-        variant="outline-primary"
-        onClick={onBack}
-        className="mb-3"
-      >
-        Back to Students List
+      <Button variant="outline-primary" className="mb-3">
+        Back to Student List
       </Button>
+      
       <h3 className="text-center text-primary mb-4">Student Profile</h3>
       <div className="align-items-center d-flex">
         <Col md={4} className="text-center">

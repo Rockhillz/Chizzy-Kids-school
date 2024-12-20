@@ -17,11 +17,14 @@ const AddStudent = ({ onBack }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const [studentData, setStudentData] = useState({
     fullname: "",
     password: "",
     image: null,
+    email: "",
     address: "",
     parents_name: "",
     parent_no: "",
@@ -41,6 +44,11 @@ const AddStudent = ({ onBack }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (studentData.password !== confirmPassword) {
+      setErrorMessage("Passwords do not match!");
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -52,7 +60,7 @@ const AddStudent = ({ onBack }) => {
       });
 
       const response = await fetch(
-        `https://chizzykids-server.onrender.com/api/student/register`,
+        `https://chizzykids-server.onrender.com/api/register/student`,
         {
           method: "POST",
           headers: {
@@ -90,14 +98,19 @@ const AddStudent = ({ onBack }) => {
   };
 
   return (
-    <Container className="py-5">
+    <Container className="py-4">
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6}>
-          <div>
-            <Button variant="outline-primary" onClick={onBack} className="mb-3">
-              Back to Students List
+          <div className="d-flex mt-5 mb-3 justify-content-between">
+            <h2 className="">Add Student</h2>
+            <Button
+              variant="outline-primary"
+              onClick={onBack}
+              className="tex-end"
+              style={{ height: "" }}
+            >
+              Back
             </Button>
-            <h2 className="text-center my-4">Create Student</h2>
           </div>
 
           {successMessage && <Alert variant="success">{successMessage}</Alert>}
@@ -112,6 +125,18 @@ const AddStudent = ({ onBack }) => {
                 value={studentData.fullname}
                 onChange={handleInputChange}
                 placeholder="Enter full name"
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="email" className="mb-3">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                value={studentData.email}
+                onChange={handleInputChange}
+                placeholder="Enter email"
                 required
               />
             </Form.Group>
@@ -147,6 +172,42 @@ const AddStudent = ({ onBack }) => {
                     <FaEyeSlash size={20} /> // Icon for hiding the password
                   ) : (
                     <FaEye size={20} /> // Icon for showing the password
+                  )}
+                </Button>
+              </div>
+            </Form.Group>
+
+            <Form.Group controlId="confirmPassword" className="mb-3">
+              <Form.Label>Confirm Password</Form.Label>
+              <div className="position-relative">
+                <Form.Control
+                  type={showConfirmPassword ? "text" : "password"} // Toggle between text and password
+                  name="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Re-enter password"
+                  required
+                />
+                <Button
+                  variant="light"
+                  className="position-absolute top-50 end-0 me-2 translate-middle-y p-0"
+                  style={{
+                    border: "none",
+                    background: "none",
+                    boxShadow: "none", // Removes any box shadow
+                    color: "inherit", // Keeps the icon color
+                    outline: "none", // Removes the focus outline
+                    zIndex: "2",
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault(); // Prevent form submission
+                    setShowConfirmPassword((prev) => !prev); // Toggle show/hide password
+                  }}
+                >
+                  {showConfirmPassword ? (
+                    <FaEyeSlash size={20} /> // Icon for hiding the confirm password
+                  ) : (
+                    <FaEye size={20} /> // Icon for showing the confirm password
                   )}
                 </Button>
               </div>
