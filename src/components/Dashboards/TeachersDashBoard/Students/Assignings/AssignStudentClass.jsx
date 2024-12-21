@@ -53,7 +53,7 @@ const AssignStudentClass = ({ studentId, onClose, setAssignLoading }) => {
       console.log(`token: ${token}`);
 
       const response = await fetch(
-        `http://localhost:8080/api/assign-Class`,
+        `https://chizzykids-server.onrender.com/api/assign-Class`,
         {
           method: "PATCH",
           headers: {

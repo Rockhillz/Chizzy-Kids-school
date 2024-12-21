@@ -6,7 +6,7 @@ import "./Sidebar.css"; // Import custom CSS for additional styles
 const Sidebar = ({ activeTab, setActiveTab, role }) => {
   const navItems = [
     { label: "Profile", icon: <FaUser />, tab: "profile", roles: ["teacher", "admin"] },
-    { label: "Subjects", icon: <FaBook />, tab: "subject", roles: ["teacher", "admin"] },
+    { label: "Subjects", icon: <FaBook />, tab: "Subjects", roles: ["teacher", "admin"] },
     { label: "Classrooms", icon: <FaChalkboardTeacher/>, tab: "Classrooms", roles: ["teacher", "admin"]},
     { label: "Grades", icon: <FaChartBar />, tab: "grades", roles: ["teacher", "admin"]},
     { label: "Students", icon: <FaUser />, tab: "Students", roles: ["admin"] },
