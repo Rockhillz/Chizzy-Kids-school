@@ -12,7 +12,7 @@ const TeachersList = ({ setSelectedTeacher }) => {
     const fetchTeachers = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`http://localhost:8080/api/getAllTeachers`, {
+        const response = await fetch(`https://chizzykids-server.onrender.com/api/getAllTeachers`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

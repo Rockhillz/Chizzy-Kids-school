@@ -12,7 +12,7 @@ const AssignSubject = ({ teacherId, onClose, setAssignLoading }) => {
       try {
         const token = localStorage.getItem("token"); // Fetch token
 
-        const response = await fetch(`http://localhost:8080/api/subjects`, {
+        const response = await fetch(`https://chizzykids-server.onrender.com/api/subjects`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const AssignSubject = ({ teacherId, onClose, setAssignLoading }) => {
       const token = localStorage.getItem("token");
       console.log(`token: ${token}`);
 
-      const response = await fetch(`http://localhost:8080/api/assign/Teacher-To-Subject`, {
+      const response = await fetch(`https://chizzykids-server.onrender.com/api/assign/Teacher-To-Subject`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
