@@ -10,7 +10,7 @@ const SubjectDetails = ({ subjectId, onBack }) => {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          `http://localhost:8080/api/single-subject/${subjectId}`,
+          `https://chizzykids-server.onrender.com/api/single-subject/${subjectId}`,
           {
             headers: {
               "Content-Type": "application/json",
