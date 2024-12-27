@@ -182,7 +182,7 @@ const TeachClassroom = () => {
 
   if (error) {
     return <div className="error">{error}</div>;
-  }
+  } 
 
   if (!classroom) {
     return <div>Loading classroom data...</div>;
