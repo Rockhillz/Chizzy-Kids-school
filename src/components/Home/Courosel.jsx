@@ -52,9 +52,7 @@ function Courosel() {
                 <Carousel.Caption style={styles.container}>
                     <h5 style={styles.textTitle}>Chizzy Kids Group of School</h5>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    <a href="/school" className="mt-5 btn" style={styles.btnButton}>
-                        School Portal
-                    </a>
+                    
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -67,7 +65,9 @@ function Courosel() {
                 <Carousel.Caption style={styles.container}>
                     <h5 style={styles.textTitle}>Learning Never Exhaust The Mind</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <button className='mt-5' style={styles.btnButton}>School Portal</button>
+                    <a href="/school" className="mt-5 btn" style={styles.btnButton}>
+                        School Portal
+                    </a>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -82,7 +82,9 @@ function Courosel() {
                     <p className='align-center'>
                         Making the best of every learning opportunity is the key to success.
                     </p>
-                    <button className='mt-5' style={styles.btnButton}>School Portal</button>
+                    <a href="/school" className="mt-5 btn" style={styles.btnButton}>
+                        School Portal
+                    </a>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>

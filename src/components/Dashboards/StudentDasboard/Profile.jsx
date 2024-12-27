@@ -1,35 +1,4 @@
-// import React from "react";
-// import { Card, Row, Col } from "react-bootstrap";
 
-// const Profile = ({ profile }) => {
-//   if (!profile) {
-//     return <p>Loading profile...</p>;
-//   }
-
-//   return (
-//     <Card>
-//       <Card.Body>
-//         <Row>
-//           <Col md={4}>
-//             <img
-//               src={profile.image || "https://via.placeholder.com/150"}
-//               alt="Profile"
-//               className="img-fluid img-responsive"
-//             />
-//           </Col>
-//           <Col md={8}>
-//             <h4>{profile.fullname}</h4>
-//             <p>Email: {profile.email}</p>
-//             <p>Student ID: {profile.studentID}</p>
-//             <p>Address: {profile.address || "Not available"}</p>
-//           </Col>
-//         </Row>
-//       </Card.Body>
-//     </Card>
-//   );
-// };
-
-// export default Profile;
 
 import React from "react";
 import { Card, Row, Col, Badge } from "react-bootstrap";
@@ -91,19 +60,6 @@ const Profile = ({ profile }) => {
         </div>
       </div>
 
-      
-
-      {/* Subjects Section */}
-      {profile.subjects && profile.subjects.length > 0 && (
-        <div className="mt-4">
-          <h5>Subjects</h5>
-          <ul>
-            {profile.subjects.map((subject, index) => (
-              <li key={index}>{subject.name}</li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       {/* Grades Section */}
       {profile.grades && profile.grades.length > 0 && (

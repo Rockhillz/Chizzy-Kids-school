@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Sidebar from "./Sidebar";
-import Profile from "./Profile";
-import StudentSubject from "./StudentSubject";
-import StudentHeader from "./StudentHeader";
+import Sidebar from "./Sidebar/Sidebar";
+import Profile from "./Profile/Profile";
 import { jwtDecode } from "jwt-decode";
-import SubjectList from "./Subject/SubjectsList";
+import TeacherHeader from "./TeachHeader/TeachHeader";
+import Teachers from "./Teachers/Teachers";
+import Students from "./Students/Students";
+import Classrooms from "./classroom/Classrooms";
+import Subjects from "./Subject/Subjects";
+import TeachClassroom from "./Not Admin/TeachClassroom/TeachClassroom";
 
-const StudentDashboard = () => {
+const TeachDashboard = () => {
   const [activeTab, setActiveTab] = useState("profile");
-  const [studentData, setStudentData] = useState(null);
+  const [teacherData, setTeacherData] = useState(null);
+  const [ role, setRoles] = useState("");
 //   const [profile, setProfile] = useState(null);
 
 
@@ -23,16 +27,19 @@ const StudentDashboard = () => {
         }
 
         const decodedToken = jwtDecode(token);
-        const studentId = decodedToken.studentId;
+        const teacherId = decodedToken.teacherId;
+
+        const userRole = localStorage.getItem("userRole");
+        setRoles(userRole);
 
 
-        const response = await fetch(`https://chizzykids-server.onrender.com/api/single-student/${studentId}`, {
+        const response = await fetch(`https://chizzykids-server.onrender.com/api/singleTeacher/${teacherId}`, {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
         if (response.ok) {
-          setStudentData(data.student);
+          setTeacherData(data.teacher);
         } else {
           console.error(data.message || "Failed to fetch profile.");
         }
@@ -52,13 +59,17 @@ const StudentDashboard = () => {
   const renderTabContent = () => {
     switch (activeTab) {
       case "profile":
-        return <Profile profile={studentData} />;
-      case "Subjects":
-        return <SubjectList studentId={studentData?._id} />;
-     // case "schedule":
-     //   return <Schedule />;
-     // case "grades":
-     //   return <Grades />;
+        return <Profile profile={teacherData} />;
+        case "Classroom":
+          return <TeachClassroom />;
+      case "Students":
+        return <Students />;
+     case "Teachers":
+        return <Teachers />;
+     case "Classrooms":
+       return <Classrooms />;
+     case "Subjects":
+       return <Subjects />;
      // case "attendance":
      //   return <Attendance />;
      // case "resources":
@@ -69,8 +80,8 @@ const StudentDashboard = () => {
      //   return <Settings />;
      // case "help":
      //   return <Help />;
-     case "logout":
-       handleLogout();
+     case "Logout":
+        handleLogout();
        return null;
       default:
         return <p>Feature coming soon!</p>;
@@ -79,11 +90,11 @@ const StudentDashboard = () => {
 
   return (
     <div>
-      <StudentHeader studentName={studentData?.fullname} />
+      <TeacherHeader teacherName={teacherData?.fullname} />
       <Container fluid>
         <Row>
           <Col md={3} className="p-0">
-            <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+            <Sidebar activeTab={activeTab} role={role} setActiveTab={setActiveTab} />
           </Col>
           <Col md={9}>
             {renderTabContent()}
@@ -94,4 +105,4 @@ const StudentDashboard = () => {
   );
 };
 
-export default StudentDashboard;
+export default TeachDashboard;

@@ -1,19 +1,19 @@
 import React from "react";
 import { Navbar, Container, Button } from "react-bootstrap";
 import { FaSignOutAlt } from "react-icons/fa"
-import "./styles.css"
+import "../../StudentDasboard/styles.css"
 
-const StudentHeader = ({ studentName }) => {
+const TeacherHeader = ({ teacherName }) => {
 
   return (
     <Navbar variant="dark" className="head">
       <Container>
         <Navbar.Brand>
-          <span className="text-dark">Welcome, {studentName || "Student"}!</span>
+          <span className="text-dark">Welcome, { teacherName || "Teacher"}!</span>
         </Navbar.Brand>
       </Container>
     </Navbar>
   );
 };
 
-export default StudentHeader;
+export default TeacherHeader;

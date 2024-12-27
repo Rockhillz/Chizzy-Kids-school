@@ -6,7 +6,7 @@ import "./Sidebar.css"; // Import custom CSS for additional styles
 const Sidebar = ({ activeTab, setActiveTab }) => {
   const navItems = [
     { label: "Profile", icon: <FaUser />, tab: "profile" },
-    { label: "Courses", icon: <FaBook />, tab: "courses" },
+    { label: "Subjects", icon: <FaBook />, tab: "Subjects" },
     { label: "Grades", icon: <FaChartBar />, tab: "grades" },
     { label: "Schedule", icon: <FaCalendarAlt />, tab: "schedule" },
     { label: "Messages", icon: <FaEnvelope />, tab: "messages" },
@@ -23,7 +23,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           key={item.tab}
           onClick={() => setActiveTab(item.tab)}
           className={`d-flex align-items-center justify-content-center ${
-            activeTab === item.tab ? "bg-primary text-white rounded" : "text-dark"
+            activeTab === item.tab ? "bg-t text-white rounded" : "text-dark"
           }`}
           style={{
             marginBottom: "10px",
