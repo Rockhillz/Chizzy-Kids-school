@@ -8,6 +8,7 @@ import Teachers from "./Teachers/Teachers";
 import Students from "./Students/Students";
 import Classrooms from "./classroom/Classrooms";
 import Subjects from "./Subject/Subjects";
+import TeachClassroom from "./Not Admin/TeachClassroom/TeachClassroom";
 
 const TeachDashboard = () => {
   const [activeTab, setActiveTab] = useState("profile");
@@ -59,6 +60,8 @@ const TeachDashboard = () => {
     switch (activeTab) {
       case "profile":
         return <Profile profile={teacherData} />;
+        case "Classroom":
+          return <TeachClassroom />;
       case "Students":
         return <Students />;
      case "Teachers":
@@ -67,8 +70,6 @@ const TeachDashboard = () => {
        return <Classrooms />;
      case "Subjects":
        return <Subjects />;
-     // case "grades":
-     //   return <Grades />;
      // case "attendance":
      //   return <Attendance />;
      // case "resources":

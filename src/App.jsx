@@ -25,6 +25,7 @@ import ResetPassword from './components/ForgotPassword/ResetPassword';
 import Classrooms from './components/Dashboards/TeachersDashBoard/classroom/Classrooms';
 import TeacherDetails from './components/Dashboards/TeachersDashBoard/Add/Details/TeacherDetails';
 import Subjects from './components/Dashboards/TeachersDashBoard/Subject/Subjects';
+import TeachClassroom from './components/Dashboards/TeachersDashBoard/Not Admin/TeachClassroom/TeachClassroom';
 // import StudentDash from './components/Dashboards/StudentDasboard/StudentDash';
 
 
@@ -60,6 +61,7 @@ function App() {
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/classrooms" element={<Classrooms />} />
             <Route path="/subjects" element={<Subjects />} />
+            <Route path="/teacher/:teacherId" element={<TeachClassroom />} />
 
           </Routes>
           <ToggleFormImage />

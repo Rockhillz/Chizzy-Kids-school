@@ -62,7 +62,7 @@ const ClassroomDetails = ({ ClassroomId, onBack }) => {
           {classroom.students && classroom.students.length > 0 ? (
             <ul>
               {classroom.students.map((student) => (
-                <li key={student._id}>Student ID: {student.fullname}</li>
+                <li key={student._id}>{student.fullname}</li>
               ))}
             </ul>
           ) : (
