@@ -128,7 +128,7 @@ const TeachClassroom = () => {
 
     const fetchClassroom = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/classrooms-assigned-to-teacher`, {
+        const response = await fetch(`https://chizzykids-server.onrender.com/api/classrooms-assigned-to-teacher`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -162,7 +162,7 @@ const TeachClassroom = () => {
 
   const submitAttendance = async () => {
     try {
-      const response = await fetch('/api/attendance', {
+      const response = await fetch('https://chizzykids-server.onrender.com/api/attendance', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ classroomId: classroom.id, attendance }),

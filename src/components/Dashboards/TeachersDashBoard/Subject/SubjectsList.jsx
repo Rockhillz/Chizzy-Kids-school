@@ -10,7 +10,7 @@ const SubjectsList = ({ setSelectedSubject }) => {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          `http://localhost:8080/api/subjects`,
+          `https://chizzykids-server.onrender.com/api/subjects`,
           {
             headers: {
               "Content-Type": "application/json",
