@@ -6,7 +6,7 @@ function Courosel() {
         imgPic: {
             width: "100%",
             height: "800px",
-            filter: " blur(2px)",
+            filter: " blur(1px)",
         },
 
 
@@ -45,7 +45,7 @@ function Courosel() {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="https://www.ualberta.ca/en/media-library/campus-life/health-wellness-services/health-and-wellness-services-16x9.jpg"
+                    src="./public/CarouselAssets/students.jpg"
                     alt="First slide"
                     style={styles.imgPic}
                 />

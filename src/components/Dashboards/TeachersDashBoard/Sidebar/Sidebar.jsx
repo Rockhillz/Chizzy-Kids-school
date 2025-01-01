@@ -48,17 +48,17 @@
 
 import React from "react";
 import { Nav, Collapse } from "react-bootstrap";
-import { 
-  FaUser, 
-  FaBook, 
-  FaCalendarAlt, 
-  FaChartBar, 
-  FaChalkboardTeacher, 
-  FaEnvelope, 
-  FaCog, 
-  FaSignOutAlt, 
-  FaChevronDown, 
-  FaChevronRight 
+import {
+  FaUser,
+  FaBook,
+  FaCalendarAlt,
+  FaChartBar,
+  FaChalkboardTeacher,
+  FaEnvelope,
+  FaCog,
+  FaSignOutAlt,
+  FaChevronDown,
+  FaChevronRight,
 } from "react-icons/fa";
 import { useState } from "react";
 import "./Sidebar.css";
@@ -67,13 +67,49 @@ const Sidebar = ({ activeTab, setActiveTab, role }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const navItems = [
-    { label: "Profile", icon: <FaUser />, tab: "profile", roles: ["teacher", "admin"], outsideDropdown: true },
-    { label: "Classroom", icon: <FaChalkboardTeacher />, tab: "Classroom", roles: ["teacher", "admin"], outsideDropdown: true },
-    { label: "Subject", icon: <FaBook />, tab: "subject", roles: ["teacher", "admin"], outsideDropdown: true },
+    {
+      label: "Profile",
+      icon: <FaUser />,
+      tab: "profile",
+      roles: ["teacher", "admin"],
+      outsideDropdown: true,
+    },
+    {
+      label: "Classroom",
+      icon: <FaChalkboardTeacher />,
+      tab: "Classroom",
+      roles: ["teacher", "admin"],
+      outsideDropdown: true,
+    },
+    {
+      label: "Subject",
+      icon: <FaBook />,
+      tab: "subject",
+      roles: ["teacher", "admin"],
+      outsideDropdown: true,
+    },
     // { label: "Grades", icon: <FaChartBar />, tab: "grades", roles: ["teacher", "admin"], outsideDropdown: true },
-    { label: "Messages", icon: <FaEnvelope />, tab: "messages", roles: ["teacher", "admin"], belowDropdown: true },
-    { label: "Settings", icon: <FaCog />, tab: "settings", roles: ["teacher", "admin"], belowDropdown: true },
-    { label: "Logout", icon: <FaSignOutAlt />, tab: "Logout", roles: ["teacher", "admin"], belowDropdown: true },
+    {
+      label: "Messages",
+      icon: <FaEnvelope />,
+      tab: "messages",
+      roles: ["teacher", "admin"],
+      belowDropdown: true,
+    },
+    {
+      label: "Settings",
+      icon: <FaCog />,
+      tab: "settings",
+      roles: ["teacher", "admin"],
+      belowDropdown: true,
+    },
+    {
+      label: "Logout",
+      icon: <FaSignOutAlt />,
+      tab: "Logout",
+      roles: ["teacher", "admin"],
+      belowDropdown: true,
+    },
   ];
 
   const dropdownItems = [
@@ -84,14 +120,16 @@ const Sidebar = ({ activeTab, setActiveTab, role }) => {
     { label: "Schedule", icon: <FaCalendarAlt />, tab: "schedule" },
   ];
 
-  const outsideDropdownItems = navItems.filter(item => item.roles.includes(role) && item.outsideDropdown);
-  const belowDropdownItems = navItems.filter(item => item.roles.includes(role) && item.belowDropdown);
+  const outsideDropdownItems = navItems.filter(
+    (item) => item.roles.includes(role) && item.outsideDropdown
+  );
+  const belowDropdownItems = navItems.filter(
+    (item) => item.roles.includes(role) && item.belowDropdown
+  );
 
   return (
-    <Nav
-      className="sidebar d-flex flex-column flex-sm-row flex-md-column bg-light shadow-sm p-3"
-    >
-      {outsideDropdownItems.map(item => (
+    <Nav className="sidebar d-flex flex-column flex-sm-row flex-md-column bg-light shadow-sm p-3">
+      {outsideDropdownItems.map((item) => (
         <Nav.Link
           key={item.tab}
           onClick={() => setActiveTab(item.tab)}
@@ -127,17 +165,19 @@ const Sidebar = ({ activeTab, setActiveTab, role }) => {
               <span className="label">Admin</span>
             </div>
             <span className="icon ms-2">
-              {isDropdownOpen ? <FaChevronDown /> : <FaChevronRight />}
+              {isDropdownOpen ? <FaChevronRight /> : <FaChevronDown />}
             </span>
           </div>
           <Collapse in={isDropdownOpen}>
             <div>
-              {dropdownItems.map(item => (
+              {dropdownItems.map((item) => (
                 <Nav.Link
                   key={item.tab}
                   onClick={() => setActiveTab(item.tab)}
                   className={`d-flex align-items-center justify-content-center ${
-                    activeTab === item.tab ? "bg-t text-white rounded" : "text-dark"
+                    activeTab === item.tab
+                      ? "bg-t text-white rounded"
+                      : "text-dark"
                   }`}
                   style={{
                     marginBottom: "10px",
@@ -155,7 +195,7 @@ const Sidebar = ({ activeTab, setActiveTab, role }) => {
       )}
 
       {/* Items below the dropdown */}
-      {belowDropdownItems.map(item => (
+      {belowDropdownItems.map((item) => (
         <Nav.Link
           key={item.tab}
           onClick={() => setActiveTab(item.tab)}

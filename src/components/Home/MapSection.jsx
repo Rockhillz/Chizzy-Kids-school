@@ -2,6 +2,8 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import ToggleFormImage from './ToggleFormIcon';
+import LeafletMap from './LeafletMap';
+
 
 const MapSection = () => {
     // const [ message, setmessage] = useState(false);
@@ -20,7 +22,7 @@ const MapSection = () => {
 
     return (
         <section className='container-fluid'>
-            <div className='row' style={{marginTop:"100px", marginBottom:"50px"}}>
+            <div className='row' style={{marginTop:"50px", marginBottom:"50px"}}>
                     <div
                         style={{
                             width: '100%',
@@ -45,6 +47,7 @@ const MapSection = () => {
                     </div>
 
                     <div className='col-12 col-sm-6'>
+                        <LeafletMap />
 
                     </div>
                 </div>
