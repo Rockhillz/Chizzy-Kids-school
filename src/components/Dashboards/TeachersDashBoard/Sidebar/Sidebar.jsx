@@ -84,7 +84,7 @@ const Sidebar = ({ activeTab, setActiveTab, role }) => {
     {
       label: "Subject",
       icon: <FaBook />,
-      tab: "subject",
+      tab: "Subject",
       roles: ["teacher", "admin"],
       outsideDropdown: true,
     },
