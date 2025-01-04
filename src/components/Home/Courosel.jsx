@@ -50,7 +50,7 @@ function Courosel() {
                     style={styles.imgPic}
                 />
                 <Carousel.Caption style={styles.container}>
-                    <h5 style={styles.textTitle}>Chizzy Kids Group of School</h5>
+                    <h5 style={styles.textTitle}>Chizzy Kids Group of Schools</h5>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                     
                 </Carousel.Caption>

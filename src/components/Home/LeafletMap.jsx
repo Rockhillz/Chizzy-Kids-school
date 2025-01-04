@@ -17,7 +17,7 @@ const LeafletMap = () => {
       <Marker position={position}>
         <Popup>
           <b>Address:</b><br />
-          22 Ichie Dara Street, Opposite pako, by Ika Close, shibiri bus/stop, Lagos
+          26 Ichie Dara Street, Opposite pako, by Agogo Close, shibiri bus/stop, Lagos
         </Popup>
       </Marker>
     </MapContainer>

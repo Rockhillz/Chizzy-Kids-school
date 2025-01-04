@@ -19,7 +19,7 @@ const Blog = () => {
                     </div>
 
                     <div className='col-12 col-sm-4'>
-                        <img src="https://res.cloudinary.com/myskoolp/image/upload/w_500/v1/school_website/misc/kingscollegelagos/principal-566.jpg" alt="principal photo" className='img-fluid' style={{ width: "300px", height: "400px", marginLeft:"30px" }} />
+                        <img src=".\public\CarouselAssets\WhatsApp Image 2025-01-03 at 12.45.06_e067e86c.jpg" alt="principal photo" className='img-fluid' style={{ width: "300px", height: "400px", marginLeft:"30px" }} />
                     </div>
                 </div>
     
