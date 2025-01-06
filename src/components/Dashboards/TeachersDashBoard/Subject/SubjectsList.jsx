@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Spinner } from "react-bootstrap";
 
 const SubjectsList = ({ setSelectedSubject }) => {
   const [subjects, setSubjects] = useState([]);
@@ -31,7 +31,8 @@ const SubjectsList = ({ setSelectedSubject }) => {
     fetchSubjects();
   }, []);
 
-  if (loading) return <p>Loading subjects...</p>;
+  if (loading) return <Spinner animation="border" variant="primary" className="d-block mx-auto mt-3" />;
+  if (subjects.length === 0) return <p>No subjects found</p>;
 
   return (
     <div className="table-responsive">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Row, Col, Badge, Container, Table, Button } from "react-bootstrap";
+import { Card, Row, Col, Badge, Container, Table, Button, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./Teacher.css";
 
@@ -36,7 +36,7 @@ const TeachersList = ({ setSelectedTeacher }) => {
     navigate("/add-teacher");
   }
 
-  if (loading) return <p>Loading teachers...</p>;
+  if (loading) return <Spinner animation="border" variant="primary" className="d-block mx-auto mt-3" />;
 
   return (
     <div className="table-responsive">

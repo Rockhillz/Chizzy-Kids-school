@@ -101,10 +101,12 @@
 // export default TeachClassroom;
 
 import React, { useState, useEffect } from 'react';
+import { Spinner } from "react-bootstrap";
 import "./TeachClassroom.css";
 
 const TeachClassroom = () => {
   const [classroom, setClassroom] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [attendance, setAttendance] = useState({});
   const [error, setError] = useState('');
 
@@ -137,6 +139,7 @@ const TeachClassroom = () => {
 
         if (data.success) {
           setClassroom(data.data);
+          setLoading(false); // Set loading state to false when data is fetched successfully
 
           // Initialize attendance state
           const initialAttendance = {};
@@ -184,9 +187,10 @@ const TeachClassroom = () => {
     return <div className="error">{error}</div>;
   } 
 
-  if (!classroom) {
-    return <div>Loading classroom data...</div>;
-  }
+  // if (!classroom) {
+  //   return <div>Loading classroom data...</div>;
+  // }
+  if (loading) return <Spinner animation="border" variant="primary" className="d-block mx-auto mt-3" />;
 
   return (
     <div className="teach-classroom">

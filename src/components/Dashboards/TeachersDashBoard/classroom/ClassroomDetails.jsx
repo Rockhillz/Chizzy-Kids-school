@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Col } from "react-bootstrap";
+import { Button, Col, Spinner } from "react-bootstrap";
 
 const ClassroomDetails = ({ ClassroomId, onBack }) => {
   const [classroom, setClassroom] = useState(null);
@@ -40,7 +40,7 @@ const ClassroomDetails = ({ ClassroomId, onBack }) => {
     fetchClassroom();
   }, []);
 
-  if (loading) return <p>Loading Classroom details...</p>;
+  if (loading) return <Spinner animation="border" variant="primary" className="d-block mx-auto mt-3" />;
   if (!classroom) return <p>Classroom not found</p>;
 
   return (

@@ -71,7 +71,7 @@ const StudentProfile = ({ studentId, onBack }) => {
     }
   };
 
-  if (loading) return <p>Loading student profile...</p>;
+  if (loading) return <Spinner animation="border" variant="primary" className="d-block mx-auto mt-3" />;
   if (!student) return <p>Student not found</p>;
 
   return (

@@ -70,7 +70,7 @@ const TeacherProfile = ({ teacherId, onBack }) => {
     }
   };
 
-  if (loading) return <p>Loading teacher profile...</p>;
+  if (loading) return <Spinner animation="border" variant="primary" className="d-block mx-auto mt-3" />;
   if (!teacher) return <p>Teacher not found</p>;
 
   return (
