@@ -7,6 +7,7 @@ import {
   Container,
   Table,
   Button,
+  Spinner
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./Students.css";
@@ -46,7 +47,7 @@ const StudentsList = ({ setSelectedStudent }) => {
     navigate("/add-student");
   }
 
-  if (loading) return <p>Loading Students...</p>;
+  if (loading) return <Spinner animation="border" variant="primary" className="d-block mx-auto mt-3" />;
 
   return (
     <div className="table-responsive">

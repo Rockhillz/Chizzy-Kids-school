@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Assuming you're using React Router
-import { Table } from 'react-bootstrap'; // Import Table from react-bootstrap
+import { Table, Spinner } from 'react-bootstrap'; // Import Table from react-bootstrap
 
 const TeachSubjectsList = ({ onSubjectSelect }) => {
     const [subjects, setSubjects] = useState([]);
+    const [ loading, setLoading ] = useState(true);
     
     console.log("onSubjectSelect prop:", onSubjectSelect);
   
@@ -11,7 +12,7 @@ const TeachSubjectsList = ({ onSubjectSelect }) => {
       const fetchSubjects = async () => {
         try {
           const token = localStorage.getItem('token');
-          const response = await fetch('http://localhost:8080/api/subjects-assigned-to-teacher', {
+          const response = await fetch('https://chizzykids-server.onrender.com/api/subjects-assigned-to-teacher', {
             headers: { Authorization: `Bearer ${token}` },
           });
   
@@ -21,6 +22,7 @@ const TeachSubjectsList = ({ onSubjectSelect }) => {
   
           const data = await response.json();
           setSubjects(data.subjects);
+          setLoading(false);
         } catch (error) {
           console.error('Error fetching subjects:', error);
         }
@@ -52,7 +54,7 @@ const TeachSubjectsList = ({ onSubjectSelect }) => {
             ) : (
               <tr>
                 <td colSpan="2" className="text-center">
-                  No subjects assigned.
+                 <Spinner animation="border" variant="primary" className="" />;
                 </td>
               </tr>
             )}
