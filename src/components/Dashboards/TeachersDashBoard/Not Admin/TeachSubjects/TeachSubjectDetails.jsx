@@ -232,7 +232,7 @@ const TeachSubjectDetails = ({ subjectId, onBack }) => {
     // const grade = calculateGrade(totalMarks);  // Calculate grade
 
     try {
-      const response = await fetch("http://localhost:8080/api/mark/update", {
+      const response = await fetch("https://chizzykids-server.onrender.com/api/mark/update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -286,7 +286,7 @@ const TeachSubjectDetails = ({ subjectId, onBack }) => {
     const grade = calculateGrade(totalMarks); // Calculate grade
 
     try {
-      const response = await fetch("http://localhost:8080/api/mark/finalize", {
+      const response = await fetch("https://chizzykids-server.onrender.com/api/mark/finalize", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -312,7 +312,7 @@ const TeachSubjectDetails = ({ subjectId, onBack }) => {
   const handleUnfinalizeMarks = async (studentId) => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/mark/unfinalize",
+        "https://chizzykids-server.onrender.com/api/mark/unfinalize",
         {
           method: "PATCH",
           headers: {
