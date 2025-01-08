@@ -24,15 +24,15 @@ const galleries = [
     imgurl: "public/GalleryAssets/image6.JPG"
   },
   {
-    Title: "STUDENT GROUP PICTURE",
+    Title: "STUDENT'S GROUP PICTURE",
     imgurl: "public/GalleryAssets/image7.JPG"
   },
   {
-    Title: "END OF THE YEAR PARTY",
+    Title: "STUDENT'S CAREER DAY",
     imgurl: "public/GalleryAssets/image8.JPG"
   },
   {
-    Title: "STUDENTS IN CLASS",
+    Title: "STUDENT'S IN CLASS",
     imgurl: "public/GalleryAssets/image9.JPG"
   },
   {

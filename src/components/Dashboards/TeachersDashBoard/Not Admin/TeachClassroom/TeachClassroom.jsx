@@ -102,7 +102,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Spinner } from "react-bootstrap";
-import "./TeachClassroom.css";
 
 const TeachClassroom = () => {
   const [classroom, setClassroom] = useState(null);
@@ -121,7 +120,7 @@ const TeachClassroom = () => {
   };
 
   const teacherId = getTeacherIdFromToken();
-  
+
   useEffect(() => {
     if (!teacherId) {
       setError("Teacher ID is missing or invalid.");
@@ -184,29 +183,40 @@ const TeachClassroom = () => {
   };
 
   if (error) {
-    return <div className="error">{error}</div>;
+    return <div className="alert alert-danger">{error}</div>;
   } 
 
-  // if (!classroom) {
-  //   return <div>Loading classroom data...</div>;
-  // }
-  if (loading) return <Spinner animation="border" variant="primary" className="d-block mx-auto mt-3" />;
+  if (loading) {
+    return (
+      <Spinner
+        animation="border"
+        variant="primary"
+        className="d-block mx-auto mt-5"
+        style={{ width: '3rem', height: '3rem' }}
+      />
+    );
+  }
 
   return (
-    <div className="teach-classroom">
-      <div className="classroom-info">
-        <h2><strong>{classroom.classroom}</strong></h2>
-        
+    <div className="container py-1">
+      <div className="classroom-info mb-2 p-3 border rounded bg-light">
+        <h2 className="text-primary"><strong>{classroom.classroom}</strong></h2>
         <h5>Teacher: <strong>{classroom.teacher}</strong></h5>
         <h5>Number of Students: <strong>{classroom.studentCount}</strong></h5>
       </div>
+      
       <div className="attendance-list">
-        <h2>Student Attendance</h2>
-        <ul>
+        <h2 className="mb-2">Student Attendance</h2>
+        <ul className="list-group">
           {classroom.students.map((student) => (
-            <li key={student.id}>
+            <li
+              key={student.id}
+              className="list-group-item d-flex justify-content-between align-items-center"
+              style={{ fontSize: "1.1rem" }}
+            >
               {student.name}
               <select
+                className="form-select w-25"
                 value={attendance[student.id]}
                 onChange={(e) => handleAttendanceChange(student.id, e.target.value)}
               >
@@ -216,10 +226,13 @@ const TeachClassroom = () => {
             </li>
           ))}
         </ul>
-        <button onClick={submitAttendance}>Submit Attendance</button>
+        <button className="btn btn-primary my-2" onClick={submitAttendance}>
+          Submit Attendance
+        </button>
       </div>
     </div>
-  );
+  ); 
 };
 
 export default TeachClassroom;
+
