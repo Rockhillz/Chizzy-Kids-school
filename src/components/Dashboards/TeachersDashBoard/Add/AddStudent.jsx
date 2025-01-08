@@ -7,11 +7,13 @@ import {
   Col,
   Alert,
   Spinner,
+  Modal
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaCheckCircle } from "react-icons/fa";
 
-const AddStudent = ({ onBack }) => {
+
+const AddStudent = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ const AddStudent = ({ onBack }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const [studentData, setStudentData] = useState({
     fullname: "",
@@ -75,13 +78,13 @@ const AddStudent = ({ onBack }) => {
       if (response.ok) {
         setSuccessMessage("Student created successfully!");
         setErrorMessage("");
-        setLoading(false);
+        setShowModal(true);
 
-        // Exclude password before navigating
-        const { password, ...studentWithoutPassword } = studentData;
+        // // Exclude password before navigating
+        // const { password, ...studentWithoutPassword } = studentData;
 
-        // Navigate to the new component with student data
-        navigate("/student-details", { state: studentWithoutPassword });
+        // // Navigate to the new component with student data
+        // navigate("/student-details", { state: studentWithoutPassword });
       } else {
         setErrorMessage(
           data.message || "An error occurred while creating the student."
@@ -97,6 +100,27 @@ const AddStudent = ({ onBack }) => {
     }
   };
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSuccessMessage("");
+    setStudentData({
+      fullname: "",
+      password: "",
+      image: null,
+      email: "",
+      address: "",
+      parents_name: "",
+      parent_no: "",
+      gender: "",
+      dateOfBirth: "",
+    });
+    setConfirmPassword("");
+  };
+
+  const goBack = () => {
+    navigate("/teacher-dashboard");
+  }
+
   return (
     <Container className="py-4">
       <Row className="justify-content-center">
@@ -105,7 +129,7 @@ const AddStudent = ({ onBack }) => {
             <h2 className="">Add Student</h2>
             <Button
               variant="outline-primary"
-              onClick={onBack}
+              onClick={goBack}
               className="tex-end"
               style={{ height: "" }}
             >
@@ -113,7 +137,7 @@ const AddStudent = ({ onBack }) => {
             </Button>
           </div>
 
-          {successMessage && <Alert variant="success">{successMessage}</Alert>}
+          {/* {successMessage && <Alert variant="success">{successMessage}</Alert>} */}
           {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
 
           <Form onSubmit={handleSubmit}>
@@ -304,6 +328,24 @@ const AddStudent = ({ onBack }) => {
           </Form>
         </Col>
       </Row>
+
+      {/* Modal for Success Message */}
+      <Modal show={showModal} onHide={handleCloseModal} centered>
+        <Modal.Body className="text-center">
+          <FaCheckCircle
+            size={50}
+            className="text-success mb-3"
+          />
+          <h4> {successMessage} </h4>
+          <Button
+            variant="success"
+            onClick={handleCloseModal}
+            className="mt-3"
+          >
+            Close
+          </Button>
+        </Modal.Body>
+      </Modal>
     </Container>
   );
 };

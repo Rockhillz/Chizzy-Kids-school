@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Button, Col, Modal, Spinner } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import AssignStudentClass from "./Assignings/AssignStudentClass"; // Update the import path as needed
 
 const StudentProfile = ({ studentId, onBack }) => {
@@ -12,7 +11,7 @@ const StudentProfile = ({ studentId, onBack }) => {
   const [modalMessage, setModalMessage] = useState(""); // For deletion success or error
   const [deleteSuccessful, setDeleteSuccessful] = useState(false); // Tracks delete status
   const [deleteLoading, setDeleteLoading] = useState(false);
-  const navigate = useNavigate();
+
 
   // Fetch student data
   useEffect(() => {
@@ -79,7 +78,7 @@ const StudentProfile = ({ studentId, onBack }) => {
       <Button
         variant="outline-primary"
         className="mb-3"
-        onClick={() => navigate("/students")} // Navigate back
+        onClick={onBack} // Navigate back
       >
         Back
       </Button>

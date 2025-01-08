@@ -1,18 +1,20 @@
-.card {
-  /* width: 20rem; */
-  /* margin: 1rem; */
-}
+/* .card {
+  width: 20rem; 
+  margin: 1rem; 
+} */
+
 .gallery {
-  
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px !important; 
   margin-top: 0.5rem;
 }
+
 img {
   width: 10rem;
   height: 20rem;
 }
+
 .OurgalleryList{
   margin-top: 50px;
   padding: 2rem;

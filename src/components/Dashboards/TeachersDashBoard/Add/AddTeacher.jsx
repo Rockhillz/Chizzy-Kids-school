@@ -1,264 +1,28 @@
-// import React, { useState } from "react";
-// import { Form, Button, Container, Row, Col, Alert, Spinner, } from "react-bootstrap";
-// import { useNavigate } from "react-router-dom";
-// import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-
-// const AddTeacher = ({ onBack }) => {
-//   const [successMessage, setSuccessMessage] = useState("");
-//   const [errorMessage, setErrorMessage] = useState("");
-//   const navigate = useNavigate();
-//   const [loading, setLoading] = useState(false);
-//   const [showPassword, setShowPassword] = useState(false);
-//   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-//   const [confirmPassword, setConfirmPassword] = useState("");
-
-//   const [teacherData, setTeacherData] = useState({
-//     fullname: "",
-//     email: "",
-//     password: "",
-//     role: "teacher",
-//     image: null,
-//     department: "",
-//     address: "",
-//     phone: "",
-//     gender: "",
-//     dateOfBirth: "",
-//     previous_school: "",
-//     qualification: [""],
-//   });
-
-//   const handleInputChange = (e) => {
-//     const { name, value, type, files } = e.target;
-//     if (type === "file") {
-//       setTeacherData({ ...teacherData, [name]: files[0] });
-//     } else {
-//       setTeacherData({ ...teacherData, [name]: value });
-//     }
-//   };
-
-//   const handleQualificationChange = (index, value) => {
-//     const updatedQualifications = [...teacherData.qualification];
-//     updatedQualifications[index] = value;
-//     setTeacherData({ ...teacherData, qualification: updatedQualifications });
-//   };
-
-//   const addQualificationField = () => {
-//     setTeacherData({
-//       ...teacherData,
-//       qualification: [...teacherData.qualification, ""],
-//     });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     if (teacherData.password !== confirmPassword) {
-//       setErrorMessage("Passwords do not match!");
-//       return;
-//     }
-
-//     setLoading(true);
-
-//     try {
-//       const token = localStorage.getItem("token");
-
-//       const formData = new FormData();
-//       Object.entries(teacherData).forEach(([key, value]) => {
-//         if (key === "qualification") {
-//           value.forEach((qual, index) =>
-//             formData.append(`qualification[${index}]`, qual)
-//           );
-//         } else {
-//           formData.append(key, value);
-//         }
-//       });
-
-//       const response = await fetch(
-//         `https://chizzykids-server.onrender.com/api/register/teacher`,
-//         {
-//           method: "POST",
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//           body: formData,
-//         }
-//       );
-
-//       const data = await response.json();
-
-//       if (response.ok) {
-//         setSuccessMessage("Teacher created successfully!");
-//         setErrorMessage("");
-//         setLoading(false);
-//         navigate("/teacher-details", { state: teacherData });
-//       } else {
-//         setErrorMessage(
-//           data.message || "An error occurred while creating the teacher."
-//         );
-//       }
-//     } catch (error) {
-//       console.error("Error creating teacher:", error);
-//       setErrorMessage("An error occurred. Please try again later.");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <Container className="py-5">
-//       <Row className="justify-content-center">
-//         <Col xs={12} md={8} lg={6}>
-//           <div className="d-flex mt-5 mb-3 justify-content-between">
-//             <h2 className="">Add Teacher</h2>
-//             <Button variant="outline-primary" onClick={onBack} className="tex-end" style={{height: ""}}>
-//             Back
-//             </Button>
-//           </div>
-
-//           {successMessage && <Alert variant="success">{successMessage}</Alert>}
-//           {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
-
-//           <Form onSubmit={handleSubmit}>
-//             <Form.Group className="mb-3">
-//               <Form.Label>Full Name</Form.Label>
-//               <Form.Control
-//                 type="text"
-//                 name="fullname"
-//                 value={teacherData.fullname}
-//                 onChange={handleInputChange}
-//                 placeholder="Enter full name"
-//                 required
-//               />
-//             </Form.Group>
-
-//             <Form.Group className="mb-3">
-//               <Form.Label>Email</Form.Label>
-//               <Form.Control
-//                 type="email"
-//                 name="email"
-//                 value={teacherData.email}
-//                 onChange={handleInputChange}
-//                 placeholder="Enter email"
-//                 required
-//               />
-//             </Form.Group>
-
-//             <Form.Group className="mb-3">
-//               <Form.Label>Password</Form.Label>
-//               <div className="position-relative">
-//                 <Form.Control
-//                   type={showPassword ? "text" : "password"}
-//                   name="password"
-//                   value={teacherData.password}
-//                   onChange={handleInputChange}
-//                   placeholder="Enter password"
-//                   required
-//                 />
-//                 <Button
-//                   variant="light"
-//                   className="position-absolute top-50 end-0 me-2 translate-middle-y p-0"
-//                   onClick={(e) => {
-//                     e.preventDefault();
-//                     setShowPassword((prev) => !prev);
-//                   }}
-//                 >
-//                   {showPassword ? (
-//                     <FaEyeSlash size={20} />
-//                   ) : (
-//                     <FaEye size={20} />
-//                   )}
-//                 </Button>
-//               </div>
-//             </Form.Group>
-
-//             <Form.Group className="mb-3">
-//               <Form.Label>Confirm Password</Form.Label>
-//               <div className="position-relative">
-//                 <Form.Control
-//                   type={showConfirmPassword ? "text" : "password"}
-//                   value={confirmPassword}
-//                   onChange={(e) => setConfirmPassword(e.target.value)}
-//                   placeholder="Re-enter password"
-//                   required
-//                 />
-//                 <Button
-//                   variant="light"
-//                   className="position-absolute top-50 end-0 me-2 translate-middle-y p-0"
-//                   onClick={(e) => {
-//                     e.preventDefault();
-//                     setShowConfirmPassword((prev) => !prev);
-//                   }}
-//                 >
-//                   {showConfirmPassword ? (
-//                     <FaEyeSlash size={20} />
-//                   ) : (
-//                     <FaEye size={20} />
-//                   )}
-//                 </Button>
-//               </div>
-//             </Form.Group>
-
-
-
-//             <Form.Group className="mb-3">
-//               <Form.Label>Qualifications</Form.Label>
-//               {teacherData.qualification.map((qual, index) => (
-//                 <div key={index} className="d-flex mb-2">
-//                   <Form.Control
-//                     type="text"
-//                     value={qual}
-//                     onChange={(e) =>
-//                       handleQualificationChange(index, e.target.value)
-//                     }
-//                     placeholder="Enter qualification"
-//                     required
-//                   />
-//                 </div>
-//               ))}
-//               <Button
-//                 variant="outline-secondary"
-//                 onClick={addQualificationField}
-//               >
-//                 Add Qualification
-//               </Button>
-//             </Form.Group>
-
-
-
-//             <Button
-//               variant="primary"
-//               type="submit"
-//               className="w-100"
-//               disabled={loading}
-//             >
-//               {loading ? (
-//                 <Spinner animation="grow" size="sm" className="me-2" />
-//               ) : (
-//                 "Submit"
-//               )}
-//             </Button>
-//           </Form>
-//         </Col>
-//       </Row>
-//     </Container>
-//   );
-// };
-
-// export default AddTeacher;
 
 import React, { useState } from "react";
-import { Form, Button, Container, Row, Col, Alert, Spinner } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  Container,
+  Row,
+  Col,
+  Alert,
+  Spinner,
+  Modal
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaCheckCircle } from "react-icons/fa";
 
-const AddTeacher = ({ onBack }) => {
+const AddTeacher = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   const [teacherData, setTeacherData] = useState({
     fullname: "",
@@ -274,8 +38,6 @@ const AddTeacher = ({ onBack }) => {
     previous_school: "",
     qualification: [""],
   });
-
-  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -315,8 +77,6 @@ const AddTeacher = ({ onBack }) => {
     }
 
     setLoading(true);
-    setErrorMessage("");
-    setSuccessMessage("");
 
     try {
       const token = localStorage.getItem("token");
@@ -348,8 +108,7 @@ const AddTeacher = ({ onBack }) => {
       if (response.ok) {
         setSuccessMessage("Teacher created successfully!");
         setErrorMessage("");
-        setLoading(false);
-        navigate("/teacher-details", { state: teacherData });
+        setShowModal(true);
       } else {
         setErrorMessage(
           data.message || "An error occurred while creating the teacher."
@@ -363,13 +122,37 @@ const AddTeacher = ({ onBack }) => {
     }
   };
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSuccessMessage("");
+    setTeacherData({
+      fullname: "",
+      email: "",
+      password: "",
+      role: "teacher",
+      image: null,
+      department: "",
+      address: "",
+      phone: "",
+      gender: "",
+      dateOfBirth: "",
+      previous_school: "",
+      qualification: [""],
+    });
+    setConfirmPassword("");
+  };
+
+  const goBack = () => {
+    navigate("/teacher-dashboard");
+  };
+
   return (
     <Container className="py-5">
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6}>
           <div className="d-flex mt-5 mb-3 justify-content-between">
             <h2>Add Teacher</h2>
-            <Button variant="outline-primary" onClick={onBack}>
+            <Button variant="outline-primary" onClick={goBack}>
               Back
             </Button>
           </div>
@@ -418,7 +201,11 @@ const AddTeacher = ({ onBack }) => {
                     setShowPassword((prev) => !prev);
                   }}
                 >
-                  {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+                  {showPassword ? (
+                    <FaEyeSlash size={20} />
+                  ) : (
+                    <FaEye size={20} />
+                  )}
                 </Button>
               </div>
             </Form.Group>
@@ -579,11 +366,18 @@ const AddTeacher = ({ onBack }) => {
             </Form.Group>
 
             <div className="mt-3">
-              {successMessage && <Alert variant="success">{successMessage}</Alert>}
+              {successMessage && (
+                <Alert variant="success">{successMessage}</Alert>
+              )}
               {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
             </div>
 
-            <Button variant="primary" type="submit" className="w-100 mt-3" disabled={loading}>
+            <Button
+              variant="primary"
+              type="submit"
+              className="w-100 mt-3"
+              disabled={loading}
+            >
               {loading ? (
                 <>
                   <Spinner animation="border" size="sm" className="me-2" />
@@ -596,6 +390,25 @@ const AddTeacher = ({ onBack }) => {
           </Form>
         </Col>
       </Row>
+
+      {/* Modal for Success Message */}
+      <Modal show={showModal} onHide={handleCloseModal} centered>
+        <Modal.Body className="text-center">
+          <FaCheckCircle
+            size={50}
+            className="text-success mb-3"
+          />
+          <h4> {successMessage} </h4>
+          <Button
+            variant="success"
+            onClick={handleCloseModal}
+            className="mt-3"
+          >
+            Close
+          </Button>
+        </Modal.Body>
+      </Modal>
+
     </Container>
   );
 };
