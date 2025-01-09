@@ -7,11 +7,10 @@ import {
   Col,
   Alert,
   Spinner,
-  Modal
+  Modal,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaCheckCircle } from "react-icons/fa";
-
 
 const AddStudent = () => {
   const [successMessage, setSuccessMessage] = useState("");
@@ -119,7 +118,7 @@ const AddStudent = () => {
 
   const goBack = () => {
     navigate("/teacher-dashboard");
-  }
+  };
 
   return (
     <Container className="py-4">
@@ -136,9 +135,6 @@ const AddStudent = () => {
               Back
             </Button>
           </div>
-
-          {/* {successMessage && <Alert variant="success">{successMessage}</Alert>} */}
-          {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
 
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="fullname" className="mb-3">
@@ -309,6 +305,13 @@ const AddStudent = () => {
               />
             </Form.Group>
 
+            <div className="mt-3">
+              {successMessage && (
+                <Alert variant="success">{successMessage}</Alert>
+              )}
+              {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+            </div>
+
             <Button
               variant="primary"
               type="submit"
@@ -316,11 +319,10 @@ const AddStudent = () => {
               disabled={loading} // Disable button while loading
             >
               {loading ? (
-                <Spinner
-                  animation="grow" // Growing spinner
-                  size="sm"
-                  className="me-2"
-                />
+                <>
+                  <Spinner animation="border" size="sm" className="me-2" />
+                  Submitting...
+                </>
               ) : (
                 "Submit"
               )}
@@ -332,16 +334,9 @@ const AddStudent = () => {
       {/* Modal for Success Message */}
       <Modal show={showModal} onHide={handleCloseModal} centered>
         <Modal.Body className="text-center">
-          <FaCheckCircle
-            size={50}
-            className="text-success mb-3"
-          />
+          <FaCheckCircle size={50} className="text-success mb-3" />
           <h4> {successMessage} </h4>
-          <Button
-            variant="success"
-            onClick={handleCloseModal}
-            className="mt-3"
-          >
+          <Button variant="success" onClick={handleCloseModal} className="mt-3">
             Close
           </Button>
         </Modal.Body>

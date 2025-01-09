@@ -18,12 +18,10 @@ import TeachDashboard from "./components/Dashboards/TeachersDashBoard/TeachDashb
 import Teachers from "./components/Dashboards/TeachersDashBoard/Teachers/Teachers";
 import Students from "./components/Dashboards/TeachersDashBoard/Students/Students";
 import AddStudent from "./components/Dashboards/TeachersDashBoard/Add/AddStudent";
-import StudentDetails from "./components/Dashboards/TeachersDashBoard/Add/Details/StudentDetails";
 import AddTeacher from "./components/Dashboards/TeachersDashBoard/Add/AddTeacher";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ResetPassword from "./components/ForgotPassword/ResetPassword";
 import Classrooms from "./components/Dashboards/TeachersDashBoard/classroom/Classrooms";
-import TeacherDetails from "./components/Dashboards/TeachersDashBoard/Add/Details/TeacherDetails";
 import Subjects from "./components/Dashboards/TeachersDashBoard/Subject/Subjects";
 import TeachClassroom from "./components/Dashboards/TeachersDashBoard/Not Admin/TeachClassroom/TeachClassroom";
 import TeachSubject from "./components/Dashboards/TeachersDashBoard/Not Admin/TeachSubjects/TeachSubject";
@@ -54,8 +52,6 @@ function App() {
             <Route path="/students" element={<Students />} />
             <Route path="/add-student" element={<AddStudent />} />
             <Route path="/add-teacher" element={<AddTeacher />} />
-            <Route path="/student-details" element={<StudentDetails />} />
-            <Route path="/teacher-details" element={<TeacherDetails />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/classrooms" element={<Classrooms />} />
