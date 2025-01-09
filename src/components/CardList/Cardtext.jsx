@@ -14,7 +14,6 @@ const Cardtext = ({ Image, Title, Cardtext, btntext, linkout }) => {
         textContent: {
             fontSize: "14px",
             textAlign: "center",
-            height: "100px",
             marginTop: "40px",
             height: "250px",
             // border:"1px solid black"

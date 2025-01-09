@@ -7,7 +7,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
   const navItems = [
     { label: "Profile", icon: <FaUser />, tab: "profile" },
     { label: "Subjects", icon: <FaBook />, tab: "Subjects" },
-    { label: "Grades", icon: <FaChartBar />, tab: "grades" },
+    { label: "Grades", icon: <FaChartBar />, tab: "Grades" },
     { label: "Schedule", icon: <FaCalendarAlt />, tab: "schedule" },
     { label: "Messages", icon: <FaEnvelope />, tab: "messages" },
     { label: "Settings", icon: <FaCog />, tab: "settings" },

@@ -11,7 +11,6 @@ const News = () => {
         },
         butoncont: {
             padding: "10px 20px",
-            backgroundColor: "white",
             color: "white",
             border: "none",
             borderRadius: "20px",
