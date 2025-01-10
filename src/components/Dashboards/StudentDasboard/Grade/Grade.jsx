@@ -26,7 +26,7 @@ const Grade = () => {
       try {
         const token = localStorage.getItem("token"); 
         const response = await fetch(
-          `http://localhost:8080/api/student/grades/${studentId}`,
+          `https://chizzykids-server.onrender.com/api/student/grades/${studentId}`,
           {
             method: "GET",
             headers: {
