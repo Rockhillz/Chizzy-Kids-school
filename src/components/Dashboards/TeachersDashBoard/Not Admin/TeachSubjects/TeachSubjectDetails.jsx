@@ -189,7 +189,7 @@ const TeachSubjectDetails = ({ subjectId, onBack }) => {
     const fetchStudents = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/students-by-subject/${subjectId}`
+          `https://chizzykids-server.onrender.com/api/students-by-subject/${subjectId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch students");

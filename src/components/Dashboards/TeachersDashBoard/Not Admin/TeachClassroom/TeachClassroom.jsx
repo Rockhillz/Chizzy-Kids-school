@@ -40,7 +40,7 @@ const TeachClassroom = () => {
           },
         });
         const data = await response.json();
-        console.log("Fetched classroom data:", data);
+
     
         if (data.success && data.data) {
           setClassroom(data.data);

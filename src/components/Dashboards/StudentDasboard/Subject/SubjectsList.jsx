@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "react-bootstrap";
+import { Table, Spinner } from "react-bootstrap";
 
 const SubjectList = ({ studentId }) => {
   const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
   useEffect(() => {
     const fetchSubjects = async () => {
-      
       try {
-          const response = await fetch(`https://chizzykids-server.onrender.com/api/student-subjects/${studentId}`);
-          console.log("Fetching subjects from:", response);
+        const response = await fetch(
+          `https://chizzykids-server.onrender.com/api/student-subjects/${studentId}`
+        );
+
         if (!response.ok) {
           throw new Error(
             `Failed to fetch data: ${response.status} ${response.statusText}`
@@ -20,7 +20,7 @@ const SubjectList = ({ studentId }) => {
         }
 
         const data = await response.json();
-        console.log("Fetched subjects:", data.subjects);
+
         setSubjects(data.subjects);
       } catch (err) {
         console.error("Error fetching subjects:", err.message);
@@ -34,23 +34,29 @@ const SubjectList = ({ studentId }) => {
   }, []);
 
   return (
-    <div className="container mt-5">
-      <h1 className="mb-4">Subject List</h1>
-      {loading && <div className="alert alert-info">Loading subjects...</div>}
+    <div className="container">
+      <h2 className="text-center mb-3">Subjects</h2>
+
+      {loading && (
+        <div className="d-flex justify-content-center">
+          <Spinner animation="border" variant="primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        </div>
+      )}
+
       {error && <div className="alert alert-danger">{error}</div>}
       {!loading && !error && (
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>S/no</th>
-              <th>Subject Name</th>
-              <th>Instructor</th>
+              <th>Subjects</th>
+              <th>Teacher</th>
             </tr>
           </thead>
           <tbody>
             {subjects.map((subject, index) => (
               <tr key={subject._id}>
-                <td>{index + 1}</td>
                 <td>{subject.name}</td>
                 <td>
                   {subject.teacher ? subject.teacher.fullname : "Not Assigned"}

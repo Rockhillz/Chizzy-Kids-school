@@ -6,7 +6,6 @@ const TeachSubjectsList = ({ onSubjectSelect }) => {
     const [subjects, setSubjects] = useState([]);
     const [ loading, setLoading ] = useState(true);
     
-    console.log("onSubjectSelect prop:", onSubjectSelect);
   
     useEffect(() => {
       const fetchSubjects = async () => {
@@ -22,14 +21,28 @@ const TeachSubjectsList = ({ onSubjectSelect }) => {
   
           const data = await response.json();
           setSubjects(data.subjects);
-          setLoading(false);
+          
         } catch (error) {
           console.error('Error fetching subjects:', error);
+        } finally {
+          setLoading(false);
         }
+
       };
   
       fetchSubjects();
     }, []);
+
+    if (loading) {
+        return (
+          <Spinner
+            animation="border"
+            variant="primary"
+            className="d-block mx-auto mt-5"
+            style={{ width: '3rem', height: '3rem' }}
+          />
+        );
+      }
   
     return (
       <div>
