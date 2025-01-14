@@ -103,7 +103,7 @@ const TeachClassroom = () => {
       });
 
       const response = await fetch(
-        "http://localhost:8080/api/attendance",
+        "https://chizzykids-server.onrender.com/api/attendance",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
