@@ -9,9 +9,24 @@ const TeachSubjectsList = ({ onSubjectSelect }) => {
   
     useEffect(() => {
       const fetchSubjects = async () => {
+
+        const getTeacherIdFromToken = () => {
+          try {
+            const token = localStorage.getItem("token");
+            if (!token) return null;
+            const decodedToken = JSON.parse(atob(token.split(".")[1])); 
+            return decodedToken.teacherId || null;
+          } catch (error) {
+            console.error("Error decoding token:", error);
+            return null;
+          }
+        };
+  
+        const teacherId = getTeacherIdFromToken();
+
         try {
           const token = localStorage.getItem('token');
-          const response = await fetch('https://chizzykids-server.onrender.com/api/subjects-assigned-to-teacher', {
+          const response = await fetch(`https://chizzykids-server.onrender.com/api/subjects-assigned-to-teacher/${teacherId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
   
