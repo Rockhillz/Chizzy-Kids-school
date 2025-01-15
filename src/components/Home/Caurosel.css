@@ -1,0 +1,21 @@
+/* Extra small devices (phones, less than 768px) */
+@media (max-width: 768px) {
+    .carousel-img {
+      height: 300px;
+    }
+  }
+  
+  /* Medium devices (tablets, 768px to 992px) */
+  @media (min-width: 768px) and (max-width: 992px) {
+    .carousel-img {
+      height: 400px;
+    }
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    .carousel-img {
+      height: 500px;
+    }
+  }
+

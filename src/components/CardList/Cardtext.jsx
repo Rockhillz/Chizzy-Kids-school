@@ -9,8 +9,8 @@ const Cardtext = ({ Image, Title, Cardtext, btntext, linkout }) => {
             textAlign: "center",
             color: "darkBlue",
             marginTop: "10px"
-
         },
+
         textContent: {
             fontSize: "14px",
             textAlign: "center",
