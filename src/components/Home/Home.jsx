@@ -5,6 +5,7 @@ import Blog from './Blog'
 import Events from './Events'
 import News from './News'
 import MapSection from './MapSection'
+import Contact from './Contact'
 
 const Home = () => {
   return (
@@ -14,7 +15,7 @@ const Home = () => {
       <Blog/>
       <Events/>
       <News/>
-      <MapSection/>
+      <Contact />
     </div>
   )
 }

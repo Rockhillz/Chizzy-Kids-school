@@ -89,7 +89,7 @@ const SchoolPortal = () => {
       <Container>
         <Row className="align-items-center justify-content-center mt-5 display">
           {/* Welcome Message */}
-          <Col xs={12} md={6} className="text-center text-md-start mb-4">
+          <Col xs={12} md={6} className="text-center text-md-start mb-1">
             <div className="ms-md-4">
               <h2>Welcome to the School Portal</h2>
               <p>Please login to access your account.</p>

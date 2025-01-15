@@ -1,5 +1,5 @@
 .CardContainer{
-  width:17rem;
+  width:23rem;
   transition: 0;
   border-radius:0;
   height:450px;
@@ -31,3 +31,20 @@
   transition: 0.5s;
 }
 
+@media (max-width: 768px) {
+  .CardContainer{
+    width:20rem;
+    transition: 0;
+    border-radius:0;
+    height:450px;
+    transition: 0s;
+    text-align:center;
+    object-fit: cover;
+    overflow: hidden;
+    margin-top: 20px;
+  
+  
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0,0,0,0.19);
+    /* color: rgb(194, 194, 194); */
+  }
+}

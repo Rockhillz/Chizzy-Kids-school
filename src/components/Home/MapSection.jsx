@@ -31,7 +31,7 @@ const MapSection = () => {
                             padding: '20px',
                             border: '1px solid #ddd',
                             borderRadius: '8px',
-                            backgroundColor: '#f9f9f9',
+                            // backgroundColor: '#f9f9f9',
                         }}
 
                         className='col-12 col-sm-6'

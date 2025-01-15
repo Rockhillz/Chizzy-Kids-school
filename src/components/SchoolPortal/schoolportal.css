@@ -1,16 +1,11 @@
-/* .display{
+
+.display{
     display: flex;
     flex-direction: row;
-    align-items: center; */
-    /* gap: 200px; */
-    /* justify-content: space-between; 
-} */
+    align-items: center;
+    justify-content: space-between; 
+} 
 
-/* #mainBox{
-    background-color: rgb(233, 235, 225) !important;
-    margin-top: -5px; */
-    /* margin-bottom: -10px; */
-/* } */
 
 .display {
   display: flex;
@@ -33,5 +28,5 @@
 
 #mainBox {
   background-color: rgb(233, 235, 225) !important;
-  margin-top: -5px;
+  margin-top: 60px;
 }
