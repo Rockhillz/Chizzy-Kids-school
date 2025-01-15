@@ -11,10 +11,12 @@
     background-color: #0a4275
 }
 
+
+
 @media (max-width: 767px) {
   /* Small screens */
   .sidebar {
-    flex-direction: row !important; /* Switch to row on small screens */
+    flex-direction: row !important; 
   }
 
   .sidebar .nav-link {

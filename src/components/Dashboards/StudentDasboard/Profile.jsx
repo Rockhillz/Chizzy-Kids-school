@@ -17,7 +17,7 @@ const Profile = ({ profile }) => {
     <div className=" siz">
       <div>
 
-        <div className="d-flex mt-3">
+        <div className="d-flex mt-3 sm-6">
           <img
             src={profile.image}
             alt="Profile"
