@@ -128,16 +128,15 @@ const Sidebar = ({ activeTab, setActiveTab, role }) => {
   );
 
   return (
-    <Nav className="sidebar d-flex flex-column flex-sm-row flex-md-column bg-light shadow-sm p-3">
+    <Nav className="sidebar d-flex flex-row flex-sm-column flex-md-column bg-light shadow-sm p-1">
       {outsideDropdownItems.map((item) => (
         <Nav.Link
           key={item.tab}
           onClick={() => setActiveTab(item.tab)}
-          className={`d-flex align-items-center justify-content-center ${
+          className={`d-flex ${
             activeTab === item.tab ? "bg-t text-white rounded" : "text-dark"
           }`}
           style={{
-            marginBottom: "10px",
             padding: "10px",
             flex: "1",
           }}
@@ -149,12 +148,11 @@ const Sidebar = ({ activeTab, setActiveTab, role }) => {
 
       {/* Dropdown for Admin */}
       {role === "admin" && (
-        <div className="dropdown-container">
+        <div className="dropdown">
           <div
             onClick={() => setDropdownOpen(!isDropdownOpen)}
-            className="d-flex align-items-center justify-content-center text-dark rounded"
+            className="d-flex text-dark "
             style={{
-              marginBottom: "10px",
               padding: "10px",
               flex: "1",
               cursor: "pointer",
@@ -174,13 +172,12 @@ const Sidebar = ({ activeTab, setActiveTab, role }) => {
                 <Nav.Link
                   key={item.tab}
                   onClick={() => setActiveTab(item.tab)}
-                  className={`d-flex align-items-center justify-content-center ${
+                  className={`d-flex ${
                     activeTab === item.tab
                       ? "bg-t text-white rounded"
                       : "text-dark"
                   }`}
-                  style={{
-                    marginBottom: "10px",
+                  style={{                  
                     padding: "10px",
                     flex: "1",
                   }}
@@ -199,11 +196,10 @@ const Sidebar = ({ activeTab, setActiveTab, role }) => {
         <Nav.Link
           key={item.tab}
           onClick={() => setActiveTab(item.tab)}
-          className={`d-flex align-items-center justify-content-center ${
+          className={`d-flex ${
             activeTab === item.tab ? "bg-t text-white rounded" : "text-dark"
           }`}
           style={{
-            marginBottom: "10px",
             padding: "10px",
             flex: "1",
           }}

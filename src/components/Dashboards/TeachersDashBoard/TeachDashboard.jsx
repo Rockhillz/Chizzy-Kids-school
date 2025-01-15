@@ -97,10 +97,10 @@ const TeachDashboard = () => {
       <TeacherHeader teacherName={teacherData?.fullname} />
       <Container fluid>
         <Row>
-          <Col md={3} className="p-0">
+          <Col md={2} className="p-0">
             <Sidebar activeTab={activeTab} role={role} setActiveTab={setActiveTab} />
           </Col>
-          <Col md={9}>
+          <Col md={10}>
             {renderTabContent()}
           </Col>
         </Row>

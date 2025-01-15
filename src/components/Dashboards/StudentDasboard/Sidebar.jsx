@@ -16,13 +16,13 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
 
   return (
     <Nav
-      className="sidebar d-flex flex-column flex-sm-row flex-md-column bg-light shadow-sm p-3"
+      className="sidebar d-flex flex-column flex-sm-row flex-md-column bg-light shadow-sm p-1"
     >
       {navItems.map((item) => (
         <Nav.Link
           key={item.tab}
           onClick={() => setActiveTab(item.tab)}
-          className={`d-flex align-items-center justify-content-center ${
+          className={`d-flex ${
             activeTab === item.tab ? "bg-t text-white rounded" : "text-dark"
           }`}
           style={{
