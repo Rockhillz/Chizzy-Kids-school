@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-// import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar";
 import Profile from "./Profile";
 // import StudentSubject from "./StudentSubject";
 import StudentHeader from "./StudentHeader";
