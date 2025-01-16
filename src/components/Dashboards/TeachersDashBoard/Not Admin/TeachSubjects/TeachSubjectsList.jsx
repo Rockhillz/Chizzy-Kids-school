@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Assuming you're using React Router
-import { Table, Spinner } from 'react-bootstrap'; // Import Table from react-bootstrap
+import { Table, Spinner } from 'react-bootstrap'; 
 
 const TeachSubjectsList = ({ onSubjectSelect }) => {
     const [subjects, setSubjects] = useState([]);

@@ -3,6 +3,7 @@ import { Navbar, Container, Button } from "react-bootstrap";
 import { FaSignOutAlt } from "react-icons/fa"
 import "../../StudentDasboard/styles.css"
 
+
 const TeacherHeader = ({ teacherName }) => {
 
   return (
