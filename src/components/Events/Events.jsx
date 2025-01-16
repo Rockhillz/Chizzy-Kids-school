@@ -5,83 +5,40 @@ import Cardbox from "../CardList/Cardbox";
 import HrElement from "../Home/HrElement";
 
 const Events = () => {
-  // const style = {
-  //   carousel: {
-  //     height: "550px",
-  //     width: "100%",
-  //     margin: "auto",
-  //     overflow: "hidden",
-  //     position: "relative",
-  //     background: "#f1f1f1",
-  //   },
-
-  //   img: {
-  //     height: "500px",
-  //     width: "100%",
-  //   },
-  // };
   return (
-    <div style={{marginTop:"100px"}}>
-      {/* <header>
-        <Carousel indicators={false} controls={false} style={style.carousel}>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://t4.ftcdn.net/jpg/04/91/76/63/360_F_491766301_yF6pxwvJnyY4I43PlU6zPEPoY5ZjJLEL.jpg"
-              alt="Single Slide"
-              style={style.img}
-            />
-            <Carousel.Caption>
-              <h3 className="text-color text">Upcoming Events</h3>
-              <div>
-                <Link to="/" className=" btn btn-dark second-color mx-3">
-                  Home
-                </Link>
-
-                <Link
-                  to="/ourGallery"
-                  className="btn btn-dark caption second-color mx-3"
-                >
-                  Gallery
-                </Link>
-              </div>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
-      </header> */}
-
-      <main className="container">
+    <div style={{ marginTop: "20px" }}>
+      <main className="container py-5">
         <div className="cont2">
-          <h5>Upcoming Event</h5>
+          <h5>Upcoming Events</h5>
           <h1>BE UP TO DATE WITH OUR EVENTS</h1>
           <HrElement />
         </div>
 
-        <div className="cont1  align-items-content">
-          <div className="row ">
-            <div className="col-12 col-sm-4">
-              <Cardbox
-                Image={
-                  "https://res.cloudinary.com/myskoolp/image/upload/b_auto,c_pad,h_400,w_600/v1/school_website/events/kingscollegelagos/event-224.jpg"
-                }
-                Title={"INTER-HOUSE SPORTS COMPETITION"}
-                Cardtext={
-                  "The Inter-House Sports Competition is a fantastic opportunity for our students to showcase their talents and skills. It is a great way for our students to gain experience in various sports, and to showcase their skills."
-                }
-                btntext={"22/11/2024"}
-              />
-            </div>
-            <div className="col-12 col-sm-4">
-              <Cardbox />
-            </div>
-            <div className="col-12 col-sm-4">
-              <Cardbox />
-            </div>
+        <div className="row d-flex justify-content-center mt-2">
+          <div className="col-sm-4 col-12 d-flex justify-content-center mb-3">
+            <Cardbox
+              Image={
+                "https://res.cloudinary.com/myskoolp/image/upload/b_auto,c_pad,h_400,w_600/v1/school_website/events/kingscollegelagos/event-224.jpg"
+              }
+              Title={"INTER-HOUSE SPORTS COMPETITION"}
+              Cardtext={
+                "The Inter-House Sports Competition is a fantastic opportunity for our students to showcase their talents and skills. It is a great way for our students to gain experience in various sports, and to showcase their skills."
+              }
+              btntext={"22/11/2024"}
+            />
           </div>
-        </div>
 
-        <div className="col-12 mt-5">
-          <Cardbox />
+          <div className="col-sm-4 col-12 d-flex justify-content-center mb-3">
+            <Cardbox Image={"./public/CarouselAssets/students.jpg"} />
+          </div>
+
+          <div className="col-sm-4 col-12 d-flex justify-content-center mb-3">
+            <Cardbox
+              Image={
+                "https://thumbs.dreamstime.com/b/african-university-students-group-happy-looking-camera-52803479.jpg"
+              }
+            />
+          </div>
         </div>
       </main>
     </div>

@@ -9,7 +9,8 @@ function Courosel() {
   const styles = {
     imgPic: {
       width: "100%",
-      height: "800px",
+      height: "1000px",
+      objectFit: "cover",
       filter: "blur(1px)",
     },
   };

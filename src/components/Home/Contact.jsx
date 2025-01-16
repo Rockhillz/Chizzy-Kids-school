@@ -50,7 +50,7 @@ const Contact = () => {
                 <strong>Address:</strong> 26 Ichie Dara Avenue, Shibiri, Lagos
               </li>
               <li>
-                <strong>Phone:</strong> +234 801 234 5678
+                <strong>Phone:</strong> +234 806 054 0369
               </li>
               <li>
                 <strong>Email:</strong> info@chizzykids.edu.ng
@@ -59,9 +59,10 @@ const Contact = () => {
                 <strong>Office Hours:</strong> Mon - Fri, 8:00 AM - 5:00 PM
               </li>
             </ul>
-            <div className="mt-4">
+            
+            <div className="mt-3">
               <h5 style={{ color: "#01010" }}>Follow Us</h5>
-              <div className="d-flex gap-3 mt-2">
+              <div className="d-flex flex-row gap-3 mt-2">
                 <a
                   href="#"
                   style={{
