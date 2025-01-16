@@ -1,7 +1,7 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
 import { FaUser, FaBook, FaCalendarAlt, FaChartBar, FaEnvelope, FaCog, FaSignOutAlt } from "react-icons/fa";
-import "./Sidebar.css"; // Import custom CSS for additional styles
+import "./sidebar.css"; // Import custom CSS for additional styles
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
   const navItems = [
