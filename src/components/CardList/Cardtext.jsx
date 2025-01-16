@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import './card.css'
+import './Card.css'
 
 const Cardtext = ({ Image, Title, Cardtext, btntext, linkout }) => {
     const styles = {
