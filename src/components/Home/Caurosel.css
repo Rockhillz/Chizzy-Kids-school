@@ -1,7 +1,11 @@
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 768px) {
     .carousel-img {
-      height: 300px;
+      height: 300px !important;
+      width: 100% !important;
+      object-fit: contained !important;
+      transition: height 0.5s ease !important;
+
     }
   }
   
