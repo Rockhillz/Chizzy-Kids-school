@@ -1,6 +1,6 @@
 import React from "react";
 import { Badge } from "react-bootstrap";
-import "./Profile.css";
+import "./profile.css";
 
 const Profile = ({ profile }) => {
   if (!profile) {
