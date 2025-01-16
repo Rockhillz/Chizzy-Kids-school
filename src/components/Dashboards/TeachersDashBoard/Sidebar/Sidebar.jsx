@@ -61,7 +61,7 @@ import {
   FaChevronRight,
 } from "react-icons/fa";
 import { useState } from "react";
-import "./Sidebar.css";
+import "./sidebar.css";
 
 const Sidebar = ({ activeTab, setActiveTab, role }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
