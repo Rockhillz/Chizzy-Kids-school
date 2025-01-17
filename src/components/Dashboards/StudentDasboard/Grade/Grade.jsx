@@ -71,8 +71,8 @@ const Grade = () => {
           <thead className="table-dark">
             <tr>
               <th>Subject</th>
-              <th>First Assessment</th>
-              <th>Second Assessment</th>
+              <th>CA1</th>
+              <th>CA2</th>
               <th>Exam</th>
               <th>Total</th>
               <th>Grade</th>
