@@ -24,7 +24,7 @@ const SubjectDetails = ({ subjectId, onBack }) => {
         }
 
         const data = await response.json();
-        console.log(data);
+       
         setSubject(data);
       } catch (err) {
         console.error("Error fetching subject:", err);
@@ -59,15 +59,15 @@ const SubjectDetails = ({ subjectId, onBack }) => {
           <Table striped bordered hover responsive className="mt-3">
             <thead>
               <tr>
-                <th>#</th>
-                <th>Student Name</th>
+                
+                <th>Students</th>
                 <th>Student ID</th>
               </tr>
             </thead>
             <tbody>
               {subject.students.map((student, index) => (
                 <tr key={student._id}>
-                  <td>{index + 1}</td>
+                 
                   <td>{student.fullname}</td>
                   <td>{student.studentID}</td>
                 </tr>

@@ -1,97 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import { Table, Button, Spinner } from "react-bootstrap";
-// import { useNavigate } from "react-router-dom";
-
-// const ClassroomsList = ({ setSelectedClassroom }) => {
-//   const [classrooms, setClassrooms] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     const fetchClassrooms = async () => {
-//       try {
-//         const token = localStorage.getItem("token"); // Assuming you store the token in localStorage
-//         const response = await fetch(`https://chizzykids-server.onrender.com/api/classrooms`, {
-//           method: "GET",
-//           headers: {
-//             "Content-Type": "application/json",
-//             Authorization: `Bearer ${token}`, // Include token in Authorization header
-//           },
-//         });
-
-//         if (!response.ok) {
-//           throw new Error(`HTTP error! status: ${response.status}`);
-//         }
-
-//         const data = await response.json();
-//         setClassrooms(data.classrooms || []);
-//       } catch (err) {
-//         console.error("Error fetching classrooms:", err);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchClassrooms();
-//   }, []);
-
-//   const handleClassroomClick = (classroomId) => {
-//     setSelectedClassroom(classroomId);
-//   };
-
-//   // Create class 
-//   //handdleCreateClassroom
-
-      
-      
-
-//   const addClassroom = () => {
-//     navigate("/add-teacher");
-//   };
-
-//   if (loading) return <Spinner animation="border" variant="primary" className="d-block mx-auto mt-3" />;
-
-//   return (
-//     <div className="table-responsive">
-//       <div style={{ width: "900px" }} className="mb-3">
-//         <div className="d-flex justify-content-between">
-//           <h3 className="">Classrooms List</h3>
-//           <Button className="bg-t" onClick={addClassroom}>
-//             Add Classroom
-//           </Button>
-//         </div>
-//       </div>
-
-//       <Table bordered hover className="align-middle">
-//         <thead className="table-dark">
-//           <tr>
-//             <th>Classroom</th>
-//             <th>Number of Students</th>
-//             <th>Number of Subjects</th>
-//             <th>Teacher</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {classrooms.map((classroom, index) => (
-//             <tr
-//               key={classroom._id}
-//               className="h-100 shadow-sm"
-//               onClick={() => handleClassroomClick(classroom._id)}
-//               style={{ cursor: "pointer" }}
-//             >
-//               <td>{classroom.className}</td>
-//               <td>{classroom.studentsCount || classroom.students?.length || 0}</td>
-//               <td>{classroom.subjectsCount || classroom.subjects?.length || 0}</td>
-//               <td>{classroom.teacher?.fullname || "N/A"}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </Table>
-//     </div>
-//   );
-// };
-
-// export default ClassroomsList;
 
 import React, { useEffect, useState } from "react";
 import { Table, Button, Spinner, Modal, Form, Alert } from "react-bootstrap";
@@ -112,13 +18,16 @@ const ClassroomsList = ({ setSelectedClassroom }) => {
     const fetchClassrooms = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`https://chizzykids-server.onrender.com/api/classrooms`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          `https://chizzykids-server.onrender.com/api/classrooms`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -144,14 +53,17 @@ const ClassroomsList = ({ setSelectedClassroom }) => {
     try {
       setCreating(true);
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:8080/api/create-classroom`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ className: newClassroom }),
-      });
+      const response = await fetch(
+        `https://chizzykids-server.onrender.com/api/create-classroom`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ className: newClassroom }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -174,17 +86,25 @@ const ClassroomsList = ({ setSelectedClassroom }) => {
     }
   };
 
-  if (loading) return <Spinner animation="border" variant="primary" className="d-block mx-auto mt-3" />;
+  if (loading)
+    return (
+      <Spinner
+        animation="border"
+        variant="primary"
+        className="d-block mx-auto mt-3"
+      />
+    );
 
   return (
     <div className="table-responsive">
-      <div className="container-fluid mb-3 sm-justify-content-between">
-        <div className="d-flex justify-content-between align-items-center">
-          <h3>Classrooms</h3>
-          <Button className="bg-t " onClick={() => setShowModal(true)}>
-            Add Classroom
-          </Button>
-        </div>
+      <div className="mb-3 d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+        <h3 className="fs-5 fs-md-3 mb-2 mb-md-0">Classrooms</h3>
+        <Button
+          className="bg-t btn-sm btn-md"
+          onClick={() => setShowModal(true)}
+        >
+          Add Classroom
+        </Button>
       </div>
 
       <Table bordered hover className="align-middle">
@@ -205,8 +125,12 @@ const ClassroomsList = ({ setSelectedClassroom }) => {
               style={{ cursor: "pointer" }}
             >
               <td>{classroom.className}</td>
-              <td>{classroom.studentsCount || classroom.students?.length || 0}</td>
-              <td>{classroom.subjectsCount || classroom.subjects?.length || 0}</td>
+              <td>
+                {classroom.studentsCount || classroom.students?.length || 0}
+              </td>
+              <td>
+                {classroom.subjectsCount || classroom.subjects?.length || 0}
+              </td>
               <td>{classroom.teacher?.fullname || "N/A"}</td>
             </tr>
           ))}
