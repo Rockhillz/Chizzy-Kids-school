@@ -26,7 +26,7 @@ const AssignClass = ({ teacherId, onClose, setAssignLoading }) => {
         }
 
         const data = await response.json();
-        console.log(data)
+       
         setClassrooms(data.classrooms || []);
         
       } catch (error) {
@@ -49,7 +49,7 @@ const AssignClass = ({ teacherId, onClose, setAssignLoading }) => {
     setAssignLoading(true); // Notify parent to show spinner
     try {
       const token = localStorage.getItem("token");
-      console.log(`token: ${token}`);
+      
 
       const response = await fetch(`https://chizzykids-server.onrender.com/api/assign-Teacher`, {
         method: "PATCH",
