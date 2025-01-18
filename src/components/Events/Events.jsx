@@ -1,10 +1,15 @@
 // import { Carousel } from "react-bootstrap";
+import { useEffect } from "react";
 import "./event.css";
 import Cardbox from "../CardList/Cardbox";
 // import { Link } from "react-router-dom";
 import HrElement from "../Home/HrElement";
 
 const Events = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
+  
   return (
     <div style={{ marginTop: "20px" }}>
       <main className="container py-5">

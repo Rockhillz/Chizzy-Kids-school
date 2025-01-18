@@ -7,7 +7,7 @@ const Carditem = () => {
 
   // Function to handle navigation to the about page
   const handleNavigate = () => {
-    navigate("/about");
+    navigate("/aboutus");
   };
 
   return (
@@ -23,9 +23,9 @@ const Carditem = () => {
             Image={
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzlPomRG0rBJpXh4N90bdd6zuR6UFTNxc9Aw&s"
             }
-            Title={"Other activities"}
+            Title={"School Profile"}
             Cardtext={
-              "Sporting Facilities: Our Sporting facilities are standard and we encourage students to show all skills and passion within."
+              "Chizzy Kids Group of Schools, established in 2010 in Lagos, is dedicated to excellence in learning and character, offering quality education and holistic development for every child."
             }
             btntext={"Read More"}
             linkout={() => handleNavigate()}

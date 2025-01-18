@@ -53,10 +53,6 @@ const News = () => {
                 </div>
             </div>
 
-            <div className="d-flex justify-content-center ">
-                <button className='mt-5 mb-5' style={styles.butoncont}>Explore More</button>
-            </div>
-
 
         </section>
     )

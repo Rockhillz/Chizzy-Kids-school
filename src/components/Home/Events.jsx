@@ -14,7 +14,7 @@ const Events = () => {
         <div className="container">
 
 
-            <h1 style={{fontWeight:"700", textAlign:'center', color:'darkblue', marginTop:'40px'}}>Our Events</h1>
+            <h1 style={{fontWeight:"700", textAlign:'center', color:'darkblue', marginTop:'10px'}}>Our Events</h1>
             <HrElement />
 
             <div className="row d-flex justify-content-center mt-2">
