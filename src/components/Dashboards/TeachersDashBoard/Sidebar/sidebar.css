@@ -20,8 +20,8 @@
   }
 
   .sidebar .nav-link {
-    margin-bottom: 0 !important; /* Remove vertical spacing for row layout */
-    flex: 1 !important; /* Make each nav item take equal space */
+    margin-bottom: 0 !important; 
+    flex: 1 !important; 
     justify-content: center !important; /* Center the icons */
   }
 
