@@ -23,7 +23,7 @@ function Courosel() {
     <Carousel activeIndex={index} onSelect={handleSelect} className=''>
       <Carousel.Item>
         <img
-         src="./public/CarouselAssets/students.jpg"
+         src="https://res.cloudinary.com/djbtdlzrj/image/upload/v1737235446/IMG-20241117-WA0056_vy1b5a.jpg"
          alt=""
          className='carousel-img'
          style={styles.imgPic} />

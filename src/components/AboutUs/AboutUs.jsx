@@ -1,17 +1,20 @@
 
-
-import React from 'react';
+import { useEffect } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import './AboutUs.css'; 
 
 const AboutUs = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
+
   return (
     <div className='py-5'>
       <Container className="about-us-container ">
       <>
   
         <div md={6}>
-          <h1 className='d-flex justify-content-center'>About Chizzy Kids School</h1>
+          <h1 className='d-flex justify-content-center'>About Chizzy Kids Group of Schools</h1>
           <p>
             Chizzy Kids Group of Schools is a leading educational institution in Nigeria dedicated to nurturing young minds and fostering academic, moral, and social excellence. Established with the mission of providing world-class education tailored to the Nigerian context, our school is committed to raising a generation of confident, innovative, and responsible future leaders. At Chizzy Kids, we believe that education goes beyond the classroom. Our approach combines rigorous academics with a variety of extracurricular activities, ensuring that every child develops holistically in a secure and supportive environment.
           </p>
