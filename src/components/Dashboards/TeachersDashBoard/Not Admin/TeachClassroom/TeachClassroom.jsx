@@ -38,7 +38,7 @@ const TeachClassroom = () => {
     const fetchClassroom = async () => {
       try {
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/classrooms-assigned-to-teacher`,
+          `${import.meta.env.VITE_API_BASE_URL}/classrooms-assigned-to-teacher`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -48,7 +48,7 @@ const TeachClassroom = () => {
         const data = await response.json();
 
         const termResponse = await fetch(
-          `http://localhost:8080/api/currentTerm-and-session`,
+          `${import.meta.env.VITE_API_BASE_URL}/currentTerm-and-session`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -99,7 +99,7 @@ const TeachClassroom = () => {
 
     try {
       const response = await fetch(
-        "https://chizzykids-server.onrender.com/api/attendance",
+        `${import.meta.env.VITE_API_BASE_URL}/attendance`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -19,7 +19,7 @@ const ClassroomsList = ({ setSelectedClassroom }) => {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/classrooms`,
+          `${import.meta.env.VITE_API_BASE_URL}/classrooms`,
           {
             method: "GET",
             headers: {
@@ -54,7 +54,7 @@ const ClassroomsList = ({ setSelectedClassroom }) => {
       setCreating(true);
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `https://chizzykids-server.onrender.com/api/create-classroom`,
+        `${import.meta.env.VITE_API_BASE_URL}/create-classroom`,
         {
           method: "POST",
           headers: {

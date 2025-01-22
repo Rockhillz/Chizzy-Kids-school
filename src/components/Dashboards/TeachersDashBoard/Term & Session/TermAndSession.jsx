@@ -23,7 +23,7 @@ function TermAndSession() {
         const token = localStorage.getItem("token");
 
         const response = await fetch(
-          "http://localhost:8080/api/currentTerm-and-session",
+          `${import.meta.env.VITE_API_BASE_URL}/currentTerm-and-session`,
           {
             method: "GET",
             headers: {
@@ -37,7 +37,7 @@ function TermAndSession() {
           throw new Error("Failed to fetch current session");
         }
         const data = await response.json();
-        console.log("data: ", data);
+        
         setCurrentSession(data.session.sessionName);
         setCurrentSessionId(data.session._id);
         setTermName(data.termName);
@@ -57,7 +57,7 @@ function TermAndSession() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:8080/api/createSession", {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/createSession`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,7 +78,7 @@ function TermAndSession() {
       setErrorMessage("Unable to create session. Please try again.");
       setSuccessMessage("");
     } finally {
-      setLoadingSession(false); // Stop spinner
+      setLoadingSession(false); 
     }
   };
 
@@ -87,7 +87,7 @@ function TermAndSession() {
 
     setLoadingTerm(true); // Start spinner
     try {
-      const response = await fetch("http://localhost:8080/api/createTerm", {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/createTerm`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
