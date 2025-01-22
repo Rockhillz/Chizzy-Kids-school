@@ -123,6 +123,7 @@ import Classrooms from "./classroom/Classrooms";
 import Subjects from "./Subject/Subjects";
 import TeachClassroom from "./Not Admin/TeachClassroom/TeachClassroom";
 import TeachSubject from "./Not Admin/TeachSubjects/TeachSubject";
+import Admin from "./Admin/Admin";
 
 const TeachDashboard = () => {
   const [activeTab, setActiveTab] = useState("profile");
@@ -178,14 +179,16 @@ const TeachDashboard = () => {
         return <TeachClassroom />;
       case "Subject":
         return <TeachSubject />;
-      case "Students":
-        return <Students />;
-      case "Teachers":
-        return <Teachers />;
-      case "Classrooms":
-        return <Classrooms />;
-      case "Subjects":
-        return <Subjects />;
+        case "Admin":
+          return <Admin />;
+      // case "Students":
+      //   return <Students />;
+      // case "Teachers":
+      //   return <Teachers />;
+      // case "Classrooms":
+      //   return <Classrooms />;
+      // case "Subjects":
+      //   return <Subjects />;
       case "Logout":
         handleLogout();
         return null;

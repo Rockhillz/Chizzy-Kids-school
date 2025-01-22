@@ -48,7 +48,7 @@ const TeachClassroom = () => {
         const data = await response.json();
 
         const termResponse = await fetch(
-          `https://chizzykids-server.onrender.com/api/currentTerm-and-session`,
+          `http://localhost:8080/api/currentTerm-and-session`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -56,9 +56,6 @@ const TeachClassroom = () => {
           }
         );
 
-        if (!termResponse.ok) {
-          throw new Error("Failed to fetch terms and sessions");
-        }
         const termData = await termResponse.json();
 
         if (data.success && data.data) {
@@ -70,9 +67,15 @@ const TeachClassroom = () => {
           });
           setAttendance(initialAttendance);
 
-          setSessionName(termData.session?.sessionName || "Unknown Session");
-          setTermName(termData.termName || "Unknown Term");
-          setTermId(termData._id || "");
+          if (termResponse.ok && termData) {
+            setSessionName(termData.session?.sessionName || "Unknown Session");
+            setTermName(termData.termName || "Unknown Term");
+            setTermId(termData._id || "");
+          } else {
+            setSessionName("No Session Available");
+            setTermName("No Term Available");
+            setTermId("");
+          }
         } else {
           setError(data.message || "Failed to fetch classroom data.");
         }
@@ -188,7 +191,7 @@ const TeachClassroom = () => {
             <button
               className="btn btn-primary my-3 w-md-auto"
               onClick={submitAttendance}
-              disabled={spinnings}
+              disabled={!termId || spinnings}
             >
               {spinnings ? (
                 <Spinner animation="border" variant="light" size="sm" />

@@ -80,7 +80,7 @@ const StudentProfile = ({ studentId, onBack }) => {
         className="mb-3"
         onClick={onBack} // Navigate back
       >
-        Back
+        Student Lists
       </Button>
 
       <h3 className="text-center text-primary mb-4">Student Profile</h3>

@@ -234,7 +234,7 @@ const ClassroomDetails = ({ ClassroomId, onBack }) => {
   return (
     <div className="p-4 shadow-lg">
       <Button variant="outline-primary" onClick={onBack} className="mb-3">
-        Back
+        Classrooms List
       </Button>
       <h3 className="text-center text-primary mb-4">Classroom Details</h3>
       <div>

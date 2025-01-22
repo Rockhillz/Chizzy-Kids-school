@@ -75,8 +75,12 @@ const TeacherProfile = ({ teacherId, onBack }) => {
 
   return (
     <div className="p-4 shadow-lg">
-      <Button variant="outline-primary" onClick={onBack} className="mb-3">
-        Back
+      <Button
+        variant="outline-primary"
+        className="mb-3"
+        onClick={onBack} // Navigate back
+      >
+        Teachers Lists
       </Button>
       <h3 className="text-center text-primary mb-4">Teacher Profile</h3>
       <div className="align-items-center d-flex">
