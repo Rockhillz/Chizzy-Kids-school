@@ -11,6 +11,7 @@ const Grade = () => {
       const getStudentIdFromToken = () => {
         try {
           const token = localStorage.getItem("token");
+          console.log("token: " + token);
           if (!token) return null;
           const decodedToken = JSON.parse(atob(token.split(".")[1])); 
           return decodedToken.studentId || null;
@@ -19,14 +20,15 @@ const Grade = () => {
           return null;
         }
       };
-
+      
       const studentId = getStudentIdFromToken();
 
+      console.log("Student", studentId);
 
       try {
         const token = localStorage.getItem("token"); 
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/student/grades/${studentId}`,
+          `http://localhost:8080/api/student/grades/${studentId}`,
           {
             method: "GET",
             headers: {
@@ -42,6 +44,7 @@ const Grade = () => {
 
         const data = await response.json();
         setGrades(data);
+        console.log("data", data);
       } catch (err) {
         setError(err.message || "Error fetching grades");
       } finally {
@@ -53,7 +56,7 @@ const Grade = () => {
   }, []);
 
   return (
-    <Container className="">
+    <Container>
       <h2 className="text-center mb-3">Subject Grades</h2>
 
       {loading && (
@@ -66,7 +69,11 @@ const Grade = () => {
 
       {error && <Alert variant="danger">{error}</Alert>}
 
-      {!loading && !error && (
+      {!loading && !error && !grades.length && (
+        <Alert variant="info">No grades available for the current term.</Alert>
+      )}
+
+      {!loading && !error && grades.length > 0 && (
         <Table striped bordered hover responsive>
           <thead className="table-dark">
             <tr>

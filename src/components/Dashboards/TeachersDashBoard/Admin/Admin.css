@@ -1,0 +1,12 @@
+.admin-buttons .admin-button {
+    flex: 1 1 auto; /* Allow buttons to grow/shrink in row layout */
+    max-width: 200px; /* Ensure buttons have a maximum width */
+  }
+  
+  @media (max-width: 767px) {
+    .admin-buttons .admin-button {
+      width: 100%; /* Full width for mobile */
+      max-width: none; /* Override max-width for smaller screens */
+    }
+  }
+  
