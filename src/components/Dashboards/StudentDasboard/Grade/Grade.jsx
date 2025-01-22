@@ -11,7 +11,7 @@ const Grade = () => {
       const getStudentIdFromToken = () => {
         try {
           const token = localStorage.getItem("token");
-          console.log("token: " + token);
+          
           if (!token) return null;
           const decodedToken = JSON.parse(atob(token.split(".")[1])); 
           return decodedToken.studentId || null;
@@ -23,12 +23,11 @@ const Grade = () => {
       
       const studentId = getStudentIdFromToken();
 
-      console.log("Student", studentId);
 
       try {
         const token = localStorage.getItem("token"); 
         const response = await fetch(
-          `http://localhost:8080/api/student/grades/${studentId}`,
+          `${import.meta.env.VITE_API_BASE_URL}/student/grades/${studentId}`,
           {
             method: "GET",
             headers: {
@@ -44,7 +43,7 @@ const Grade = () => {
 
         const data = await response.json();
         setGrades(data);
-        console.log("data", data);
+
       } catch (err) {
         setError(err.message || "Error fetching grades");
       } finally {

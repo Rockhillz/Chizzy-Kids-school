@@ -27,7 +27,7 @@ const StudentDashboard = () => {
         const studentId = decodedToken.studentId;
 
 
-        const response = await fetch(`https://chizzykids-server.onrender.com/api/single-student/${studentId}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/single-student/${studentId}`, {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         });

@@ -22,7 +22,7 @@ const StudentsList = ({ setSelectedStudent }) => {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/students`, {
+          `${import.meta.env.VITE_API_BASE_URL}/students`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -41,7 +41,7 @@ const StudentsList = ({ setSelectedStudent }) => {
 
     fetchStudents();
   }, []);
-  console.log(students)
+  
 
   const addStudent = () => {
     navigate("/add-student");

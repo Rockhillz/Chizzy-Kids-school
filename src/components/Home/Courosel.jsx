@@ -20,7 +20,7 @@ function Courosel() {
   };
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect} className=''>
+    <Carousel activeIndex={index} onSelect={handleSelect} className='topside'>
       <Carousel.Item>
         <img
          src="https://res.cloudinary.com/djbtdlzrj/image/upload/v1737235446/IMG-20241117-WA0056_vy1b5a.jpg"
@@ -37,7 +37,8 @@ function Courosel() {
 
       <Carousel.Item>
         <img 
-        src="https://thumbs.dreamstime.com/b/african-university-students-group-happy-looking-camera-52803479.jpg"
+        
+        src='https://res.cloudinary.com/djbtdlzrj/image/upload/v1737571972/Joyful_Classroom_Celebration_rgkpcm.jpg'
         alt=""
         className='carousel-img' 
         style={styles.imgPic}/>
@@ -49,7 +50,8 @@ function Courosel() {
 
       <Carousel.Item>
         <img
-          src="https://www.oxfordlearning.com/wp-content/uploads/2023/03/GettyImages-846567624-scaled.jpg"
+       
+          src='https://res.cloudinary.com/djbtdlzrj/image/upload/v1737571972/Joyful_Young_Girl_Ready_for_School_xarrpp.jpg'
          alt=""
          className='carousel-img'
          style={styles.imgPic} />
