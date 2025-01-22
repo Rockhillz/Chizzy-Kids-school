@@ -356,7 +356,7 @@ const TeachSubjectDetails = ({ subjectId, onBack }) => {
     const fetchDetails = async () => {
       try {
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/students-by-subject/${subjectId}`,
+          `${import.meta.env.VITE_API_BASE_URL}/students-by-subject/${subjectId}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -370,7 +370,7 @@ const TeachSubjectDetails = ({ subjectId, onBack }) => {
 
         // Fetch terms and sessions
         const termResponse = await fetch(
-          `http://localhost:8080/api/currentTerm-and-session`,
+          `${import.meta.env.VITE_API_BASE_URL}/currentTerm-and-session`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -426,7 +426,7 @@ const TeachSubjectDetails = ({ subjectId, onBack }) => {
 
     try {
       const response = await fetch(
-        "https://chizzykids-server.onrender.com/api/mark/update",
+        `${import.meta.env.VITE_API_BASE_URL}/mark/update`,
         {
           method: "POST",
           headers: {
@@ -479,7 +479,7 @@ const TeachSubjectDetails = ({ subjectId, onBack }) => {
 
     try {
       const response = await fetch(
-        "https://chizzykids-server.onrender.com/api/mark/finalize",
+        `${import.meta.env.VITE_API_BASE_URL}/mark/finalize`,
         {
           method: "PATCH",
           headers: {
@@ -507,7 +507,7 @@ const TeachSubjectDetails = ({ subjectId, onBack }) => {
   const handleUnfinalizeMarks = async (studentId) => {
     try {
       const response = await fetch(
-        "https://chizzykids-server.onrender.com/api/mark/unfinalize",
+        `${import.meta.env.VITE_API_BASE_URL}/mark/unfinalize`,
         {
           method: "PATCH",
           headers: {

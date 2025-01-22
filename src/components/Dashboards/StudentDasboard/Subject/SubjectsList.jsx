@@ -10,7 +10,7 @@ const SubjectList = ({ studentId }) => {
     const fetchSubjects = async () => {
       try {
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/student-subjects/${studentId}`
+          `${import.meta.env.VITE_API_BASE_URL}/student-subjects/${studentId}`
         );
 
         if (!response.ok) {

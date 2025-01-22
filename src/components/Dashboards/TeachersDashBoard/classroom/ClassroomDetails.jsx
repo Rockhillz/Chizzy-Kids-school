@@ -24,7 +24,7 @@ const ClassroomDetails = ({ ClassroomId, onBack }) => {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/classroom/${ClassroomId}`,
+          `${import.meta.env.VITE_API_BASE_URL}/classroom/${ClassroomId}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const ClassroomDetails = ({ ClassroomId, onBack }) => {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/subjects`,
+          `${import.meta.env.VITE_API_BASE_URL}/subjects`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const ClassroomDetails = ({ ClassroomId, onBack }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `https://chizzykids-server.onrender.com/api/assign-subjects-classroom`,
+        `${import.meta.env.VITE_API_BASE_URL}/assign-subjects-classroom`,
         {
           method: "PATCH",
           headers: {
@@ -115,7 +115,7 @@ const ClassroomDetails = ({ ClassroomId, onBack }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `https://chizzykids-server.onrender.com/api/remove-subjects-classroom`,
+        `${import.meta.env.VITE_API_BASE_URL}/remove-subjects-classroom`,
         {
           method: "PATCH",
           headers: {
@@ -160,7 +160,7 @@ const ClassroomDetails = ({ ClassroomId, onBack }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `https://chizzykids-server.onrender.com/api/classroom/remove-teacher`,
+        `${import.meta.env.VITE_API_BASE_URL}/classroom/remove-teacher`,
         {
           method: "PATCH",
           headers: {
@@ -192,7 +192,7 @@ const ClassroomDetails = ({ ClassroomId, onBack }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `https://chizzykids-server.onrender.com/api/delete-classroom/${ClassroomId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/delete-classroom/${ClassroomId}`,
         {
           method: "DELETE",
           headers: {

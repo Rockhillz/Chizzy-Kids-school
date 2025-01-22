@@ -13,7 +13,7 @@ const AssignStudentClass = ({ studentId, onClose, setAssignLoading }) => {
         const token = localStorage.getItem("token"); // Fetch token
 
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/classrooms`,
+          `${import.meta.env.VITE_API_BASE_URL}/classrooms`,
           {
             method: "GET",
             headers: {
@@ -28,7 +28,7 @@ const AssignStudentClass = ({ studentId, onClose, setAssignLoading }) => {
         }
 
         const data = await response.json();
-        console.log(data);
+        
         setClassrooms(data.classrooms || []);
       } catch (error) {
         console.error("Error fetching classrooms:", error);
@@ -50,10 +50,10 @@ const AssignStudentClass = ({ studentId, onClose, setAssignLoading }) => {
     setAssignLoading(true); // Notify parent to show spinner
     try {
       const token = localStorage.getItem("token");
-      console.log(`token: ${token}`);
+      
 
       const response = await fetch(
-        `https://chizzykids-server.onrender.com/api/assign-Class`,
+        `${import.meta.env.VITE_API_BASE_URL}/assign-Class`,
         {
           method: "PATCH",
           headers: {

@@ -62,7 +62,7 @@ const AddStudent = () => {
       });
 
       const response = await fetch(
-        `https://chizzykids-server.onrender.com/api/register/student`,
+        `${import.meta.env.VITE_API_BASE_URL}/register/student`,
         {
           method: "POST",
           headers: {

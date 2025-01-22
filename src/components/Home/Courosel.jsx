@@ -37,8 +37,8 @@ function Courosel() {
 
       <Carousel.Item>
         <img 
-        // src="https://thumbs.dreamstime.com/b/african-university-students-group-happy-looking-camera-52803479.jpg"
-        src='src\assets\Icons\Joyful Classroom Celebration.jpeg'
+        
+        src='https://res.cloudinary.com/djbtdlzrj/image/upload/v1737571972/Joyful_Classroom_Celebration_rgkpcm.jpg'
         alt=""
         className='carousel-img' 
         style={styles.imgPic}/>
@@ -50,8 +50,8 @@ function Courosel() {
 
       <Carousel.Item>
         <img
-          // src="https://www.oxfordlearning.com/wp-content/uploads/2023/03/GettyImages-846567624-scaled.jpg"
-          src='src\assets\Icons\Joyful Young Girl Ready for School.jpeg'
+       
+          src='https://res.cloudinary.com/djbtdlzrj/image/upload/v1737571972/Joyful_Young_Girl_Ready_for_School_xarrpp.jpg'
          alt=""
          className='carousel-img'
          style={styles.imgPic} />

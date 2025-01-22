@@ -19,7 +19,7 @@ const TeacherProfile = ({ teacherId, onBack }) => {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/singleTeacher/${teacherId}`,
+          `${import.meta.env.VITE_API_BASE_URL}/singleTeacher/${teacherId}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -45,7 +45,7 @@ const TeacherProfile = ({ teacherId, onBack }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `https://chizzykids-server.onrender.com/api/deleteTeacher/${teacherId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/deleteTeacher/${teacherId}`,
         {
           method: "DELETE",
           headers: {

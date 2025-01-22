@@ -48,8 +48,8 @@ const SchoolPortal = () => {
 
       const apiUrl =
         role === "teacher"
-          ? "https://chizzykids-server.onrender.com/api/loginteacher"
-          : "https://chizzykids-server.onrender.com/api/student/login";
+          ? `${import.meta.env.VITE_API_BASE_URL}/loginteacher`
+          : `${import.meta.env.VITE_API_BASE_URL}/student/login`;
 
       const response = await fetch(apiUrl, {
         method: "POST",

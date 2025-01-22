@@ -12,7 +12,7 @@ const AssignClass = ({ teacherId, onClose, setAssignLoading }) => {
       try {
         const token = localStorage.getItem("token"); // Fetch token
 
-        const response = await fetch(`https://chizzykids-server.onrender.com/api/classrooms`, {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/classrooms`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const AssignClass = ({ teacherId, onClose, setAssignLoading }) => {
       const token = localStorage.getItem("token");
       
 
-      const response = await fetch(`https://chizzykids-server.onrender.com/api/assign-Teacher`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/assign-Teacher`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

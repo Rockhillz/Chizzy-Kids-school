@@ -21,7 +21,7 @@ const SubjectsList = ({ setSelectedSubject }) => {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/subjects`,
+          `${import.meta.env.VITE_API_BASE_URL}/subjects`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -36,7 +36,7 @@ const SubjectsList = ({ setSelectedSubject }) => {
 
         const data = await response.json();
         setSubjects(data.subjects || data);
-        console.log(data);
+       
       } catch (err) {
         console.error("Error fetching subjects:", err);
       } finally {
@@ -51,7 +51,7 @@ const SubjectsList = ({ setSelectedSubject }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `https://chizzykids-server.onrender.com/api/classrooms`,
+        `${import.meta.env.VITE_API_BASE_URL}/classrooms`,
         {
           method: "GET",
           headers: {
@@ -80,7 +80,7 @@ const SubjectsList = ({ setSelectedSubject }) => {
       setCreating(true);
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `https://chizzykids-server.onrender.com/api/createSubject`,
+        `${import.meta.env.VITE_API_BASE_URL}/createSubject`,
         {
           method: "POST",
           headers: {

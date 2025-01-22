@@ -19,7 +19,7 @@ const StudentProfile = ({ studentId, onBack }) => {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          `https://chizzykids-server.onrender.com/api/single-student/${studentId}`,
+          `${import.meta.env.VITE_API_BASE_URL}/single-student/${studentId}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -45,7 +45,7 @@ const StudentProfile = ({ studentId, onBack }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `https://chizzykids-server.onrender.com/api/delete/${studentId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/delete/${studentId}`,
         {
           method: "DELETE",
           headers: {
