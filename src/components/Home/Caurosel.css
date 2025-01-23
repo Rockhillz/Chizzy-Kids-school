@@ -1,6 +1,8 @@
 .topside {
   margin-top: 60px;
 }
+
+
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 768px) {
     .carousel-img {

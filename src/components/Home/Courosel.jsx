@@ -9,8 +9,9 @@ function Courosel() {
   const styles = {
     imgPic: {
       width: "100%",
-      height: "1000px",
+      height: "550px",
       objectFit: "cover",
+      objectPosition: "center top",
       filter: "blur(1px)",
     },
   };
@@ -21,30 +22,32 @@ function Courosel() {
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect} className='topside'>
-      <Carousel.Item>
+      <Carousel.Item className='carr'>
         <img
-         src="https://res.cloudinary.com/djbtdlzrj/image/upload/v1737235446/IMG-20241117-WA0056_vy1b5a.jpg"
-         alt=""
+        //  src="https://res.cloudinary.com/djbtdlzrj/image/upload/v1737633566/chizzyJPEG_oegn2d.jpg"
+        src='https://res.cloudinary.com/djbtdlzrj/image/upload/v1736338474/ChizzyKids_DB/students/bsa1qogsxmptu9s0dd6o.jpg'
+         alt="Group of students"
          className='carousel-img'
          style={styles.imgPic} />
         <Carousel.Caption>
-          <h3>Third slide label</h3>
+          <h3>Group Picture</h3>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            Children Posing for picture.
           </p>
         </Carousel.Caption>
       </Carousel.Item>
 
       <Carousel.Item>
-        <img 
+        <img
         
-        src='https://res.cloudinary.com/djbtdlzrj/image/upload/v1737571972/Joyful_Classroom_Celebration_rgkpcm.jpg'
-        alt=""
+        // src='https://res.cloudinary.com/djbtdlzrj/image/upload/v1737571972/Joyful_Classroom_Celebration_rgkpcm.jpg'
+        src='https://res.cloudinary.com/djbtdlzrj/image/upload/v1737637798/IMG-20241117-WA0032_faeg7w.jpg'
+        alt="New"
         className='carousel-img' 
         style={styles.imgPic}/>
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3></h3>
+          <p>Football team taking a group photograph.</p>
         </Carousel.Caption>
       </Carousel.Item>
 
