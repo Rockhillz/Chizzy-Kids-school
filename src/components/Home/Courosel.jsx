@@ -24,7 +24,6 @@ function Courosel() {
     <Carousel activeIndex={index} onSelect={handleSelect} className='topside'>
       <Carousel.Item className='carr'>
         <img
-        //  src="https://res.cloudinary.com/djbtdlzrj/image/upload/v1737633566/chizzyJPEG_oegn2d.jpg"
         src='https://res.cloudinary.com/djbtdlzrj/image/upload/v1736338474/ChizzyKids_DB/students/bsa1qogsxmptu9s0dd6o.jpg'
          alt="Group of students"
          className='carousel-img'
@@ -39,10 +38,8 @@ function Courosel() {
 
       <Carousel.Item>
         <img
-        
-        // src='https://res.cloudinary.com/djbtdlzrj/image/upload/v1737571972/Joyful_Classroom_Celebration_rgkpcm.jpg'
         src='https://res.cloudinary.com/djbtdlzrj/image/upload/v1737637798/IMG-20241117-WA0032_faeg7w.jpg'
-        alt="New"
+        alt="Student taking photo before going to play football game"
         className='carousel-img' 
         style={styles.imgPic}/>
         <Carousel.Caption>
@@ -55,7 +52,7 @@ function Courosel() {
         <img
        
           src='https://res.cloudinary.com/djbtdlzrj/image/upload/v1737571972/Joyful_Young_Girl_Ready_for_School_xarrpp.jpg'
-         alt=""
+         alt="A primary student"
          className='carousel-img'
          style={styles.imgPic} />
         <Carousel.Caption>
