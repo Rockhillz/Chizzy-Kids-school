@@ -14,6 +14,7 @@ import {
   FaChevronDown,
   FaChevronRight,
 } from "react-icons/fa";
+import { UserCog } from 'lucide-react';
 import "./sidebar.css";
 
 const Sidebar = ({ activeTab, setActiveTab, role }) => {
@@ -43,7 +44,7 @@ const Sidebar = ({ activeTab, setActiveTab, role }) => {
     },
     {
       label: "Admin",
-      icon: <FaUser />,
+      icon: <UserCog />,
       tab: "Admin",
       roles: [ "admin"],
       outsideDropdown: true,
