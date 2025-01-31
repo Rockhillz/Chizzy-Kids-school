@@ -13,7 +13,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/events`, {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/events`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -34,7 +34,7 @@ const Events = () => {
   // Handle delete event
   const handleDelete = async (eventId) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/deleteEvent/${eventId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/deleteEvent/${eventId}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -49,7 +49,7 @@ const Events = () => {
   // Handle edit event
   const handleEdit = async (updatedEvent) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/events/${updatedEvent._id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/events/${updatedEvent._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -77,7 +77,7 @@ const Events = () => {
       formData.append("date", newEvent.date);
       formData.append("image", newEvent.image);
 
-      const response = await fetch(`http://localhost:8080/api/createEvent`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/createEvent`, {
         method: "POST",
         body: formData,
       });
