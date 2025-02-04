@@ -14,108 +14,117 @@ function TermAndSession() {
   const [showTermModal, setShowTermModal] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [loadingSession, setLoadingSession] = useState(false); // For Create Session spinner
-  const [loadingTerm, setLoadingTerm] = useState(false); // For Create Term spinner
+  const [loadingSession, setLoadingSession] = useState(false);
+  const [loadingTerm, setLoadingTerm] = useState(false);
 
-  useEffect(() => {
-    const fetchCurrentSession = async () => {
-      try {
-        const token = localStorage.getItem("token");
-
-        const response = await fetch(
-          `${import.meta.env.VITE_API_BASE_URL}/currentTerm-and-session`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch current session");
-        }
-        const data = await response.json();
-        
-        setCurrentSession(data.session.sessionName);
-        setCurrentSessionId(data.session._id);
-        setTermName(data.termName);
-      } catch (error) {
-        console.error("Error fetching current session:", error);
-        setErrorMessage(
-          "Unable to fetch current session. Please try again later."
-        );
-      }
-    };
-
-    fetchCurrentSession();
-  }, []);
-
-  const handleCreateSession = async () => {
-    setLoadingSession(true); // Start spinner
+  const fetchCurrentSessionAndTerm = async () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/createSession`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ sessionName: newSession }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/currentTerm-and-session`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch current session and term");
+      }
+
+      const data = await response.json();
+      setCurrentSession(data.session.sessionName);
+      setCurrentSessionId(data.session._id);
+      setTermName(data.term.termName);
+    } catch (error) {
+      console.error("Error fetching current session and term:", error);
+      setErrorMessage(
+        "Unable to fetch current session and term. Please try again later."
+      );
+    }
+  };
+
+  useEffect(() => {
+    fetchCurrentSessionAndTerm();
+  }, []);
+
+  const handleCreateSession = async () => {
+    setLoadingSession(true);
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/createSession`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ sessionName: newSession }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to create session");
       }
 
       setSuccessMessage("Session created successfully!");
-      setErrorMessage(""); // Clear any previous errors
-      setNewSession(""); // Reset input
+      setErrorMessage("");
+      setNewSession("");
+
+      await fetchCurrentSessionAndTerm(); // ✅ Re-fetch after session creation
     } catch (error) {
       console.error("Error creating session:", error);
       setErrorMessage("Unable to create session. Please try again.");
       setSuccessMessage("");
     } finally {
-      setLoadingSession(false); 
+      setLoadingSession(false);
     }
   };
 
   const handleCreateTerm = async () => {
     const token = localStorage.getItem("token");
-
-    setLoadingTerm(true); // Start spinner
+    setLoadingTerm(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/createTerm`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          termName: newTermName,
-          sessionId: currentSessionId, // Pass the current session ID directly
-          startDate,
-          endDate,
-        }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/createTerm`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            termName: newTermName,
+            sessionId: currentSessionId,
+            startDate,
+            endDate,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to create term");
       }
 
       setSuccessMessage("Term created successfully!");
-      setErrorMessage(""); // Clear any previous errors
-      setNewTermName(""); // Reset term selection
-      setStartDate(""); // Reset dates
+      setErrorMessage("");
+      setNewTermName("");
+      setStartDate("");
       setEndDate("");
+
+      await fetchCurrentSessionAndTerm(); // ✅ Re-fetch after term creation
     } catch (error) {
       console.error("Error creating term:", error);
       setErrorMessage("Unable to create term. Please try again.");
       setSuccessMessage("");
     } finally {
-      setLoadingTerm(false); // Stop spinner
+      setLoadingTerm(false);
     }
   };
 
@@ -138,7 +147,7 @@ function TermAndSession() {
         Create Term
       </Button>
 
-      {/* Create Session Modal  */}
+      {/* Create Session Modal */}
       <Modal
         show={showSessionModal}
         onHide={() => {
@@ -174,7 +183,6 @@ function TermAndSession() {
           >
             Close
           </Button>
-
           <Button variant="primary" onClick={handleCreateSession}>
             {loadingSession ? (
               <Spinner animation="border" size="sm" />
@@ -209,7 +217,10 @@ function TermAndSession() {
                 as="select"
                 value={newTermName}
                 onChange={(e) => setNewTermName(e.target.value)}
+                required
               >
+                <option value="">Select a Term</option>{" "}
+                {/* Placeholder option */}
                 <option value="First Term">First Term</option>
                 <option value="Second Term">Second Term</option>
                 <option value="Third Term">Third Term</option>

@@ -1,0 +1,32 @@
+.event-card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    width: 100%;
+    max-width: 350px ;
+  }
+  
+  .event-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .event-card-img {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .event-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .event-date {
+    font-size: 0.9rem;
+  }
+  
+  .event-description {
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
