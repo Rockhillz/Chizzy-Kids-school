@@ -26,7 +26,7 @@ const TeachSubjectsList = ({ onSubjectSelect }) => {
 
         try {
           const token = localStorage.getItem('token');
-          const response = await fetch(`https://chizzykids-server.onrender.com/api/subjects-assigned-to-teacher/${teacherId}`, {
+          const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/subjects-assigned-to-teacher/${teacherId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
   

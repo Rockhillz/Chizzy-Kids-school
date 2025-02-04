@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './Card.css'
 
-function Cardbox({ Image, Title, Cardtext, btntext, linkout }) {
+function Cardbox({ Image, Title, Cardtext, btntext, date, linkout }) {
   const styles = {
 
 
@@ -37,11 +37,11 @@ function Cardbox({ Image, Title, Cardtext, btntext, linkout }) {
         className='Imgpic'
       />
       <Card.Body>
-        <Card.Title style={styles.textTitle}>{Title ? `${Title.slice(0, 20)}...` : "Card Title"}</Card.Title>
+        <Card.Title style={styles.textTitle}>{Title ? `${Title.slice(0, 200)}` : "Card Title"}</Card.Title>
         <Card.Text style={styles.textContent}>
           {Cardtext || "Some quick example text to build on the card title and make up the bulk of the cards content."}
         </Card.Text>
-        <Button variant="primary" style={styles.btnBox}>{btntext || "Go somewhere"}</Button>
+        <Button variant="primary" style={styles.btnBox}>{btntext || new Date(date).toLocaleDateString() || "Go somewhere"}</Button>
       </Card.Body>
     </Card>
   );

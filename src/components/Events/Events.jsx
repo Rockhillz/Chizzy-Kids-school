@@ -1,49 +1,114 @@
-// import { Carousel } from "react-bootstrap";
-import { useEffect } from "react";
-import "./event.css";
-import Cardbox from "../CardList/Cardbox";
-// import { Link } from "react-router-dom";
+// // import { Carousel } from "react-bootstrap";
+// import { useEffect, useState } from "react";
+// import "./event.css";
+// import Cardbox from "../CardList/Cardbox";
+// // import { Link } from "react-router-dom";
+// import HrElement from "../Home/HrElement";
+
+// const Events = () => {
+//   const [events, setEvents] = useState([]);
+
+//   // fetch events from database
+//   const fetchEvents = async () => {
+//     try {
+//       const response = await fetch(
+//         `${import.meta.env.VITE_API_BASE_URL}/events`
+//       );
+//       if (!response.ok) {
+//         throw new Error(`HTTP error! status: ${response.status}`);
+//       }
+//       const data = await response.json();
+//       setEvents(data.events || data);
+//       console.log(events);
+//     } catch (error) {
+//       console.error(
+//         "There has been a problem with your fetch operation:",
+//         error
+//       );
+//     }
+//   };
+
+//   useEffect(() => {
+//     window.scrollTo(0, 0); // Scrolls to the top of the page
+//     fetchEvents();
+//   }, []);
+
+//   return (
+//     <div style={{ marginTop: "20px" }}>
+//       <main className="container py-5">
+//         <div className="cont2 text-center">
+//           <h5>Upcoming Events</h5>
+//           <h1>BE UP TO DATE WITH OUR EVENTS</h1>
+//           <HrElement />
+//         </div>
+
+//         <div className="row d-flex justify-content-center mt-2">
+//           {events.map((event) => (
+//             <div key={event._id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+//               <Cardbox
+//                 Image={event.image}
+//                 Title={event.title}
+//                 Cardtext={event.description}
+//                 date={event.date}
+//                 linkout={() => handleNavigate()}
+//               />
+//             </div>
+//           ))}
+//         </div>
+//       </main>
+//     </div>
+//   );
+// };
+
+// export default Events;
+
+import React, { useEffect, useState } from "react";
+// import "./event.css";
+import EventCard from "./EventCard"; // Import new card component
 import HrElement from "../Home/HrElement";
 
 const Events = () => {
+  const [events, setEvents] = useState([]);
+
+  const fetchEvents = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/events`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setEvents(data.events || data);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    }
+  };
+
   useEffect(() => {
-    window.scrollTo(0, 0); // Scrolls to the top of the page
+    window.scrollTo(0, 0);
+    fetchEvents();
   }, []);
-  
+
   return (
     <div style={{ marginTop: "20px" }}>
       <main className="container py-5">
-        <div className="cont2">
+        <div className="cont2 text-center">
           <h5>Upcoming Events</h5>
           <h1>BE UP TO DATE WITH OUR EVENTS</h1>
           <HrElement />
         </div>
 
         <div className="row d-flex justify-content-center mt-2">
-          <div className="col-sm-4 col-12 d-flex justify-content-center mb-3">
-            <Cardbox
-              Image={
-                "https://res.cloudinary.com/myskoolp/image/upload/b_auto,c_pad,h_400,w_600/v1/school_website/events/kingscollegelagos/event-224.jpg"
-              }
-              Title={"INTER-HOUSE SPORTS COMPETITION"}
-              Cardtext={
-                "The Inter-House Sports Competition is a fantastic opportunity for our students to showcase their talents and skills. It is a great way for our students to gain experience in various sports, and to showcase their skills."
-              }
-              btntext={"22/11/2024"}
-            />
-          </div>
-
-          <div className="col-sm-4 col-12 d-flex justify-content-center mb-3">
-            <Cardbox Image={"./public/CarouselAssets/students.jpg"} />
-          </div>
-
-          <div className="col-sm-4 col-12 d-flex justify-content-center mb-3">
-            <Cardbox
-              Image={
-                "https://thumbs.dreamstime.com/b/african-university-students-group-happy-looking-camera-52803479.jpg"
-              }
-            />
-          </div>
+          {events.map((event) => (
+            <div key={event._id} className="col-12 col-sm-6 col-md-4 col-lg-4 mb-4 d-flex justify-content-center">
+              <EventCard
+                image={event.image}
+                title={event.title}
+                description={event.description}
+                date={event.date}
+                onClick={() => console.log(`Clicked on ${event.title}`)}
+              />
+            </div>
+          ))}
         </div>
       </main>
     </div>

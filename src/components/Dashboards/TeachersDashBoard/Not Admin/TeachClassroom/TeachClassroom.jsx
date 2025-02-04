@@ -68,9 +68,9 @@ const TeachClassroom = () => {
           setAttendance(initialAttendance);
 
           if (termResponse.ok && termData) {
-            setSessionName(termData.session?.sessionName || "Unknown Session");
-            setTermName(termData.termName || "Unknown Term");
-            setTermId(termData._id || "");
+            setSessionName(termData.session.sessionName || "Unknown Session");
+            setTermName(termData.term.termName || "Unknown Term");
+            setTermId(termData.term._id || "");
           } else {
             setSessionName("No Session Available");
             setTermName("No Term Available");

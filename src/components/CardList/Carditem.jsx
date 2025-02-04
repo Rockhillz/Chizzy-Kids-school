@@ -37,9 +37,9 @@ const Carditem = () => {
             Image={
               "https://www.ictworks.org/wp-content/uploads/2017/02/mobile_phones_education.jpg"
             }
-            Title={"Passion for learning"}
+            Title={"Passionate Staff"}
             Cardtext={
-              "We have an amazing group of passionate teaching and non-teaching staff who really love what they do."
+              "Our dedicated team of passionate teaching and non-teaching staff truly loves what they do, creating a supportive and inspiring environment for everyone."
             }
             btntext={"Read More"}
             linkout={() => handleNavigate()}
@@ -53,7 +53,7 @@ const Carditem = () => {
             }
             Title={"Security"}
             Cardtext={
-              "Our environment is secured with visible presence of security personnels and equipment"
+              "Our environment is designed with safety and peace of mind as top priorities. Robust safety protocols and proactive measures are in place to ensure a secure and protected atmosphere at all times."
             }
             btntext={"Read More"}
             linkout={() => handleNavigate()}
