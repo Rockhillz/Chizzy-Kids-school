@@ -17,7 +17,7 @@ function NavigationBar() {
             <Nav.Link className='text-light' href="/aboutUs">ABOUT US</Nav.Link>
             <Nav.Link className='text-light' href="/events">EVENTS</Nav.Link>
             <Nav.Link className='text-light' href="/ourGallery">OUR GALLERY</Nav.Link>
-            {/* <Nav.Link className='text-light' href="/news">NEWS</Nav.Link> */}
+            <Nav.Link className='text-light' href="/news">NEWS</Nav.Link>
             {/* <Nav.Link className='text-light' href="/pta">P.T.A</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>

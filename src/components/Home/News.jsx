@@ -19,7 +19,7 @@ const News = () => {
     return (
         <section className="container-fluid " style={{ backgroundColor: '', marginTop: "0px", height: 'auto' }}>
             <div>
-                <h2 className=" text-center" style={{ color: "darkblue", marginTop: "30px" }}>WE KEEP YOU IN THE KNOW</h2>
+                <h2 className=" text-center fontColor" style={{ marginTop: "30px" }}>WE KEEP YOU IN THE KNOW</h2>
                 <HrElement />
 
                 <div className="container">

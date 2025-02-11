@@ -5,7 +5,7 @@ const Blog = () => {
         <section className='container' style={{ marginTop: "100px" }}>
             <div className='row d-flex justify-content-between'>
                 <div className='col-12 col-sm-8' style={{ width: "700px" }}>
-                    <h2 className='mt-5 text-center' style={{ width: "300px", fontWeight: '700', color: 'darkblue' }}>
+                    <h2 className='mt-5 text-center fontColor' style={{ width: "300px", fontWeight: '700' }}>
                         A Welcome Address From the Principal
                     </h2>
 
