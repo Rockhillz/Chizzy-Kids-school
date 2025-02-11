@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './Card.css'
 
-const Cardtext = ({ Image, Title, Cardtext, btntext, linkout }) => {
+const Cardtext = ({ title, cardtext, btntext, linkout }) => {
     const styles = {
         textTitle: {
             fontSize: "20px",
@@ -34,11 +34,11 @@ const Cardtext = ({ Image, Title, Cardtext, btntext, linkout }) => {
         <div>
             <Card className='CardContainer' onClick={linkout}>
                 <Card.Body>
-                    <Card.Title style={styles.textTitle}>{Title || "Card Title"}</Card.Title>
+                    <Card.Title style={styles.textTitle}>{title || "Card Title"}</Card.Title>
                     <Card.Text style={styles.textContent}>
-                        {Cardtext || "Some quick example text to build on the card title and make up the bulk of the cards content."}
+                        {cardtext || "Some quick example text to build on the card title and make up the bulk of the cards content."}
                     </Card.Text>
-                    <Button variant="primary" style={styles.btnBox}>{btntext || "Go somewhere"}</Button>
+                    <Button variant="primary" style={styles.btnBox}>{btntext || "Read more"}</Button>
                 </Card.Body>
             </Card>
         </div>
