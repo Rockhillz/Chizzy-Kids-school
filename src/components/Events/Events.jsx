@@ -72,7 +72,7 @@ const Events = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/events`);
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/events/eventsPage`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

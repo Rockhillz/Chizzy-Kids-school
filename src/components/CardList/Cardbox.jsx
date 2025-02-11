@@ -9,7 +9,7 @@ function Cardbox({ Image, Title, Cardtext, btntext, date, linkout }) {
     textTitle: {
       fontSize: "20px",
       textAlign: "center",
-      color: "darkBlue",
+      color: "#0a4275",
 
     },
     textContent: {

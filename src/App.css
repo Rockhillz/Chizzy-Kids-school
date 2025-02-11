@@ -9,3 +9,11 @@
 .content {
     flex: 1; /* Pushes the footer to the bottom */
 }
+
+.bg-t {
+    background-color: #0a4275
+}
+
+.fontColor {
+    color: #0a4275;
+}

@@ -6,8 +6,8 @@ const Contact = () => {
     <section style={{ backgroundColor: "#f8f9fa", padding: "50px 0" }}>
       <Container>
         <h2
-          className="text-center mb-4"
-          style={{ fontWeight: "700", color: "darkblue" }}
+          className="text-center mb-4 fontColor"
+          style={{ fontWeight: "700" }}
         >
           Contact Us
         </h2>
@@ -38,7 +38,7 @@ const Contact = () => {
                   placeholder="Type your message here..."
                 />
               </Form.Group>
-              <Button variant="primary" type="submit" className="w-100">
+              <Button type="submit" className="w-100 bg-t">
                 Send Message
               </Button>
             </Form>
