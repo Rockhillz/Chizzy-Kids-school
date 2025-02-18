@@ -89,9 +89,7 @@ const Events = () => {
   // Handle edit event
   const handleEdit = async (updatedEvent) => {
     setIsUpdating(true);
-    console.log(updatedEvent);
-    console.log(updatedEvent._id);
-    console.log("Update Payload:", { title, description, date, selectedImage });
+  
 
     try {
       const formData = new FormData();
