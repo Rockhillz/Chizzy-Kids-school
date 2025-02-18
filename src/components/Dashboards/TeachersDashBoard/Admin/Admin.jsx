@@ -9,6 +9,7 @@ import "./Admin.css"
 import TermAndSession from "../Term & Session/TermAndSession";
 import PromoteAndGrad from "../PromoteStudents/PromoteAndGrad";
 import Events from "../Events and News/eventss/Events";
+import News from "../Events and News/News/News";
 
 const Admin = () => {
   const [activeAdminTab, setActiveAdminTab] = useState("dashboard");
@@ -31,7 +32,7 @@ const Admin = () => {
         case "events":
           return <Events />;
         case "news":
-          return <p>Feature coming soon!</p>;
+          return <News />;
       default:
         return <p>Welcome to the Admin Dashboard. Select an option to proceed.</p>;
     }

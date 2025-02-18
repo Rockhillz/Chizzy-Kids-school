@@ -1,61 +1,65 @@
-import HrElement from "./HrElement"
-import Cardtext from "../CardList/Cardtext"
+import HrElement from "./HrElement";
+import Cardtext from "../CardList/Cardtext";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 
 const News = () => {
-    const styles = {
+  const navigate = useNavigate();
+  const [news, setNews] = useState([]);
 
-        butoncont: {
-            padding: "10px 20px",
-            color: "white",
-            border: "none",
-            borderRadius: "20px",
-            width: "150px",
-            fontSize: "13px",
-            fontWeight: "600",
-            backgroundColor: "darkBlue",
-        }
+  const fetchNews = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/latest-news`
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setNews(data.news || data);
+    } catch (error) {
+      console.error("Error fetching events:", error);
     }
-    return (
-        <section className="container-fluid " style={{ backgroundColor: '', marginTop: "0px", height: 'auto' }}>
-            <div>
-                <h2 className=" text-center fontColor" style={{ marginTop: "30px" }}>WE KEEP YOU IN THE KNOW</h2>
-                <HrElement />
+  };
 
-                <div className="container">
-                        <div className="row d-flex justify-content-center">
-                        <div className="col-sm-4 col-12 d-flex justify-content-center mb-4">
-                                <Cardtext
-                                    Title={'THIRD TERM 2023/2024 NEWSLETTER TO PARENTS/GUARDIAN'}
-                                    Cardtext={'Chizzy kids schools, LAGOS THIRD TERM NEWSLETTER TO PARENTS/GUARDIANS 26th JULY, 2024   Protocol We are thankful to God Almighty for bringing us to the end of Third Term and the end of 2023/2024 Academic Session. He has helped us to...'}
-                                    btntext={'know more'}
-                                />
-                            </div>
-                            
+  useEffect(() => {
+    fetchNews();
+  }, []);
 
-                            <div className="col-sm-4 col-12 d-flex justify-content-center mb-4">
-                                <Cardtext
-                                    Title={'THIRD TERM 2023/2024 NEWSLETTER TO PARENTS/GUARDIAN'}
-                                    Cardtext={'Chizzy kids schools, LAGOS THIRD TERM NEWSLETTER TO PARENTS/GUARDIANS 26th JULY, 2024   Protocol We are thankful to God Almighty for bringing us to the end of Third Term and the end of 2023/2024 Academic Session. He has helped us to...'}
-                                    btntext={'know more'}
-                                />
-                            </div>
-
-                            <div className="col-sm-4 col-12 d-flex justify-content-center mb-4">
-                                <Cardtext
-                                    Title={'THIRD TERM 2023/2024 NEWSLETTER TO PARENTS/GUARDIAN'}
-                                    Cardtext={'Chizzy kids schools, LAGOS THIRD TERM NEWSLETTER TO PARENTS/GUARDIANS 26th JULY, 2024   Protocol We are thankful to God Almighty for bringing us to the end of Third Term and the end of 2023/2024 Academic Session. He has helped us to...'}
-                                    btntext={'know more'}
-                                />
-                            </div>
-                        </div>
-
-                </div>
-            </div>
+  //function to take us to event
+  const handleClick = () => {
+    navigate("/news");
+  };
 
 
-        </section>
-    )
-}
+  return (
+    <section
+      className="container-fluid"
+      style={{ backgroundColor: "", marginTop: "0px", height: "auto" }}
+    >
+      <div>
+        <h2 className=" text-center fontColor" style={{ marginTop: "30px" }}>
+          WE KEEP YOU IN THE KNOW
+        </h2>
+        <HrElement />
 
-export default News
+        <div className="container">
+          <div className="row d-flex justify-content-center">
+            {news.map((news) => (
+              <div key={news._id} className="col-sm-4 col-12 d-flex justify-content-center mb-3" >
+                <Cardtext
+                  title={news.title}
+                  cardtext={news.content}
+                  linkout={() => handleClick()}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default News;

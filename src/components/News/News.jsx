@@ -1,77 +1,3 @@
-// import React, { useState, useEffect } from "react";
-// import "./News.css";
-
-// const News = () => {
-//   const [newsList, setNewsList] = useState([]); // All news from backend
-//   const [selectedNews, setSelectedNews] = useState(null); // Selected news
-
-//   // Fetch news from backend
-//   useEffect(() => {
-//     const fetchNews = async () => {
-//       try {
-//         const response = await fetch(
-//           `${import.meta.env.VITE_API_BASE_URL}/news`
-//         );
-//         const data = await response.json();
-//         setNewsList(data);
-//         if (data.length > 0) setSelectedNews(data[0]); // Set first news as default
-//       } catch (error) {
-//         console.error("Error fetching news:", error);
-//       }
-//     };
-
-//     fetchNews();
-//   }, []);
-
-//   return (
-//     <>
-//       <div style={{ marginTop: "20px" }} className="py-3">
-//         <div className="news-hero">
-//           <div className="hero-overlay">
-//             <h1>Latest News</h1>
-//           </div>
-//         </div>
-
-//         <div className="news-container mt-3">
-//           {/* Left Sidebar - Latest News List */}
-//           <div className="news-sidebar">
-//             <h4>Latest News</h4>
-//             <ul>
-//               {newsList.map((news) => (
-//                 <li
-//                   key={news._id}
-//                   className={selectedNews?._id === news._id ? "active" : ""}
-//                   onClick={() => {setSelectedNews(news);
-//                     window.scrollTo({ top: 0, behavior: "smooth" });
-//                   }}
-//                 >
-//                   <h5>{news.title}</h5>
-//                   <p>{new Date(news.date).toISOString().split("T")[0]}</p>
-//                 </li>
-//               ))}
-//             </ul>
-//           </div>
-
-//           {/* Right - News Content */}
-//           <div className="news-content">
-//             {selectedNews && (
-//               <>
-//                 <h2>{selectedNews.title}</h2>
-//                 <p className="news-date">
-//                   📅 {new Date(selectedNews.date).toISOString().split("T")[0]}
-//                 </p>
-//                 <p>{selectedNews.content}</p>
-//               </>
-//             )}
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default News;
-
 
 import React, { useState, useEffect } from "react";
 import "./News.css";
@@ -79,14 +5,14 @@ import "./News.css";
 const News = () => {
   const [newsList, setNewsList] = useState([]); // All news from backend
   const [selectedNews, setSelectedNews] = useState(null); // Selected news
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // Check screen size
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768); 
 
   // Fetch news from backend
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_BASE_URL}/news`
+          `${import.meta.env.VITE_API_BASE_URL}/news/newsPage`
         );
         const data = await response.json();
         setNewsList(data);
@@ -135,7 +61,7 @@ const News = () => {
                   }}
                 >
                   <h5>{news.title}</h5>
-                  <p>{new Date(news.date).toDateString()}</p>
+                  <p>{new Date(news.date).toDateString().slice(4)}</p>
                 </li>
               ))}
             </ul>
@@ -146,7 +72,7 @@ const News = () => {
             {selectedNews && (
               <>
                 <h2>{selectedNews.title}</h2>
-                <p className="news-date">📅 {new Date(selectedNews.date).toDateString()}</p>
+                <p className="news-date">📅 {new Date(selectedNews.date).toDateString().slice(4)}</p>
                 <p>{selectedNews.content}</p>
               </>
             )}
@@ -158,8 +84,8 @@ const News = () => {
           {newsList.map((news, index) => (
             <div key={news._id} className="news-item">
               <h2>{news.title}</h2>
-              <p className="news-date">📅 {new Date(news.date).toDateString()}</p>
-              <p>{news.content}</p>
+              <span>📅 {new Date(news.date).toDateString().slice(4)}</span>
+              <p className="news-contentMob">{news.content}</p>
               {index < newsList.length - 1 && <hr />} {/* Separator */}
             </div>
           ))}
