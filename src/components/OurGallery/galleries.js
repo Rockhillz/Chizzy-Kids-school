@@ -1,4 +1,5 @@
 const galleries = [
+  // This will be deleted.
   {
     Title: "A STUDENT'S BIRTHDAY",
     imgurl: "https://res.cloudinary.com/djbtdlzrj/image/upload/v1737235442/birthday_of_a_student_smejpw.jpg"

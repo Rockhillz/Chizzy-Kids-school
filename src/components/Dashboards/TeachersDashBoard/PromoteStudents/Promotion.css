@@ -1,0 +1,26 @@
+.promotion-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    gap: 10px; /* Adds space between buttons */
+  }
+  
+  /* Default (Desktop & Large Screens) → Buttons in a row */
+  .promotion-buttons .promotion-button {
+    flex: 1 1 auto;
+    max-width: 200px;
+  }
+  
+  /* 📱 Mobile (Switch to Column) */
+  @media (max-width: 767px) {
+    .promotion-buttons {
+      flex-direction: column; /* Stack buttons */
+      align-items: center; /* Center the buttons */
+    }
+  
+    .promotion-buttons .promotion-button {
+      width: 100%; /* Full width on mobile */
+      max-width: none;
+    }
+  }
+  
