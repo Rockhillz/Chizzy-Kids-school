@@ -6,7 +6,7 @@
 .gallery {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px !important; 
+  gap: 20px !important;
   margin-top: 0.5rem;
 }
 
@@ -15,16 +15,122 @@ img {
   height: 20rem;
 }
 
-.OurgalleryList{
+.OurgalleryList {
   margin-top: 50px;
   padding: 2rem;
   justify-items: center;
+
+}
+
+.gallery__btn {
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+  /* border: 2px solid black; */
+  padding-top: 10px;
+}
+
+.create_gallery-btn {
+  /* border: 2px solid black; */
+  width: 100%;
+  display: flex;
+  /* align-items: end; */
+  justify-content: end;
+  padding: 5px 0;
+}
+
+.gallery__cta {
+  margin: 10px 10px;
+  background-color: rgb(4, 166, 4) !important;
+  padding: 5px auto !important;
+  border: none;
+  color: white;
+
+}
+
+.gallery__cta:hover{
+  background-color: rgba(7, 73, 7, 0.973) !important;
+  color: rgb(210, 225, 255);
+}
+
+.create_gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+
+
+.control__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  top: 50%;  /* Position in the center */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;  /* Initially hidden */
+  transition: opacity 0.3s ease-in-out;
   
 }
+
+.control__btn button{
+  width: 50px;
+  background:transparent !important;
+  border: none;
+  font-size: 30px;
+}
+
+.card__img:hover .control__btn {
+  opacity: 1;  /* Show on hover */
+  background: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+
+.delete_btn:hover{
+  color: rgb(234, 65, 65) !important;
+  background-color: rgba(0, 0, 0, 0.389)  !important;
+}
+
+.edit_btn:hover{
+  color: rgb(184, 202, 255) !important;
+  background-color: rgba(0, 0, 0, 0.389)  !important;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 768px) {
   .gallery {
     grid-template-columns: 1fr;
   }
+  
 }
 
+
+@media (max-width: 480PX) {
+  .head__modal{
+    width: 320px;
+    display: flex !important;
+    flex-direction: row !important;
+  }
+
+  .confirm__btn{
+    width: 100% !important;
+    display: flex !important;
+    /* border: 2px solid black; */
+    flex-direction: row !important;
+  }
+}
