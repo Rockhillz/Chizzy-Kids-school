@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import OurGallery from './OurGallery';
 import './OurGallery.css';
-// import { customGallery as dummyGallery } from './customGallery';
 import CreateGalleryModal from './CreateGalleryModal';
 import { Spinner } from 'react-bootstrap';
+
 
 const Gallery = () => {
   // State to store gallery data
@@ -51,9 +51,9 @@ const Gallery = () => {
           
       </div>
       {isLoading && <Spinner variant='primary'/>}
-      <div className="row g-4"> 
+      <div className="row g-4" style={{width:'100%'}}> 
         {galleries.map((gallery, index) => ( 
-          <div key={index} className="col-lg-3 col-md-4 col-sm-6 col-12"> 
+          <div key={index} className="col-lg-3 col-md-4 col-sm-6 col-12 ms-2"> 
             <OurGallery 
             description={gallery.description.length > 20 ? gallery.description.substring(0, 20) + `...` : gallery.description}
             image={gallery.image} />
