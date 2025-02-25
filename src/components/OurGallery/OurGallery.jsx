@@ -26,7 +26,7 @@ const OurGallery = ({ title, image, description }) => {
   return (
     <>
     <Card style={{ width: "18rem" }} className="mx-auto shadow card__img">
-      <Card.Img variant="top" src={image} alt={title} />
+      <Card.Img variant="top" style={{ height: '250px', objectFit: 'cover'}} src={image} alt={title} />
       <Card.Body>
         {isAdmin && token  && isInAdminDashboard &&
         <div className='control__btn'>
