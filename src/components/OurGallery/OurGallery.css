@@ -5,7 +5,7 @@
 
 .gallery {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
   gap: 20px !important;
   margin-top: 0.5rem;
 }
@@ -17,7 +17,7 @@ img {
 
 .OurgalleryList {
   margin-top: 50px;
-  padding: 2rem;
+  /* padding: 2rem; */
   justify-items: center;
 
 }
@@ -40,25 +40,25 @@ img {
 }
 
 .gallery__cta {
-  margin: 10px 10px;
-  background-color: rgb(4, 166, 4) !important;
-  padding: 5px auto !important;
+  /* margin: 10px 10px; */
+  /* background-color: rgb(4, 166, 4) !important; */
+  /* padding: 5px auto !important; */
   border: none;
   color: white;
 
 }
 
 .gallery__cta:hover{
-  background-color: rgba(7, 73, 7, 0.973) !important;
+  background-color: #4b7aa7;
   color: rgb(210, 225, 255);
 }
 
 .create_gallery {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 0;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* margin: 20px 0; */
 }
 
 
