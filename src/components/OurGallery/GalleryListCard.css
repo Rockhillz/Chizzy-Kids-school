@@ -1,0 +1,39 @@
+.gallery-card {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    /* max-width: 350px; */
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .gallery-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .gallery-card:hover .gallery-card-img {
+    transform: scale(1.05);
+  }
+  
+  .gallery-title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .gallery-title.visible {
+    opacity: 1;
+  }
+  
