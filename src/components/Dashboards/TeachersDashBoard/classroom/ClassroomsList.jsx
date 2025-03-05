@@ -150,7 +150,7 @@ const ClassroomsList = ({ setSelectedClassroom }) => {
                 type="text"
                 placeholder="Enter classroom name"
                 value={newClassroom}
-                onChange={(e) => setNewClassroom(e.target.value)}
+                onChange={(e) => setNewClassroom(e.target.value.replace(/\s/g, "").toUpperCase())}
                 required
               />
             </Form.Group>
