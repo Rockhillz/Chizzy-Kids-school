@@ -153,7 +153,7 @@ const StudentProfile = ({ studentId, onBack }) => {
         <Modal.Body>
           <AssignStudentClass
             studentId={studentId}
-            onClose={() => setShowAssignModal(false)} // Close modal after assign
+            onClose={() => setShowAssignModal(false) } // Close modal after assign
             setAssignLoading={setAssignLoading} // Control spinner
           />
         </Modal.Body>

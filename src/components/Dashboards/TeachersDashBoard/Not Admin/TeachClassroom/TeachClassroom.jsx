@@ -95,6 +95,13 @@ const TeachClassroom = () => {
   };
 
   const submitAttendance = async () => {
+    if (!classroom || !classroom.students || classroom.students.length === 0) {
+      setModalMessage("No students in this classroom to mark attendance.");
+      setModalVariant("warning");
+      setShowModal(true);
+      return;
+    }
+    
     setSpinnings(true);
 
     try {
