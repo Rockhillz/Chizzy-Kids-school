@@ -43,9 +43,10 @@ const Blog = () => {
 
         <div className="col-12 col-sm-4">
           <img
-            src="https://res.cloudinary.com/djbtdlzrj/image/upload/v1737233864/WhatsApp_Image_2025-01-03_at_12.45.04_ad7cb39a_hc2pf6.jpg"
+            src="https://res.cloudinary.com/djbtdlzrj/image/upload/v1741692816/IMG_20250118_071428_953_lottj0.jpg"
             alt="principal photo"
             className="img-fluid"
+            loading="lazy"
             style={{ width: "300px", height: "400px", marginLeft: "30px" }}
           />
         </div>

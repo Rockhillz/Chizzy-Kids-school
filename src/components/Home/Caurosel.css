@@ -2,29 +2,69 @@
   margin-top: 60px;
 }
 
+/* Default styles for carousel captions */
+.carousel-caption {
+  position: absolute;
+  bottom: 20%; /* Lowered position */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 80%;
+  color: white; /* Ensures text is visible */
+}
+
+/* Default heading size for larger screens */
+.carousel-caption h1 {
+  font-size: 50px;
+  font-weight: bold;
+}
 
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 768px) {
-    .carousel-img {
-      height: 300px !important;
-      width: 100% !important;
-      object-fit: contained !important;
-      transition: height 0.5s ease !important;
-
-    }
-  }
-  
-  /* Medium devices (tablets, 768px to 992px) */
-  @media (min-width: 768px) and (max-width: 992px) {
-    .carousel-img {
-      height: 400px;
-    }
-  }
-  
-  /* Large devices (desktops, 992px and up) */
-  @media (min-width: 992px) {
-    .carousel-img {
-      height: 500px;
-    }
+  .carousel-img {
+    height: 300px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    transition: height 0.5s ease !important;
   }
 
+  .carousel-caption {
+    bottom: 10%; /* Move text slightly higher on smaller screens */
+    font-size: 14px; /* Reduce text size */
+    width: 90%;
+  }
+
+  .carousel-caption h1 {
+    font-size: 20px; /* Smaller font for mobile */
+  }
+}
+
+/* Medium devices (tablets, 768px to 992px) */
+@media (min-width: 768px) and (max-width: 992px) {
+  .carousel-img {
+    height: 400px;
+  }
+
+  .carousel-caption {
+    bottom: 15%; /* Adjust caption position */
+  }
+
+  .carousel-caption h1 {
+    font-size: 35px; /* Medium font for tablets */
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .carousel-img {
+    height: 500px;
+  }
+
+  .carousel-caption {
+    bottom: 20%; /* Keeps text lower but not at the bottom */
+  }
+
+  .carousel-caption h1 {
+    font-size: 50px; /* Large font for desktops */
+  }
+}
