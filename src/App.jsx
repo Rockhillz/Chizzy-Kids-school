@@ -60,7 +60,7 @@ function App() {
             <Route path="/teacher/subjects" element={<TeachSubject />} />
 
           </Routes>
-          <ToggleFormImage />
+          {/* <ToggleFormImage /> */}
         </div>
         <Footer />
       </div>

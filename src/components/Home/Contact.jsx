@@ -1,7 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
 const Contact = () => {
+  const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [subject, setSuject] = useState("");
+  const [message, setMessage] = useState("");
+  const [sending, isSending] = useState(false);
+  const [success, setSuccess] = useState(null);
+
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        setSuccess(null);
+      }, 10000); // 10 seconds
+  
+      return () => clearTimeout(timer); // cleanup on unmount or if success changes
+    }
+  }, [success]);
+
+  const sendMessage = async (e) => {
+    e.preventDefault();
+    isSending(true);
+    setSuccess(null); // clear previous message
+
+    const formData = {
+      fullName,
+      phone,
+      subject,
+      message,
+    };
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/send-mail`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json(); // ✅ Correct way
+
+      if (response.ok && data.success) {
+        setSuccess("✅ Enquiry Sent Successfully");
+        setFullName("");
+        setPhone("");
+        setSuject("");
+        setMessage("");
+      } else {
+        setSuccess("❌ " + (data.message || "Something went wrong."));
+      }
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      setSuccess("An error occurred. Please try again later.");
+    } finally {
+      isSending(false);
+    }
+  };
+
   return (
     <section style={{ backgroundColor: "#f8f9fa", padding: "50px 0" }}>
       <Container>
@@ -17,29 +77,60 @@ const Contact = () => {
         </p>
         <Row>
           <Col md={6}>
-            <Form>
+            <Form onSubmit={sendMessage}>
               <Form.Group className="mb-3" controlId="formName">
                 <Form.Label>Full Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter your name" />
+                <Form.Control
+                  type="text"
+                  placeholder="Enter your name"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
               </Form.Group>
+
               <Form.Group className="mb-3" controlId="formEmail">
-                <Form.Label>Email Address</Form.Label>
-                <Form.Control type="email" placeholder="Enter your email" />
+                <Form.Label>Phone</Form.Label>
+                <Form.Control
+                  type="phone"
+                  placeholder="Enter your Phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
               </Form.Group>
+
               <Form.Group className="mb-3" controlId="formSubject">
                 <Form.Label>Subject</Form.Label>
-                <Form.Control type="text" placeholder="Enter subject" />
+                <Form.Control
+                  type="text"
+                  placeholder="Enter subject"
+                  value={subject}
+                  onChange={(e) => setSuject(e.target.value)}
+                />
               </Form.Group>
+
               <Form.Group className="mb-3" controlId="formMessage">
                 <Form.Label>Message</Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={5}
                   placeholder="Type your message here..."
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                 />
               </Form.Group>
-              <Button type="submit" className="w-100 bg-t">
-                Send Message
+              {success && (
+                <div
+                  className={`alert ${
+                    success.startsWith("✅") ? "alert-success" : "alert-danger"
+                  }`}
+                  role="alert"
+                >
+                  {success}
+                </div>
+              )}
+
+              <Button type="submit" className="w-100 bg-t" disabled={sending}>
+                {sending ? "Sending" : "Send Message"}
               </Button>
             </Form>
           </Col>
@@ -59,7 +150,7 @@ const Contact = () => {
                 <strong>Office Hours:</strong> Mon - Fri, 8:00 AM - 5:00 PM
               </li>
             </ul>
-            
+
             <div className="mt-3">
               <h5 style={{ color: "#01010" }}>Follow Us</h5>
               <div className="d-flex flex-row gap-3 mt-2">
