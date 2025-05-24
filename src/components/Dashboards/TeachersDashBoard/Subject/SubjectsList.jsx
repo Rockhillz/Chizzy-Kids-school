@@ -16,34 +16,33 @@ const SubjectsList = ({ setSelectedSubject }) => {
   const [feedbackType, setFeedbackType] = useState(""); // "success" or "error"
   const [feedbackMessage, setFeedbackMessage] = useState("");
 
-  useEffect(() => {
-    const fetchSubjects = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const response = await fetch(
-          `${import.meta.env.VITE_API_BASE_URL}/subjects`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+  const fetchSubjects = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/subjects`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
         }
+      );
 
-        const data = await response.json();
-        setSubjects(data.subjects || data);
-       
-      } catch (err) {
-        console.error("Error fetching subjects:", err);
-      } finally {
-        setLoading(false);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    };
 
+      const data = await response.json();
+      setSubjects(data.subjects || data);
+    } catch (err) {
+      console.error("Error fetching subjects:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchSubjects();
   }, []);
 
@@ -100,6 +99,7 @@ const SubjectsList = ({ setSelectedSubject }) => {
 
       const newSubj = await response.json();
       setSubjects((prevSubjects) => [...prevSubjects, newSubj]);
+      await fetchSubjects();
       setFeedbackType("success");
       setFeedbackMessage("Subject created successfully!");
       setShowFeedback(true);
@@ -158,7 +158,11 @@ const SubjectsList = ({ setSelectedSubject }) => {
               onClick={() => setSelectedSubject(subject._id)}
               style={{ cursor: "pointer" }}
             >
-              <td>{subject.name}{" - "}{subject.classroom?.className }</td>
+              <td>
+                {subject.name}
+                {" - "}
+                {subject.classroom?.className}
+              </td>
               <td>{subject.teacher ? subject.teacher.fullname : "N/A"}</td>
               <td>{subject.students ? subject.students.length : 0}</td>
             </tr>

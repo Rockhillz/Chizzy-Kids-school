@@ -9,6 +9,8 @@ import "./Admin.css"
 import TermAndSession from "../Term & Session/TermAndSession";
 import PromoteAndGrad from "../PromoteStudents/PromoteAndGrad";
 import Events from "../Events and News/eventss/Events";
+import News from "../Events and News/News/News";
+import Gallery from "../../../OurGallery/Gallery";
 
 const Admin = () => {
   const [activeAdminTab, setActiveAdminTab] = useState("dashboard");
@@ -31,7 +33,10 @@ const Admin = () => {
         case "events":
           return <Events />;
         case "news":
-          return <p>Feature coming soon!</p>;
+          return <News />;
+        case "gallery":
+          return <Gallery />;
+        // Add more cases as needed
       default:
         return <p>Welcome to the Admin Dashboard. Select an option to proceed.</p>;
     }
@@ -50,7 +55,8 @@ const Admin = () => {
     { id: "terms", label: "Term and Session" },
     { id: "promote/graduate", label: "Promote and Graduate" },
     { id: "events", label: "Events" },
-    { id: "news", label: "News" }
+    { id: "news", label: "News" },
+    { id: "gallery", label: "Gallery" },
 
     // Add more buttons here as needed
   ];

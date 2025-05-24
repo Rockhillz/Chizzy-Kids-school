@@ -12,10 +12,11 @@ const Profile = ({ profile }) => {
       </div>
     );
   }
-
+  
   return (
     <div className=" siz">
       <div>
+        
 
         <div className="d-flex mt-3 sm-6">
           <img
@@ -54,7 +55,7 @@ const Profile = ({ profile }) => {
             </p>
             <p>
               <strong>Classroom:</strong>{" "}
-              {profile.classroom ? profile.classroom.name : "Not assigned"}
+              {profile.classroom ? profile.classroom.className : "Not assigned"}
             </p>
           </div>
         </div>

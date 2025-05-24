@@ -3,21 +3,17 @@
   transition: 0;
   border-radius:0;
   height:450px;
-  transition: 0s;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   text-align:center;
   object-fit: cover;
   overflow: hidden;
   margin-top: 20px;
-
-
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0,0,0,0.19);
-  /* color: rgb(194, 194, 194); */
+    box-shadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
 }
 
 .CardContainer:hover{
-  transform: translateY(-10px); /* Moves the box 10px up */
-  /* box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);  */
-  transition: 0.5s;
+  transform: translateY(-10px);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
 }
 
 .Imgpic {
@@ -42,9 +38,6 @@
     object-fit: cover;
     overflow: hidden;
     margin-top: 20px;
-  
-  
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0,0,0,0.19);
-    /* color: rgb(194, 194, 194); */
+    box-shadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
   }
 }

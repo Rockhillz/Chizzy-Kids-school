@@ -1,0 +1,147 @@
+.news-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.news-sidebar {
+  width: 30%;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.news-sidebar h4 {
+  border-bottom: 2px solid #222;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.news-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.news-sidebar li {
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.news-sidebar li.active {
+  background: #ddd;
+  font-weight: bold;
+}
+
+.news-content {
+  width: 70%;
+  padding: 15px;
+}
+
+.news-date {
+  color: #888;
+}
+
+.news-hero {
+  position: relative;
+  width: 100%;
+  height: 250px; /* Adjust height */
+  background: url("https://i.pinimg.com/736x/21/a4/38/21a4385ce6915226529d4651a9a8e4b3.jpg")
+    no-repeat center center/cover; /* Background image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay effect */
+  padding: 20px 40px;
+  border-radius: 5px;
+}
+
+.hero-overlay h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.breadcrumb {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.breadcrumb .divider {
+  margin: 0 8px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .news-container {
+    flex-direction: column; /* Stack elements vertically */
+    padding: 10px;
+  }
+
+  .news-sidebar {
+    display: none; /* Hide sidebar on mobile */
+  }
+
+  .news-content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .news-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .news-date {
+    font-size: 0.9rem;
+    color: #888;
+  }
+
+  .news-hero {
+    height: 200px; 
+  }
+
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+
+  /* Testing */
+  .news-mobile-container {
+    display: block;
+    padding: 30px;
+  }
+
+  .news-item {
+    margin-bottom: 20px;
+  }
+
+  .news-item h2 {
+    font-size: 1.5rem;
+    color: #333;
+    width: 100%;
+  }
+
+  .news-contentMob {
+    font-size: 1rem; 
+    line-height: 1.6; 
+    color: #333;
+    text-align: justify;
+    margin-top: 15px; 
+  }
+
+  .news-item p {
+    font-family: 'Arial', sans-serif;
+    font-weight: 400; 
+    letter-spacing: 0.1px;
+   
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid black;
+    margin: 15px 0;
+  }
+}

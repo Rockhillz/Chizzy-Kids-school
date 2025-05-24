@@ -5,7 +5,7 @@ import Home from "./components/Home/Home";
 import Events from "./components/Events/Events";
 import SchoolPortal from "./components/SchoolPortal/SchoolPortal";
 import AboutUs from "./components/AboutUs/AboutUs";
-// import News from './components/News/News';
+import News from './components/News/News';
 // import Pta from './components/P.T.A/Pta';
 import OurGalleryList from "./components/OurGallery/OurGalleryList";
 import ToggleFormImage from "./components/Home/ToggleFormIcon";
@@ -45,8 +45,8 @@ function App() {
             <Route path="/ourGallery" element={<OurGalleryList />} />
             <Route path="/teacher-dashboard" element={<TeachDashboard />} />
             <Route path="/student-dashboard" element={<StudentDashboard />} />
-            {/* <Route path='/news' element={<News />} />
-            <Route path='/pta' element={<Pta />} /> */}
+            <Route path='/news' element={<News />} />
+            {/* <Route path='/pta' element={<Pta />} /> */}
             <Route path="*" element={<Wildcard />} />
             <Route path="/teachers" element={<Teachers />} />
             <Route path="/students" element={<Students />} />
@@ -60,7 +60,7 @@ function App() {
             <Route path="/teacher/subjects" element={<TeachSubject />} />
 
           </Routes>
-          <ToggleFormImage />
+          {/* <ToggleFormImage /> */}
         </div>
         <Footer />
       </div>
