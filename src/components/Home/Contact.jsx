@@ -14,7 +14,7 @@ const Contact = () => {
       const timer = setTimeout(() => {
         setSuccess(null);
       }, 10000); // 10 seconds
-  
+
       return () => clearTimeout(timer); // cleanup on unmount or if success changes
     }
   }, [success]);
@@ -144,7 +144,7 @@ const Contact = () => {
                 <strong>Phone:</strong> +234 806 054 0369
               </li>
               <li>
-                <strong>Email:</strong> info@chizzykids.edu.ng
+                <strong>Email:</strong> charitydara0@gmail.com
               </li>
               <li>
                 <strong>Office Hours:</strong> Mon - Fri, 8:00 AM - 5:00 PM
@@ -155,7 +155,8 @@ const Contact = () => {
               <h5 style={{ color: "#01010" }}>Follow Us</h5>
               <div className="d-flex flex-row gap-3 mt-2">
                 <a
-                  href="#"
+                  href="https://web.facebook.com/ogaraku.charitydara"
+                  target="_blank"
                   style={{
                     color: "#4267B2",
                     fontSize: "24px",
@@ -164,17 +165,19 @@ const Contact = () => {
                 >
                   <i className="fa-brands fa-facebook"></i>
                 </a>
+
+                {/* Other Social Media Links commented out  */}
                 <a
-                  href="#"
+                  href="mailto:charitydara0@gmail.com"
                   style={{
                     color: "#010101",
                     fontSize: "24px",
                     textDecoration: "none",
                   }}
                 >
-                  <i className="fa-brands fa-x-twitter"></i>
+                  <i class="fa-solid fa-envelope"></i>
                 </a>
-                <a
+                {/* <a
                   href="#"
                   style={{
                     color: "#C13584",
@@ -193,7 +196,7 @@ const Contact = () => {
                   }}
                 >
                   <i className="fa-brands fa-linkedin"></i>
-                </a>
+                </a> */}
               </div>
             </div>
           </Col>
