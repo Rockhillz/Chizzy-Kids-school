@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import Cardbox from "./Cardbox";
 import HrElement from "../Home/HrElement";
+import './imageCss.css'
+
 
 const Carditem = () => {
   const navigate = useNavigate();
@@ -9,6 +11,7 @@ const Carditem = () => {
   const handleNavigate = () => {
     navigate("/aboutus");
   };
+  
 
   return (
     <div className="container mt-4">
@@ -18,24 +21,26 @@ const Carditem = () => {
       <HrElement />
 
       <div className="row d-flex justify-content-center mt-2">
-        <div className="col-sm-4 col-12 d-flex justify-content-center mb-4">
-          <Cardbox
-            Image={
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzlPomRG0rBJpXh4N90bdd6zuR6UFTNxc9Aw&s"
-            }
-            Title={"School Profile"}
-            Cardtext={
-              "Chizzy Kids Group of Schools, established in 2010 in Lagos, is dedicated to excellence in learning and character, offering quality education and holistic development for every child."
-            }
-            btntext={"Read More"}
-            linkout={() => handleNavigate()}
-          />
-        </div>
+        {/* <div className="col-sm-4 col-12 d-flex justify-content-center mb-4">
+          <div className="custom-card-image-scope">
+            <Cardbox
+              Image={
+                "./chizzyKidsLogo-bgR.png"
+              }
+              Title={"School Profile"}
+              Cardtext={
+                "Chizzy Kids Group of Schools, established in 2010 in Lagos, is dedicated to excellence in learning and character, offering quality education and holistic development for every child."
+              }
+              btntext={"Read More"}
+              linkout={() => handleNavigate()}
+            />
+          </div>
+        </div> */}
 
         <div className="col-sm-4 col-12 d-flex justify-content-center mb-4">
           <Cardbox
             Image={
-              "https://www.ictworks.org/wp-content/uploads/2017/02/mobile_phones_education.jpg"
+              "https://res.cloudinary.com/djbtdlzrj/image/upload/v1748080097/noob_qzburu.jpg"
             }
             Title={"Passionate Staff"}
             Cardtext={

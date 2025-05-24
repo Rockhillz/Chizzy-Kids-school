@@ -1,0 +1,7 @@
+.custom-card-image-scope img {
+  max-width: 150px;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
