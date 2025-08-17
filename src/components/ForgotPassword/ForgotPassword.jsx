@@ -1,64 +1,85 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Form,
+  Button,
+  Container,
+  Row,
+  Col,
+  Spinner,
+  Modal,
+  Alert,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "react-bootstrap";
 
-const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
-  const [role, setRole] = useState(''); // Role state
-  const [message, setMessage] = useState('');
+export default function ForgotPassword() {
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState(null);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
   const navigate = useNavigate();
-
-  const handleRoleChange = (event) => {
-    setRole(event.target.value);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setMessage("");
 
     if (!role) {
-      setMessage('Please select a role (Teacher or Student).');
+      setError("Please select a role (Teacher or Student).");
       return;
     }
 
     try {
+      setLoading(true);
 
       const normalizedEmail = email.trim().toLowerCase();
-      console.log('normalized email: ', normalizedEmail);
-
-
-      // Set the API endpoint based on the selected role
       const apiUrl =
-        role === 'teacher'
-          ? `https://chizzykids-server.onrender.com/api/teacher/request-reset`
-          : `https://chizzykids-server.onrender.com/api/request-reset`;
+        role === "teacher"
+          ? `${import.meta.env.VITE_API_BASE_URL}/teacher/request-reset`
+          : `${import.meta.env.VITE_API_BASE_URL}/request-reset`;
 
       const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: normalizedEmail }),
       });
 
       const data = await response.json();
+
       if (response.ok) {
-        setMessage('Token sent! Check your email.');
-        navigate('/reset-password'); // Navigate to Reset Password page
+        setMessage("A reset token has been sent to your email.");
+        setShowSuccessModal(true);
+        localStorage.setItem("email", normalizedEmail);
+        setTimeout(() => {
+          navigate("/reset-password");
+        }, 3000);
+        
       } else {
-        setMessage(data.message || 'Failed to send token');
+        setError(data.message || "Something went wrong. Please try again.");
       }
-    } catch (error) {
-      console.error('Error:', error);
-      setMessage('Something went wrong.');
+    } catch (err) {
+      setError("Server error. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <Container className="py-5">
-      <Row className="d-flex align-items-center justify-content-center min-vh-90 py-5">
+    <Container className="mt-5 py-5">
+      <Row className="justify-content-md-center">
         <Col md={6}>
-          <h2 className="text-center mb-4">Forgot Password</h2>
+          <h3 className="text-center mb-4">Forgot Password</h3>
+
+          {error && <Alert variant="danger">{error}</Alert>}
+          {message && <Alert variant="success">{message}</Alert>}
+
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="email" className="mb-3">
-              <Form.Label>Email Address</Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="Enter your email"
@@ -69,33 +90,47 @@ const ForgotPassword = () => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Check
+              <Form.Label>Select Role</Form.Label>
+              <br />
+              <ToggleButtonGroup
                 type="radio"
-                label="Reset as a Teacher"
                 name="role"
-                value="teacher"
-                checked={role === 'teacher'}
-                onChange={handleRoleChange}
-              />
-              <Form.Check
-                type="radio"
-                label="Reset as a Student"
-                name="role"
-                value="student"
-                checked={role === 'student'}
-                onChange={handleRoleChange}
-              />
+                value={role}
+                onChange={(val) => setRole(val)} // now val will be "teacher" or "student"
+              >
+                <ToggleButton
+                  id="role-teacher"
+                  value="teacher"
+                  variant="outline-primary"
+                >
+                  Teacher
+                </ToggleButton>
+                <ToggleButton
+                  id="role-student"
+                  value="student"
+                  variant="outline-primary"
+                >
+                  Student
+                </ToggleButton>
+              </ToggleButtonGroup>
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="w-100 mt-3">
-              Send Reset Token
+            <Button variant="primary" type="submit" disabled={loading} className="w-100">
+              {loading ? <Spinner animation="border" size="sm" /> : "Send Reset Token"}
             </Button>
           </Form>
-          {message && <p className="mt-3 text-center">{message}</p>}
         </Col>
       </Row>
+
+      {/* Success Modal */}
+      <Modal show={showSuccessModal} onHide={() => setShowSuccessModal(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Success</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Password reset instructions have been sent to your email.
+        </Modal.Body>
+      </Modal>
     </Container>
   );
-};
-
-export default ForgotPassword;
+}
